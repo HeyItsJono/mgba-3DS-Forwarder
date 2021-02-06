@@ -1,3 +1,9 @@
+string(RANDOM LENGTH 4 ALPHABET ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 PRODUCT_CODE)
+string(RANDOM LENGTH 4 ALPHABET 0123456789ABCDEF PRODUCT_ID)
+file(READ ${CMAKE_SOURCE_DIR}/res/3ds_custom_data/path.txt ROM_PATH)
+string(STRIP ${ROM_PATH} ROM_PATH)
+configure_file(${CMAKE_SOURCE_DIR}/src/feature/gui/gui-runner.c.in ${CMAKE_SOURCE_DIR}/src/feature/gui/gui-runner.c)
+
 set(USE_VFS_3DS ON CACHE BOOL "Use 3DS-specific file support")
 mark_as_advanced(USE_VFS_3DS)
 
@@ -100,7 +106,7 @@ add_custom_target(${BINARY_NAME}.3dsx ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${
 
 add_custom_command(OUTPUT ${BINARY_NAME}.cia
                    COMMAND ${STRIP} -o ${BINARY_NAME}-stripped.elf ${BINARY_NAME}.elf
-                   COMMAND ${MAKEROM} -f cia -o ${BINARY_NAME}.cia -rsf cia.rsf -target t -exefslogo -elf ${BINARY_NAME}-stripped.elf -icon ${BINARY_NAME}.smdh -banner ${BINARY_NAME}.bnr -major ${LIB_VERSION_MAJOR} -minor ${LIB_VERSION_MINOR} -micro ${LIB_VERSION_PATCH}
+                   COMMAND ${MAKEROM} -f cia -o ${BINARY_NAME}.cia -rsf cia.rsf -target t -exefslogo -elf ${BINARY_NAME}-stripped.elf -icon ${BINARY_NAME}.icn -banner ${BINARY_NAME}.bnr -major ${LIB_VERSION_MAJOR} -minor ${LIB_VERSION_MINOR} -micro ${LIB_VERSION_PATCH}
                    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/cia.rsf ${BINARY_NAME}.elf ${BINARY_NAME}.smdh ${BINARY_NAME}.bnr)
 add_custom_target(${BINARY_NAME}.cia ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_NAME}.cia)
 
@@ -119,6 +125,8 @@ if(BUILD_PERF)
 		    DESTINATION . COMPONENT ${BINARY_NAME}-perf)
 endif()
 
+configure_file(${CMAKE_SOURCE_DIR}/res/3ds_custom_data/icon.icn ${BINARY_NAME}.icn COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/res/3ds_custom_data/banner.bnr ${BINARY_NAME}.bnr COPYONLY)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cia.rsf.in ${CMAKE_CURRENT_BINARY_DIR}/cia.rsf)
 
 install(TARGETS ${BINARY_NAME}.elf DESTINATION . COMPONENT ${BINARY_NAME}-dbg)

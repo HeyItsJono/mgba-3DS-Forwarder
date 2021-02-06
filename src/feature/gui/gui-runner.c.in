@@ -697,7 +697,7 @@ void mGUIRunloop(struct mGUIRunner* runner) {
 	}
 	while (!runner->running || runner->running(runner)) {
 		char path[PATH_MAX];
-		strncpy(path, "/Roms/GBA/example name.gba", sizeof(path));
+		strncpy(path, "${ROM_PATH}", sizeof(path));
 		const char* preselect = mCoreConfigGetValue(&runner->config, "lastGame");
 		if (preselect) {
 			preselect = strrchr(preselect, '/');

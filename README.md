@@ -1,3 +1,18 @@
+mGBA adaptions for 3DS Forwarder
+--------
+This repo is a fork of mGBA to add some semi-easy steps to create individual cia files for each game on your 3DS home menu.
+I basically edited the GUI code such that the path of a ROM is directly present and loaded. Then I edited the CMake file to load a custom banner, a custom icon and the path to the ROM from a folder. The title ID and product code are also generated randomly.
+
+What you have to do:
+- place your custom banner.bnr and icon.icn files in the res/3ds_custom_data/ folder
+- Edit the path.txt in the same folder to contain the path to your ROM file
+- Build mGBA as shown in the below sections. (I would suggest using the Docker approach)
+- The cia file is afterwards present in build-3ds/install/cia/
+
+Important: All games will still use the same mGBA/ folder on your SD-card for the configuration file. I also cannot guarantee that the random title ID generation won't generate an ID that is already used on your 3DS, which could lead to problems.
+
+All credits go to the original mGBA contributors!
+
 mGBA
 ====
 

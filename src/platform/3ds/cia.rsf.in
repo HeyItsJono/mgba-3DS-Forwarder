@@ -1,6 +1,6 @@
 BasicInfo:
   Title                   : "${PROJECT_NAME}"
-  ProductCode             : "CTR-P-MGBA"
+  ProductCode             : AGB-P-${PRODUCT_CODE}
   Logo                    : Homebrew # Nintendo / Licensed / Distributed / iQue / iQueForSystem / Homebrew
 
 #RomFs:
@@ -9,7 +9,7 @@ BasicInfo:
 
 TitleInfo:
   Category                : Application
-  UniqueId                : 0x1A1E
+  UniqueId                : 0x${PRODUCT_ID}
 
 Option:
   UseOnSD                 : true # true if App is to be installed to SD
