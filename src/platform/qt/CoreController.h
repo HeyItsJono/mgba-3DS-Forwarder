@@ -25,6 +25,9 @@
 #ifdef M_CORE_GB
 #include <mgba/internal/gb/sio/printer.h>
 #endif
+#ifdef M_CORE_GBA
+#include <mgba/internal/gba/sio/dolphin.h>
+#endif
 
 #ifdef M_CORE_GBA
 #include <mgba/gba/interface.h>
@@ -53,12 +56,24 @@ public:
 
 	class Interrupter {
 	public:
+		Interrupter();
 		Interrupter(CoreController*);
 		Interrupter(std::shared_ptr<CoreController>);
 		Interrupter(const Interrupter&);
 		~Interrupter();
 
+		Interrupter& operator=(const Interrupter&);
+
+		void interrupt(CoreController*);
+		void interrupt(std::shared_ptr<CoreController>);
+		void resume();
+
+		bool held() const;
+
 	private:
+		void interrupt();
+		void resume(CoreController*);
+
 		CoreController* m_parent;
 	};
 
@@ -72,6 +87,10 @@ public:
 
 	bool isPaused();
 	bool hasStarted();
+
+	QString title() { return m_dbTitle.isNull() ? m_internalTitle : m_dbTitle; }
+	QString intenralTitle() { return m_internalTitle; }
+	QString dbTitle() { return m_dbTitle; }
 
 	mPlatform platform() const;
 	QSize screenDimensions() const;
@@ -91,6 +110,10 @@ public:
 	void clearMultiplayerController();
 	MultiplayerController* multiplayerController() { return m_multiplayer; }
 
+#ifdef M_CORE_GBA
+	bool isDolphinConnected() const { return !SOCKET_FAILED(m_dolphin.data); }
+#endif
+
 	mCacheSet* graphicCaches();
 	int stateSlot() const { return m_stateSlot; }
 
@@ -104,6 +127,7 @@ public:
 	bool videoSync() const { return m_videoSync; }
 
 	void addFrameAction(std::function<void ()> callback);
+	uint64_t frameCounter() const { return m_frameCounter; }
 
 public slots:
 	void start();
@@ -112,12 +136,17 @@ public slots:
 	void setPaused(bool paused);
 	void frameAdvance();
 	void setSync(bool enable);
+	void showResetInfo(bool enable);
 
 	void setRewinding(bool);
 	void rewind(int count = 0);
 
 	void setFastForward(bool);
 	void forceFastForward(bool);
+
+	void changePlayer(int id);
+
+	void overrideMute(bool);
 
 	void loadState(int slot = 0);
 	void loadState(const QString& path, int flags = -1);
@@ -129,8 +158,10 @@ public slots:
 	void saveBackupState();
 
 	void loadSave(const QString&, bool temporary);
+	void loadSave(VFile*, bool temporary);
 	void loadPatch(const QString&);
 	void scanCard(const QString&);
+	void scanCards(const QStringList&);
 	void replaceGame(const QString&);
 	void yankPak();
 
@@ -145,6 +176,7 @@ public slots:
 	void setRealTime();
 	void setFixedTime(const QDateTime& time);
 	void setFakeEpoch(const QDateTime& time);
+	void setTimeOffset(qint64 offset);
 
 	void importSharkport(const QString& path);
 	void exportSharkport(const QString& path);
@@ -160,6 +192,9 @@ public slots:
 	void detachBattleChipGate();
 	void setBattleChipId(uint16_t id);
 	void setBattleChipFlavor(int flavor);
+
+	bool attachDolphin(const Address& address);
+	void detachDolphin();
 #endif
 
 	void setAVStream(mAVStream*);
@@ -199,11 +234,24 @@ private:
 	int updateAutofire();
 	void finishFrame();
 
+	void updatePlayerSave();
+
 	void updateFastForward();
 
+	void updateROMInfo();
+
 	mCoreThread m_threadContext{};
+	struct CoreLogger : public mLogger {
+		CoreController* self;
+	} m_logger{};
 
 	bool m_patched = false;
+	bool m_preload = false;
+
+	uint32_t m_crc32;
+	QString m_internalTitle;
+	QString m_dbTitle;
+	bool m_showResetInfo = false;
 
 	QByteArray m_activeBuffer;
 	QByteArray m_completeBuffer;
@@ -212,13 +260,19 @@ private:
 	std::unique_ptr<mCacheSet> m_cacheSet;
 	std::unique_ptr<Override> m_override;
 
+	uint64_t m_frameCounter;
 	QList<std::function<void()>> m_resetActions;
 	QList<std::function<void()>> m_frameActions;
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
+	QRecursiveMutex m_actionMutex;
+#else
 	QMutex m_actionMutex{QMutex::Recursive};
+#endif
 	int m_moreFrames = -1;
 	QMutex m_bufferMutex;
 
 	int m_activeKeys = 0;
+	int m_removedKeys = 0;
 	bool m_autofire[32] = {};
 	int m_autofireStatus[32] = {};
 	int m_autofireThreshold = 1;
@@ -246,9 +300,14 @@ private:
 	float m_fastForwardHeldRatio = -1.f;
 	float m_fpsTarget;
 
+	bool m_mute;
+
 	InputController* m_inputController = nullptr;
 	LogController* m_log = nullptr;
 	MultiplayerController* m_multiplayer = nullptr;
+#ifdef M_CORE_GBA
+	GBASIODolphin m_dolphin;
+#endif
 
 	mVideoLogContext* m_vl = nullptr;
 	VFile* m_vlVf = nullptr;

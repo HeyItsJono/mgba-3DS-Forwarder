@@ -38,6 +38,7 @@ struct SDL_JoystickCombo {
 	size_t index;
 	SDL_Joystick* joystick;
 #if SDL_VERSION_ATLEAST(2, 0, 0)
+	SDL_GameController* controller;
 	SDL_Haptic* haptic;
 	SDL_JoystickID id;
 #else
@@ -88,10 +89,13 @@ struct mSDLPlayer {
 		// Tilt
 		int axisX;
 		int axisY;
+		float accelX;
+		float accelY;
 
 		// Gyro
 		int gyroX;
 		int gyroY;
+		int gyroZ;
 		float gyroSensitivity;
 		struct CircleBuffer zHistory;
 		int oldX;

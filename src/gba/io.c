@@ -199,7 +199,7 @@ const char* const GBAIORegisterNames[] = {
 	"IME"
 };
 
-static const int _isValidRegister[REG_MAX >> 1] = {
+static const int _isValidRegister[REG_INTERNAL_MAX >> 1] = {
 	// Video
 	1, 0, 1, 1, 1, 1, 1, 1,
 	1, 1, 1, 1, 1, 1, 1, 1,
@@ -226,7 +226,7 @@ static const int _isValidRegister[REG_MAX >> 1] = {
 	1, 1, 1, 1, 1, 0, 0, 0,
 	1, 1, 1, 0, 0, 0, 0, 0,
 	1, 0, 0, 0, 0, 0, 0, 0,
-	1, 0, 1, 0, 1, 0, 0, 0,
+	1, 1, 1, 1, 1, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0,
@@ -238,10 +238,12 @@ static const int _isValidRegister[REG_MAX >> 1] = {
 	0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0,
 	// Interrupts
-	1, 1, 1, 0, 1
+	1, 1, 1, 0, 1, 0, 0, 0,
+	// Internal registers
+	1, 1
 };
 
-static const int _isRSpecialRegister[REG_MAX >> 1] = {
+static const int _isRSpecialRegister[REG_INTERNAL_MAX >> 1] = {
 	// Video
 	0, 0, 1, 1, 0, 0, 0, 0,
 	1, 1, 1, 1, 1, 1, 1, 1,
@@ -268,7 +270,7 @@ static const int _isRSpecialRegister[REG_MAX >> 1] = {
 	1, 1, 1, 1, 1, 0, 0, 0,
 	1, 1, 1, 0, 0, 0, 0, 0,
 	1, 0, 0, 0, 0, 0, 0, 0,
-	1, 0, 1, 0, 1, 0, 0, 0,
+	1, 1, 1, 1, 1, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0,
@@ -280,9 +282,12 @@ static const int _isRSpecialRegister[REG_MAX >> 1] = {
 	0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0,
 	// Interrupts
+	0, 0, 0, 0, 0, 0, 0, 0,
+	// Internal registers
+	1, 1
 };
 
-static const int _isWSpecialRegister[REG_MAX >> 1] = {
+static const int _isWSpecialRegister[REG_INTERNAL_MAX >> 1] = {
 	// Video
 	0, 0, 1, 1, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0,
@@ -309,7 +314,7 @@ static const int _isWSpecialRegister[REG_MAX >> 1] = {
 	1, 1, 1, 1, 1, 0, 0, 0,
 	1, 1, 1, 0, 0, 0, 0, 0,
 	1, 0, 0, 0, 0, 0, 0, 0,
-	1, 0, 1, 0, 1, 0, 0, 0,
+	1, 1, 1, 1, 1, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0,
@@ -321,7 +326,9 @@ static const int _isWSpecialRegister[REG_MAX >> 1] = {
 	0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0,
 	// Interrupts
-	1, 1, 0, 0, 1
+	1, 1, 0, 0, 1, 0, 0, 0,
+	// Internal registers
+	1, 1
 };
 
 void GBAIOInit(struct GBA* gba) {
@@ -333,6 +340,8 @@ void GBAIOInit(struct GBA* gba) {
 	gba->memory.io[REG_BG2PD >> 1] = 0x100;
 	gba->memory.io[REG_BG3PA >> 1] = 0x100;
 	gba->memory.io[REG_BG3PD >> 1] = 0x100;
+	gba->memory.io[REG_INTERNAL_EXWAITCNT_LO >> 1] = 0x20;
+	gba->memory.io[REG_INTERNAL_EXWAITCNT_HI >> 1] = 0xD00;
 
 	if (!gba->biosVf) {
 		gba->memory.io[REG_VCOUNT >> 1] = 0x7E;
@@ -342,248 +351,265 @@ void GBAIOInit(struct GBA* gba) {
 
 void GBAIOWrite(struct GBA* gba, uint32_t address, uint16_t value) {
 	if (address < REG_SOUND1CNT_LO && (address > REG_VCOUNT || address < REG_DISPSTAT)) {
-		value = gba->video.renderer->writeVideoRegister(gba->video.renderer, address, value);
-	} else {
-		switch (address) {
-		// Video
-		case REG_DISPSTAT:
-			value &= 0xFFF8;
-			GBAVideoWriteDISPSTAT(&gba->video, value);
-			return;
+		gba->memory.io[address >> 1] = gba->video.renderer->writeVideoRegister(gba->video.renderer, address, value);
+		return;
+	}
 
-		case REG_VCOUNT:
-			mLOG(GBA_IO, GAME_ERROR, "Write to read-only I/O register: %03X", address);
-			return;
+	if (address >= REG_SOUND1CNT_LO && address <= REG_SOUNDCNT_LO && !gba->audio.enable) {
+		// Ignore writes to most audio registers if the hardware is off.
+		return;
+	}
 
-		// Audio
-		case REG_SOUND1CNT_LO:
-			GBAAudioWriteSOUND1CNT_LO(&gba->audio, value);
-			value &= 0x007F;
-			break;
-		case REG_SOUND1CNT_HI:
-			GBAAudioWriteSOUND1CNT_HI(&gba->audio, value);
-			break;
-		case REG_SOUND1CNT_X:
-			GBAAudioWriteSOUND1CNT_X(&gba->audio, value);
-			value &= 0x47FF;
-			break;
-		case REG_SOUND2CNT_LO:
-			GBAAudioWriteSOUND2CNT_LO(&gba->audio, value);
-			break;
-		case REG_SOUND2CNT_HI:
-			GBAAudioWriteSOUND2CNT_HI(&gba->audio, value);
-			value &= 0x47FF;
-			break;
-		case REG_SOUND3CNT_LO:
-			GBAAudioWriteSOUND3CNT_LO(&gba->audio, value);
-			value &= 0x00E0;
-			break;
-		case REG_SOUND3CNT_HI:
-			GBAAudioWriteSOUND3CNT_HI(&gba->audio, value);
-			value &= 0xE03F;
-			break;
-		case REG_SOUND3CNT_X:
-			GBAAudioWriteSOUND3CNT_X(&gba->audio, value);
-			// TODO: The low bits need to not be readable, but still 8-bit writable
-			value &= 0x47FF;
-			break;
-		case REG_SOUND4CNT_LO:
-			GBAAudioWriteSOUND4CNT_LO(&gba->audio, value);
-			value &= 0xFF3F;
-			break;
-		case REG_SOUND4CNT_HI:
-			GBAAudioWriteSOUND4CNT_HI(&gba->audio, value);
-			value &= 0x40FF;
-			break;
-		case REG_SOUNDCNT_LO:
-			GBAAudioWriteSOUNDCNT_LO(&gba->audio, value);
-			value &= 0xFF77;
-			break;
-		case REG_SOUNDCNT_HI:
-			GBAAudioWriteSOUNDCNT_HI(&gba->audio, value);
-			value &= 0x770F;
-			break;
-		case REG_SOUNDCNT_X:
-			GBAAudioWriteSOUNDCNT_X(&gba->audio, value);
-			value &= 0x0080;
-			value |= gba->memory.io[REG_SOUNDCNT_X >> 1] & 0xF;
-			break;
-		case REG_SOUNDBIAS:
-			GBAAudioWriteSOUNDBIAS(&gba->audio, value);
-			break;
+	switch (address) {
+	// Video
+	case REG_DISPSTAT:
+		value &= 0xFFF8;
+		GBAVideoWriteDISPSTAT(&gba->video, value);
+		return;
 
-		case REG_WAVE_RAM0_LO:
-		case REG_WAVE_RAM1_LO:
-		case REG_WAVE_RAM2_LO:
-		case REG_WAVE_RAM3_LO:
-			GBAIOWrite32(gba, address, (gba->memory.io[(address >> 1) + 1] << 16) | value);
-			break;
+	case REG_VCOUNT:
+		mLOG(GBA_IO, GAME_ERROR, "Write to read-only I/O register: %03X", address);
+		return;
 
-		case REG_WAVE_RAM0_HI:
-		case REG_WAVE_RAM1_HI:
-		case REG_WAVE_RAM2_HI:
-		case REG_WAVE_RAM3_HI:
-			GBAIOWrite32(gba, address - 2, gba->memory.io[(address >> 1) - 1] | (value << 16));
-			break;
+	// Audio
+	case REG_SOUND1CNT_LO:
+		GBAAudioWriteSOUND1CNT_LO(&gba->audio, value);
+		value &= 0x007F;
+		break;
+	case REG_SOUND1CNT_HI:
+		GBAAudioWriteSOUND1CNT_HI(&gba->audio, value);
+		break;
+	case REG_SOUND1CNT_X:
+		GBAAudioWriteSOUND1CNT_X(&gba->audio, value);
+		value &= 0x47FF;
+		break;
+	case REG_SOUND2CNT_LO:
+		GBAAudioWriteSOUND2CNT_LO(&gba->audio, value);
+		break;
+	case REG_SOUND2CNT_HI:
+		GBAAudioWriteSOUND2CNT_HI(&gba->audio, value);
+		value &= 0x47FF;
+		break;
+	case REG_SOUND3CNT_LO:
+		GBAAudioWriteSOUND3CNT_LO(&gba->audio, value);
+		value &= 0x00E0;
+		break;
+	case REG_SOUND3CNT_HI:
+		GBAAudioWriteSOUND3CNT_HI(&gba->audio, value);
+		value &= 0xE03F;
+		break;
+	case REG_SOUND3CNT_X:
+		GBAAudioWriteSOUND3CNT_X(&gba->audio, value);
+		// TODO: The low bits need to not be readable, but still 8-bit writable
+		value &= 0x47FF;
+		break;
+	case REG_SOUND4CNT_LO:
+		GBAAudioWriteSOUND4CNT_LO(&gba->audio, value);
+		value &= 0xFF3F;
+		break;
+	case REG_SOUND4CNT_HI:
+		GBAAudioWriteSOUND4CNT_HI(&gba->audio, value);
+		value &= 0x40FF;
+		break;
+	case REG_SOUNDCNT_LO:
+		GBAAudioWriteSOUNDCNT_LO(&gba->audio, value);
+		value &= 0xFF77;
+		break;
+	case REG_SOUNDCNT_HI:
+		GBAAudioWriteSOUNDCNT_HI(&gba->audio, value);
+		value &= 0x770F;
+		break;
+	case REG_SOUNDCNT_X:
+		GBAAudioWriteSOUNDCNT_X(&gba->audio, value);
+		value &= 0x0080;
+		value |= gba->memory.io[REG_SOUNDCNT_X >> 1] & 0xF;
+		break;
+	case REG_SOUNDBIAS:
+		value &= 0xC3FE;
+		GBAAudioWriteSOUNDBIAS(&gba->audio, value);
+		break;
 
-		case REG_FIFO_A_LO:
-		case REG_FIFO_B_LO:
-			GBAIOWrite32(gba, address, (gba->memory.io[(address >> 1) + 1] << 16) | value);
-			return;
+	case REG_WAVE_RAM0_LO:
+	case REG_WAVE_RAM1_LO:
+	case REG_WAVE_RAM2_LO:
+	case REG_WAVE_RAM3_LO:
+		GBAIOWrite32(gba, address, (gba->memory.io[(address >> 1) + 1] << 16) | value);
+		break;
 
-		case REG_FIFO_A_HI:
-		case REG_FIFO_B_HI:
-			GBAIOWrite32(gba, address - 2, gba->memory.io[(address >> 1) - 1] | (value << 16));
-			return;
+	case REG_WAVE_RAM0_HI:
+	case REG_WAVE_RAM1_HI:
+	case REG_WAVE_RAM2_HI:
+	case REG_WAVE_RAM3_HI:
+		GBAIOWrite32(gba, address - 2, gba->memory.io[(address >> 1) - 1] | (value << 16));
+		break;
 
-		// DMA
-		case REG_DMA0SAD_LO:
-		case REG_DMA0DAD_LO:
-		case REG_DMA1SAD_LO:
-		case REG_DMA1DAD_LO:
-		case REG_DMA2SAD_LO:
-		case REG_DMA2DAD_LO:
-		case REG_DMA3SAD_LO:
-		case REG_DMA3DAD_LO:
-			GBAIOWrite32(gba, address, (gba->memory.io[(address >> 1) + 1] << 16) | value);
-			break;
+	case REG_FIFO_A_LO:
+	case REG_FIFO_B_LO:
+		GBAIOWrite32(gba, address, (gba->memory.io[(address >> 1) + 1] << 16) | value);
+		return;
 
-		case REG_DMA0SAD_HI:
-		case REG_DMA0DAD_HI:
-		case REG_DMA1SAD_HI:
-		case REG_DMA1DAD_HI:
-		case REG_DMA2SAD_HI:
-		case REG_DMA2DAD_HI:
-		case REG_DMA3SAD_HI:
-		case REG_DMA3DAD_HI:
-			GBAIOWrite32(gba, address - 2, gba->memory.io[(address >> 1) - 1] | (value << 16));
-			break;
+	case REG_FIFO_A_HI:
+	case REG_FIFO_B_HI:
+		GBAIOWrite32(gba, address - 2, gba->memory.io[(address >> 1) - 1] | (value << 16));
+		return;
 
-		case REG_DMA0CNT_LO:
-			GBADMAWriteCNT_LO(gba, 0, value & 0x3FFF);
-			break;
-		case REG_DMA0CNT_HI:
-			value = GBADMAWriteCNT_HI(gba, 0, value);
-			break;
-		case REG_DMA1CNT_LO:
-			GBADMAWriteCNT_LO(gba, 1, value & 0x3FFF);
-			break;
-		case REG_DMA1CNT_HI:
-			value = GBADMAWriteCNT_HI(gba, 1, value);
-			break;
-		case REG_DMA2CNT_LO:
-			GBADMAWriteCNT_LO(gba, 2, value & 0x3FFF);
-			break;
-		case REG_DMA2CNT_HI:
-			value = GBADMAWriteCNT_HI(gba, 2, value);
-			break;
-		case REG_DMA3CNT_LO:
-			GBADMAWriteCNT_LO(gba, 3, value);
-			break;
-		case REG_DMA3CNT_HI:
-			value = GBADMAWriteCNT_HI(gba, 3, value);
-			break;
+	// DMA
+	case REG_DMA0SAD_LO:
+	case REG_DMA0DAD_LO:
+	case REG_DMA1SAD_LO:
+	case REG_DMA1DAD_LO:
+	case REG_DMA2SAD_LO:
+	case REG_DMA2DAD_LO:
+	case REG_DMA3SAD_LO:
+	case REG_DMA3DAD_LO:
+		GBAIOWrite32(gba, address, (gba->memory.io[(address >> 1) + 1] << 16) | value);
+		break;
 
-		// Timers
-		case REG_TM0CNT_LO:
-			GBATimerWriteTMCNT_LO(gba, 0, value);
-			return;
-		case REG_TM1CNT_LO:
-			GBATimerWriteTMCNT_LO(gba, 1, value);
-			return;
-		case REG_TM2CNT_LO:
-			GBATimerWriteTMCNT_LO(gba, 2, value);
-			return;
-		case REG_TM3CNT_LO:
-			GBATimerWriteTMCNT_LO(gba, 3, value);
-			return;
+	case REG_DMA0SAD_HI:
+	case REG_DMA0DAD_HI:
+	case REG_DMA1SAD_HI:
+	case REG_DMA1DAD_HI:
+	case REG_DMA2SAD_HI:
+	case REG_DMA2DAD_HI:
+	case REG_DMA3SAD_HI:
+	case REG_DMA3DAD_HI:
+		GBAIOWrite32(gba, address - 2, gba->memory.io[(address >> 1) - 1] | (value << 16));
+		break;
 
-		case REG_TM0CNT_HI:
-			value &= 0x00C7;
-			GBATimerWriteTMCNT_HI(gba, 0, value);
-			break;
-		case REG_TM1CNT_HI:
-			value &= 0x00C7;
-			GBATimerWriteTMCNT_HI(gba, 1, value);
-			break;
-		case REG_TM2CNT_HI:
-			value &= 0x00C7;
-			GBATimerWriteTMCNT_HI(gba, 2, value);
-			break;
-		case REG_TM3CNT_HI:
-			value &= 0x00C7;
-			GBATimerWriteTMCNT_HI(gba, 3, value);
-			break;
+	case REG_DMA0CNT_LO:
+		GBADMAWriteCNT_LO(gba, 0, value & 0x3FFF);
+		break;
+	case REG_DMA0CNT_HI:
+		value = GBADMAWriteCNT_HI(gba, 0, value);
+		break;
+	case REG_DMA1CNT_LO:
+		GBADMAWriteCNT_LO(gba, 1, value & 0x3FFF);
+		break;
+	case REG_DMA1CNT_HI:
+		value = GBADMAWriteCNT_HI(gba, 1, value);
+		break;
+	case REG_DMA2CNT_LO:
+		GBADMAWriteCNT_LO(gba, 2, value & 0x3FFF);
+		break;
+	case REG_DMA2CNT_HI:
+		value = GBADMAWriteCNT_HI(gba, 2, value);
+		break;
+	case REG_DMA3CNT_LO:
+		GBADMAWriteCNT_LO(gba, 3, value);
+		break;
+	case REG_DMA3CNT_HI:
+		value = GBADMAWriteCNT_HI(gba, 3, value);
+		break;
 
-		// SIO
-		case REG_SIOCNT:
-			GBASIOWriteSIOCNT(&gba->sio, value);
-			break;
-		case REG_RCNT:
-			value &= 0xC1FF;
-			GBASIOWriteRCNT(&gba->sio, value);
-			break;
-		case REG_JOY_TRANS_LO:
-		case REG_JOY_TRANS_HI:
-			gba->memory.io[REG_JOYSTAT >> 1] |= JOYSTAT_TRANS_BIT;
-			// Fall through
-		case REG_SIODATA32_LO:
-		case REG_SIODATA32_HI:
-		case REG_SIOMLT_SEND:
-		case REG_JOYCNT:
-		case REG_JOYSTAT:
-		case REG_JOY_RECV_LO:
-		case REG_JOY_RECV_HI:
-			value = GBASIOWriteRegister(&gba->sio, address, value);
-			break;
+	// Timers
+	case REG_TM0CNT_LO:
+		GBATimerWriteTMCNT_LO(gba, 0, value);
+		return;
+	case REG_TM1CNT_LO:
+		GBATimerWriteTMCNT_LO(gba, 1, value);
+		return;
+	case REG_TM2CNT_LO:
+		GBATimerWriteTMCNT_LO(gba, 2, value);
+		return;
+	case REG_TM3CNT_LO:
+		GBATimerWriteTMCNT_LO(gba, 3, value);
+		return;
 
-		// Interrupts and misc
-		case REG_KEYCNT:
-			value &= 0xC3FF;
-			gba->memory.io[address >> 1] = value;
-			GBATestKeypadIRQ(gba);
-			return;
-		case REG_WAITCNT:
-			value &= 0x5FFF;
-			GBAAdjustWaitstates(gba, value);
-			break;
-		case REG_IE:
-			gba->memory.io[REG_IE >> 1] = value;
-			GBATestIRQ(gba, 1);
-			return;
-		case REG_IF:
-			value = gba->memory.io[REG_IF >> 1] & ~value;
-			gba->memory.io[REG_IF >> 1] = value;
-			GBATestIRQ(gba, 1);
-			return;
-		case REG_IME:
-			gba->memory.io[REG_IME >> 1] = value & 1;
-			GBATestIRQ(gba, 1);
-			return;
-		case REG_MAX:
-			// Some bad interrupt libraries will write to this
-			break;
-		case REG_DEBUG_ENABLE:
-			gba->debug = value == 0xC0DE;
-			return;
-		case REG_DEBUG_FLAGS:
-			if (gba->debug) {
-				GBADebug(gba, value);
-				return;
-			}
-			// Fall through
-		default:
-			if (address >= REG_DEBUG_STRING && address - REG_DEBUG_STRING < sizeof(gba->debugString)) {
-				STORE_16LE(value, address - REG_DEBUG_STRING, gba->debugString);
-				return;
-			}
-			mLOG(GBA_IO, STUB, "Stub I/O register write: %03X", address);
-			if (address >= REG_MAX) {
-				mLOG(GBA_IO, GAME_ERROR, "Write to unused I/O register: %03X", address);
-				return;
-			}
-			break;
+	case REG_TM0CNT_HI:
+		value &= 0x00C7;
+		GBATimerWriteTMCNT_HI(gba, 0, value);
+		break;
+	case REG_TM1CNT_HI:
+		value &= 0x00C7;
+		GBATimerWriteTMCNT_HI(gba, 1, value);
+		break;
+	case REG_TM2CNT_HI:
+		value &= 0x00C7;
+		GBATimerWriteTMCNT_HI(gba, 2, value);
+		break;
+	case REG_TM3CNT_HI:
+		value &= 0x00C7;
+		GBATimerWriteTMCNT_HI(gba, 3, value);
+		break;
+
+	// SIO
+	case REG_SIOCNT:
+		GBASIOWriteSIOCNT(&gba->sio, value);
+		break;
+	case REG_RCNT:
+		value &= 0xC1FF;
+		GBASIOWriteRCNT(&gba->sio, value);
+		break;
+	case REG_JOY_TRANS_LO:
+	case REG_JOY_TRANS_HI:
+		gba->memory.io[REG_JOYSTAT >> 1] |= JOYSTAT_TRANS;
+		// Fall through
+	case REG_SIODATA32_LO:
+	case REG_SIODATA32_HI:
+	case REG_SIOMLT_SEND:
+	case REG_JOYCNT:
+	case REG_JOYSTAT:
+	case REG_JOY_RECV_LO:
+	case REG_JOY_RECV_HI:
+		value = GBASIOWriteRegister(&gba->sio, address, value);
+		break;
+
+	// Interrupts and misc
+	case REG_KEYCNT:
+		value &= 0xC3FF;
+		if (gba->keysLast < 0x400) {
+			gba->keysLast &= gba->memory.io[address >> 1] | ~value;
 		}
+		gba->memory.io[address >> 1] = value;
+		GBATestKeypadIRQ(gba);
+		return;
+	case REG_WAITCNT:
+		value &= 0x5FFF;
+		GBAAdjustWaitstates(gba, value);
+		break;
+	case REG_IE:
+		gba->memory.io[REG_IE >> 1] = value;
+		GBATestIRQ(gba, 1);
+		return;
+	case REG_IF:
+		value = gba->memory.io[REG_IF >> 1] & ~value;
+		gba->memory.io[REG_IF >> 1] = value;
+		GBATestIRQ(gba, 1);
+		return;
+	case REG_IME:
+		gba->memory.io[REG_IME >> 1] = value & 1;
+		GBATestIRQ(gba, 1);
+		return;
+	case REG_MAX:
+		// Some bad interrupt libraries will write to this
+		break;
+	case REG_EXWAITCNT_HI:
+		// This register sits outside of the normal I/O block, so we need to stash it somewhere unused
+		address = REG_INTERNAL_EXWAITCNT_HI;
+		value &= 0xFF00;
+		GBAAdjustEWRAMWaitstates(gba, value);
+		break;
+	case REG_DEBUG_ENABLE:
+		gba->debug = value == 0xC0DE;
+		return;
+	case REG_DEBUG_FLAGS:
+		if (gba->debug) {
+			GBADebug(gba, value);
+
+			return;
+		}
+		// Fall through
+	default:
+		if (address >= REG_DEBUG_STRING && address - REG_DEBUG_STRING < sizeof(gba->debugString)) {
+			STORE_16LE(value, address - REG_DEBUG_STRING, gba->debugString);
+			return;
+		}
+		mLOG(GBA_IO, STUB, "Stub I/O register write: %03X", address);
+		if (address >= REG_MAX) {
+			mLOG(GBA_IO, GAME_ERROR, "Write to unused I/O register: %03X", address);
+			return;
+		}
+		break;
 	}
 	gba->memory.io[address >> 1] = value;
 }
@@ -616,6 +642,9 @@ void GBAIOWrite8(struct GBA* gba, uint32_t address, uint8_t value) {
 
 void GBAIOWrite32(struct GBA* gba, uint32_t address, uint32_t value) {
 	switch (address) {
+	// Wave RAM can be written and read even if the audio hardware is disabled.
+	// However, it is not possible to switch between the two banks because it
+	// isn't possible to write to register SOUND3CNT_LO.
 	case REG_WAVE_RAM0_LO:
 		GBAAudioWriteWaveRAM(&gba->audio, 0, value);
 		break;
@@ -733,28 +762,28 @@ uint16_t GBAIORead(struct GBA* gba, uint32_t address) {
 					callbacks->keysRead(callbacks->context);
 				}
 			}
-			uint16_t input = 0;
+			bool allowOpposingDirections = gba->allowOpposingDirections;
 			if (gba->keyCallback) {
-				input = gba->keyCallback->readKeys(gba->keyCallback);
-				if (gba->keySource) {
-					*gba->keySource = input;
-				}
-			} else if (gba->keySource) {
-				input = *gba->keySource;
-				if (!gba->allowOpposingDirections) {
-					unsigned rl = input & 0x030;
-					unsigned ud = input & 0x0C0;
-					input &= 0x30F;
-					if (rl != 0x030) {
-						input |= rl;
-					}
-					if (ud != 0x0C0) {
-						input |= ud;
-					}
+				gba->keysActive = gba->keyCallback->readKeys(gba->keyCallback);
+				if (!allowOpposingDirections) {
+					allowOpposingDirections = gba->keyCallback->requireOpposingDirections;
 				}
 			}
-			return 0x3FF ^ input;
+			uint16_t input = gba->keysActive;
+			if (!allowOpposingDirections) {
+				unsigned rl = input & 0x030;
+				unsigned ud = input & 0x0C0;
+				input &= 0x30F;
+				if (rl != 0x030) {
+					input |= rl;
+				}
+				if (ud != 0x0C0) {
+					input |= ud;
+				}
+			}
+			gba->memory.io[address >> 1] = 0x3FF ^ input;
 		}
+		break;
 	case REG_SIOCNT:
 		return gba->sio.siocnt;
 	case REG_RCNT:
@@ -826,13 +855,33 @@ uint16_t GBAIORead(struct GBA* gba, uint32_t address) {
 
 	case REG_JOY_RECV_LO:
 	case REG_JOY_RECV_HI:
-		gba->memory.io[REG_JOYSTAT >> 1] &= ~JOYSTAT_RECV_BIT;
+		gba->memory.io[REG_JOYSTAT >> 1] &= ~JOYSTAT_RECV;
 		break;
 
-	case REG_SOUNDBIAS:
 	case REG_POSTFLG:
 		mLOG(GBA_IO, STUB, "Stub I/O register read: %03x", address);
 		break;
+
+	// Wave RAM can be written and read even if the audio hardware is disabled.
+	// However, it is not possible to switch between the two banks because it
+	// isn't possible to write to register SOUND3CNT_LO.
+	case REG_WAVE_RAM0_LO:
+		return GBAAudioReadWaveRAM(&gba->audio, 0) & 0xFFFF;
+	case REG_WAVE_RAM0_HI:
+		return GBAAudioReadWaveRAM(&gba->audio, 0) >> 16;
+	case REG_WAVE_RAM1_LO:
+		return GBAAudioReadWaveRAM(&gba->audio, 1) & 0xFFFF;
+	case REG_WAVE_RAM1_HI:
+		return GBAAudioReadWaveRAM(&gba->audio, 1) >> 16;
+	case REG_WAVE_RAM2_LO:
+		return GBAAudioReadWaveRAM(&gba->audio, 2) & 0xFFFF;
+	case REG_WAVE_RAM2_HI:
+		return GBAAudioReadWaveRAM(&gba->audio, 2) >> 16;
+	case REG_WAVE_RAM3_LO:
+		return GBAAudioReadWaveRAM(&gba->audio, 3) & 0xFFFF;
+	case REG_WAVE_RAM3_HI:
+		return GBAAudioReadWaveRAM(&gba->audio, 3) >> 16;
+
 	case REG_SOUND1CNT_LO:
 	case REG_SOUND1CNT_HI:
 	case REG_SOUND1CNT_X:
@@ -863,14 +912,7 @@ uint16_t GBAIORead(struct GBA* gba, uint32_t address) {
 	case REG_BLDALPHA:
 	case REG_SOUNDCNT_HI:
 	case REG_SOUNDCNT_X:
-	case REG_WAVE_RAM0_LO:
-	case REG_WAVE_RAM0_HI:
-	case REG_WAVE_RAM1_LO:
-	case REG_WAVE_RAM1_HI:
-	case REG_WAVE_RAM2_LO:
-	case REG_WAVE_RAM2_HI:
-	case REG_WAVE_RAM3_LO:
-	case REG_WAVE_RAM3_HI:
+	case REG_SOUNDBIAS:
 	case REG_DMA0CNT_HI:
 	case REG_DMA1CNT_HI:
 	case REG_DMA2CNT_HI:
@@ -896,6 +938,7 @@ uint16_t GBAIORead(struct GBA* gba, uint32_t address) {
 		// Handled transparently by registers
 		break;
 	case 0x066:
+	case 0x06A:
 	case 0x06E:
 	case 0x076:
 	case 0x07A:
@@ -908,6 +951,11 @@ uint16_t GBAIORead(struct GBA* gba, uint32_t address) {
 	case 0x206:
 		mLOG(GBA_IO, GAME_ERROR, "Read from unused I/O register: %03X", address);
 		return 0;
+	// These registers sit outside of the normal I/O block, so we need to stash them somewhere unused
+	case REG_EXWAITCNT_LO:
+	case REG_EXWAITCNT_HI:
+		address += REG_INTERNAL_EXWAITCNT_LO - REG_EXWAITCNT_LO;
+		break;
 	case REG_DEBUG_ENABLE:
 		if (gba->debug) {
 			return 0x1DEA;
@@ -922,7 +970,7 @@ uint16_t GBAIORead(struct GBA* gba, uint32_t address) {
 
 void GBAIOSerialize(struct GBA* gba, struct GBASerializedState* state) {
 	int i;
-	for (i = 0; i < REG_MAX; i += 2) {
+	for (i = 0; i < REG_INTERNAL_MAX; i += 2) {
 		if (_isRSpecialRegister[i >> 1]) {
 			STORE_16(gba->memory.io[i >> 1], i, state->io);
 		} else if (_isValidRegister[i >> 1]) {
@@ -950,6 +998,9 @@ void GBAIOSerialize(struct GBA* gba, struct GBASerializedState* state) {
 }
 
 void GBAIODeserialize(struct GBA* gba, const struct GBASerializedState* state) {
+	LOAD_16(gba->memory.io[REG_SOUNDCNT_X >> 1], REG_SOUNDCNT_X, state->io);
+	GBAAudioWriteSOUNDCNT_X(&gba->audio, gba->memory.io[REG_SOUNDCNT_X >> 1]);
+
 	int i;
 	for (i = 0; i < REG_MAX; i += 2) {
 		if (_isWSpecialRegister[i >> 1]) {
@@ -959,6 +1010,9 @@ void GBAIODeserialize(struct GBA* gba, const struct GBASerializedState* state) {
 			LOAD_16(reg, i, state->io);
 			GBAIOWrite(gba, i, reg);
 		}
+	}
+	if (state->versionMagic >= 0x01000006) {
+		GBAIOWrite(gba, REG_EXWAITCNT_HI, gba->memory.io[REG_INTERNAL_EXWAITCNT_HI >> 1]);
 	}
 
 	uint32_t when;
@@ -980,7 +1034,6 @@ void GBAIODeserialize(struct GBA* gba, const struct GBASerializedState* state) {
 		LOAD_32(gba->memory.dma[i].nextCount, 0, &state->dma[i].nextCount);
 		LOAD_32(gba->memory.dma[i].when, 0, &state->dma[i].when);
 	}
-	GBAAudioWriteSOUNDCNT_X(&gba->audio, gba->memory.io[REG_SOUNDCNT_X >> 1]);
 	gba->sio.siocnt = gba->memory.io[REG_SIOCNT >> 1];
 	GBASIOWriteRCNT(&gba->sio, gba->memory.io[REG_RCNT >> 1]);
 

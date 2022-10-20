@@ -25,10 +25,10 @@ void GBAVideoCacheInit(struct mCacheSet* cache) {
 
 	sysconfig = mTileCacheSystemInfoSetPaletteBPP(sysconfig, 3); // 2^(2^3) = 256 entries
 	sysconfig = mTileCacheSystemInfoSetPaletteCount(sysconfig, 0); // 1 palettes
-	sysconfig = mTileCacheSystemInfoSetMaxTiles(sysconfig, 2048);
+	sysconfig = mTileCacheSystemInfoSetMaxTiles(sysconfig, 1024);
 	mTileCacheConfigureSystem(mTileCacheSetGetPointer(&cache->tiles, 1), sysconfig, 0, 0);
 	mTileCacheConfigure(mTileCacheSetGetPointer(&cache->tiles, 1), config);
-	sysconfig = mTileCacheSystemInfoSetMaxTiles(sysconfig, 1024);
+	sysconfig = mTileCacheSystemInfoSetMaxTiles(sysconfig, 512);
 	mTileCacheConfigureSystem(mTileCacheSetGetPointer(&cache->tiles, 3), sysconfig, 0x10000, 0x100);
 	mTileCacheConfigure(mTileCacheSetGetPointer(&cache->tiles, 3), config);
 
@@ -160,7 +160,7 @@ static void GBAVideoCacheWriteBGCNT(struct mCacheSet* cache, size_t bg, uint16_t
 	int size = GBARegisterBGCNTGetSize(value);
 	int tilesWide = 0;
 	int tilesHigh = 0;
-	mMapCacheSystemInfo sysconfig = 0;
+	mMapCacheSystemInfo sysconfig = mMapCacheSystemInfoSetWriteAlign(0, 1);
 	if (map->mapParser == mapParser0) {
 		map->tileCache = mTileCacheSetGetPointer(&cache->tiles, p);
 		sysconfig = mMapCacheSystemInfoSetPaletteBPP(sysconfig, 2 + p);

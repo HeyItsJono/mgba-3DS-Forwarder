@@ -23,8 +23,9 @@
 #include "LoadSaveState.h"
 #include "LogController.h"
 #include "SettingsView.h"
-
-struct mArguments;
+#ifdef ENABLE_SCRIPTING
+#include "scripting/ScriptingController.h"
+#endif
 
 namespace QGBA {
 
@@ -34,6 +35,7 @@ class CoreController;
 class CoreManager;
 class DebuggerConsoleController;
 class Display;
+class DolphinConnector;
 class FrameView;
 class GDBController;
 class GIFView;
@@ -58,11 +60,14 @@ public:
 	void setConfig(ConfigController*);
 	ConfigController* config() { return m_config; }
 
-	void argumentsPassed(mArguments*);
+	void argumentsPassed();
 
 	void resizeFrame(const QSize& size);
 
-	void updateMultiplayerStatus(bool canOpenAnother) { m_multiWindow->setEnabled(canOpenAnother); }
+	void updateMultiplayerStatus(bool canOpenAnother);
+	void updateMultiplayerActive(bool active);
+
+	InputController* inputController() { return &m_inputController; }
 
 signals:
 	void startDrawing();
@@ -72,6 +77,7 @@ signals:
 public slots:
 	void setController(CoreController* controller, const QString& fname);
 	void selectROM();
+	void bootBIOS();
 #ifdef USE_SQLITE3
 	void selectROMInArchive();
 	void addDirToLibrary();
@@ -80,6 +86,7 @@ public slots:
 	void selectState(bool load);
 	void selectPatch();
 	void scanCard();
+	void parseCard();
 	void enterFullScreen();
 	void exitFullScreen();
 	void toggleFullScreen();
@@ -105,13 +112,12 @@ public slots:
 	void consoleOpen();
 #endif
 
-#ifdef USE_FFMPEG
-	void openVideoWindow();
-	void openGIFWindow();
-#endif
-
 #ifdef USE_GDB_STUB
 	void gdbOpen();
+#endif
+
+#ifdef ENABLE_SCRIPTING
+	void scriptingOpen();
 #endif
 
 protected:
@@ -141,12 +147,14 @@ private slots:
 
 	void tryMakePortable();
 	void mustRestart();
+	void mustReset();
 
 	void recordFrame();
 	void showFPS();
 	void focusCheck();
 
 	void updateFrame();
+	void updateMute();
 
 	void setLogo();
 
@@ -155,10 +163,11 @@ private:
 	static const int MUST_RESTART_TIMEOUT = 10000;
 
 	void setupMenu(QMenuBar*);
+	void setupOptions();
 	void openStateWindow(LoadSave);
 
 	void attachWidget(QWidget* widget);
-	void detachWidget(QWidget* widget);
+	void detachWidget();
 
 	void appendMRU(const QString& fname);
 	void clearMRU();
@@ -168,6 +177,8 @@ private:
 
 	template <typename T, typename... A> std::function<void()> openTView(A... arg);
 	template <typename T, typename... A> std::function<void()> openControllerTView(A... arg);
+	template <typename T, typename... A> std::function<void()> openNamedTView(std::unique_ptr<T>*, A... arg);
+	template <typename T, typename... A> std::function<void()> openNamedControllerTView(std::unique_ptr<T>*, A... arg);
 
 	Action* addGameAction(const QString& visibleName, const QString& name, Action::Function action, const QString& menu = {}, const QKeySequence& = {});
 	template<typename T, typename V> Action* addGameAction(const QString& visibleName, const QString& name, T* obj, V (T::*action)(), const QString& menu = {}, const QKeySequence& = {});
@@ -183,7 +194,8 @@ private:
 	std::shared_ptr<CoreController> m_controller;
 	std::unique_ptr<AudioProcessor> m_audioProcessor;
 
-	std::unique_ptr<Display> m_display;
+	std::unique_ptr<QGBA::Display> m_display;
+	QSize m_initialSize;
 	int m_savedScale;
 
 	// TODO: Move these to a new class
@@ -210,7 +222,8 @@ private:
 	QElapsedTimer m_frameTimer;
 	QTimer m_fpsTimer;
 	QTimer m_mustRestart;
-	QList<QString> m_mruFiles;
+	QTimer m_mustReset;
+	QStringList m_mruFiles;
 	ShortcutController* m_shortcutController;
 #if defined(BUILD_GL) || defined(BUILD_GLES2)
 	std::unique_ptr<ShaderSelector> m_shaderView;
@@ -226,13 +239,18 @@ private:
 
 	bool m_hitUnimplementedBiosCall;
 
+	bool m_inactiveMute = false;
+	bool m_multiActive = true;
+	int m_playerId;
+
 	std::unique_ptr<OverrideView> m_overrideView;
 	std::unique_ptr<SensorView> m_sensorView;
+	std::unique_ptr<DolphinConnector> m_dolphinView;
 	FrameView* m_frameView = nullptr;
 
 #ifdef USE_FFMPEG
-	VideoView* m_videoView = nullptr;
-	GIFView* m_gifView = nullptr;
+	std::unique_ptr<VideoView> m_videoView;
+	std::unique_ptr<GIFView> m_gifView;
 #endif
 
 #ifdef USE_GDB_STUB
@@ -241,6 +259,10 @@ private:
 
 #ifdef USE_SQLITE3
 	LibraryController* m_libraryView;
+#endif
+
+#ifdef ENABLE_SCRIPTING
+	std::unique_ptr<ScriptingController> m_scripting;
 #endif
 };
 
@@ -256,7 +278,6 @@ public:
 	void setDimensions(int width, int height);
 	void setLockIntegerScaling(bool lock);
 	void setLockAspectRatio(bool lock);
-	void filter(bool filter);
 
 	const QPixmap& pixmap() const { return m_pixmap; }
 
@@ -268,9 +289,6 @@ private:
 	QSize m_sizeHint;
 	int m_aspectWidth;
 	int m_aspectHeight;
-	bool m_lockAspectRatio;
-	bool m_lockIntegerScaling;
-	bool m_filter;
 };
 
 }

@@ -245,7 +245,7 @@ void FrameView::updateTilesGBA(bool) {
 				m_queue.append({
 					{ LayerId::BACKGROUND, bg },
 					!m_disabled.contains({ LayerId::BACKGROUND, bg }),
-					QPixmap::fromImage(compositeMap(bg, m_mapStatus[bg])),
+					QPixmap::fromImage(compositeMap(bg, &m_mapStatus[bg])),
 					{}, offset, true, false
 				});
 				if (m_queue.back().image.hasAlpha()) {
@@ -577,6 +577,9 @@ void FrameView::frameCallback(FrameView* viewer, std::shared_ptr<bool> lock) {
 void FrameView::exportFrame() {
 	QString filename = GBAApp::app()->getSaveFileName(this, tr("Export frame"),
 	                                                  tr("Portable Network Graphics (*.png)"));
+	if (filename.isNull()) {
+		return;
+	}
 	CoreController::Interrupter interrupter(m_controller);
 	m_framebuffer.save(filename, "PNG");
 }

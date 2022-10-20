@@ -41,7 +41,20 @@ void TilePainter::resizeEvent(QResizeEvent*) {
 void TilePainter::mousePressEvent(QMouseEvent* event) {
 	int x = event->x() / m_size;
 	int y = event->y() / m_size;
-	emit indexPressed(y * (width() / m_size) + x);
+	int index = y * (width() / m_size) + x;
+	if (index < m_tileCount) {
+		emit indexPressed(index);
+	}
+}
+
+void TilePainter::clearTile(int index) {
+	QPainter painter(&m_backing);
+	int w = width() / m_size;
+	int x = index % w;
+	int y = index / w;
+	QRect r(x * m_size, y * m_size, m_size, m_size);
+	painter.eraseRect(r);
+	update(r);
 }
 
 void TilePainter::setTile(int index, const color_t* data) {

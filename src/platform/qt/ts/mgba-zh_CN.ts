@@ -2,7 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN" sourcelanguage="en_US">
 <context>
-    <name>AboutScreen</name>
+    <name>QGBA::AboutScreen</name>
     <message>
         <location filename="../AboutScreen.ui" line="14"/>
         <source>About</source>
@@ -37,11 +37,87 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
     </message>
 </context>
 <context>
-    <name>ArchiveInspector</name>
+    <name>QGBA::ApplicationUpdatePrompt</name>
+    <message>
+        <location filename="../ApplicationUpdatePrompt.ui" line="14"/>
+        <source>An update is available</source>
+        <translation>有可用的更新</translation>
+    </message>
+    <message>
+        <location filename="../ApplicationUpdatePrompt.cpp" line="26"/>
+        <source>An update to %1 is available.
+</source>
+        <translation>%1 有更新可用。
+</translation>
+    </message>
+    <message>
+        <location filename="../ApplicationUpdatePrompt.cpp" line="38"/>
+        <source>
+Do you want to download and install it now? You will need to restart the emulator when the download is complete.</source>
+        <translation>
+你想现在下载并安装吗？下载完成后，你需要重新启动模拟器。</translation>
+    </message>
+    <message>
+        <location filename="../ApplicationUpdatePrompt.cpp" line="41"/>
+        <source>
+Auto-update is not available on this platform. If you wish to update you will need to do it manually.</source>
+        <translation>
+自动更新在此平台上不可用。如果您希望更新，则需要手动进行。</translation>
+    </message>
+    <message>
+        <location filename="../ApplicationUpdatePrompt.cpp" line="45"/>
+        <source>Current version: %1
+New version: %2
+Download size: %3</source>
+        <translation>当前版本：%1
+新版本：%2
+更新大小：%3</translation>
+    </message>
+    <message>
+        <location filename="../ApplicationUpdatePrompt.cpp" line="63"/>
+        <source>Downloading update...</source>
+        <translation>正在下载更新...</translation>
+    </message>
+    <message>
+        <location filename="../ApplicationUpdatePrompt.cpp" line="79"/>
+        <source>Downloading failed. Please update manually.</source>
+        <translation>下载失败。请手动更新。</translation>
+    </message>
+    <message>
+        <location filename="../ApplicationUpdatePrompt.cpp" line="82"/>
+        <source>Downloading done. Press OK to restart %1 and install the update.</source>
+        <translation>下载完成。按确定按钮以重新启动 %1 并安装更新。</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::ApplicationUpdater</name>
+    <message>
+        <location filename="../ApplicationUpdater.cpp" line="88"/>
+        <source>Stable</source>
+        <translation>稳定版</translation>
+    </message>
+    <message>
+        <location filename="../ApplicationUpdater.cpp" line="91"/>
+        <source>Development</source>
+        <translation>开发版</translation>
+    </message>
+    <message>
+        <location filename="../ApplicationUpdater.cpp" line="93"/>
+        <source>Unknown</source>
+        <translation>未知</translation>
+    </message>
+    <message>
+        <location filename="../ApplicationUpdater.cpp" line="224"/>
+        <source>(None)</source>
+        <translation>（无）</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::ArchiveInspector</name>
     <message>
         <location filename="../ArchiveInspector.ui" line="14"/>
         <source>Open in archive...</source>
-        <translation>在压缩文件中打开...</translation>
+        <translation>打开压缩文件...</translation>
     </message>
     <message>
         <location filename="../ArchiveInspector.ui" line="20"/>
@@ -50,7 +126,7 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
     </message>
 </context>
 <context>
-    <name>AssetTile</name>
+    <name>QGBA::AssetTile</name>
     <message>
         <location filename="../AssetTile.ui" line="41"/>
         <source>Tile #</source>
@@ -62,28 +138,69 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
         <translation>调色板 #</translation>
     </message>
     <message>
-        <location filename="../AssetTile.ui" line="86"/>
+        <location filename="../AssetTile.ui" line="89"/>
         <source>Address</source>
         <translation>地址</translation>
     </message>
     <message>
-        <location filename="../AssetTile.ui" line="135"/>
+        <location filename="../AssetTile.ui" line="138"/>
         <source>Red</source>
         <translation>红</translation>
     </message>
     <message>
-        <location filename="../AssetTile.ui" line="142"/>
+        <location filename="../AssetTile.ui" line="145"/>
         <source>Green</source>
         <translation>绿</translation>
     </message>
     <message>
-        <location filename="../AssetTile.ui" line="149"/>
+        <location filename="../AssetTile.ui" line="152"/>
         <source>Blue</source>
         <translation>蓝</translation>
     </message>
+    <message>
+        <location filename="../AssetTile.cpp" line="143"/>
+        <location filename="../AssetTile.cpp" line="144"/>
+        <location filename="../AssetTile.cpp" line="145"/>
+        <source>0x%0 (%1)</source>
+        <translation>0x%0 (%1)</translation>
+    </message>
 </context>
 <context>
-    <name>BattleChipView</name>
+    <name>QGBA::AudioDevice</name>
+    <message>
+        <location filename="../AudioDevice.cpp" line="26"/>
+        <source>Can&apos;t set format of context-less audio device</source>
+        <translation>无法设置无上下文音频设备的格式</translation>
+    </message>
+    <message>
+        <location filename="../AudioDevice.cpp" line="44"/>
+        <source>Audio device is missing its core</source>
+        <translation>音频设备缺少其核心</translation>
+    </message>
+    <message>
+        <location filename="../AudioDevice.cpp" line="62"/>
+        <source>Writing data to read-only audio device</source>
+        <translation>将数据写入只读音频设备</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::AudioProcessorQt</name>
+    <message>
+        <location filename="../AudioProcessorQt.cpp" line="43"/>
+        <source>Can&apos;t start an audio processor without input</source>
+        <translation>没有输入无法启动音频处理器</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::AudioProcessorSDL</name>
+    <message>
+        <location filename="../AudioProcessorSDL.cpp" line="34"/>
+        <source>Can&apos;t start an audio processor without input</source>
+        <translation>没有输入无法启动音频处理器</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::BattleChipView</name>
     <message>
         <location filename="../BattleChipView.ui" line="14"/>
         <source>BattleChip Gate</source>
@@ -125,21 +242,6 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
         <translation>Gate 类型</translation>
     </message>
     <message>
-        <location filename="../BattleChipView.ui" line="145"/>
-        <source>Ba&amp;ttleChip Gate</source>
-        <translation>BattleChip Gate(&amp;T)</translation>
-    </message>
-    <message>
-        <location filename="../BattleChipView.ui" line="155"/>
-        <source>Progress &amp;Gate</source>
-        <translation>Progress Gate(&amp;G)</translation>
-    </message>
-    <message>
-        <location filename="../BattleChipView.ui" line="162"/>
-        <source>Beast &amp;Link Gate</source>
-        <translation>Beast Link Gate(&amp;L)</translation>
-    </message>
-    <message>
         <location filename="../BattleChipView.ui" line="180"/>
         <source>Inserted</source>
         <translation>已插入</translation>
@@ -159,65 +261,249 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
         <source>Show advanced</source>
         <translation>显示高级选项</translation>
     </message>
+    <message>
+        <location filename="../BattleChipView.cpp" line="117"/>
+        <source>BattleChip data missing</source>
+        <translation>缺失 BattleChip 数据</translation>
+    </message>
+    <message>
+        <location filename="../BattleChipView.cpp" line="118"/>
+        <source>BattleChip data is missing. BattleChip Gates will still work, but some graphics will be missing. Would you like to download the data now?</source>
+        <translation>缺少 BattleChip 数据。BattleChip Gate 仍然可以使用,但一些图形将会丢失。您要立即下载数据吗？</translation>
+    </message>
+    <message>
+        <location filename="../BattleChipView.cpp" line="184"/>
+        <location filename="../BattleChipView.cpp" line="203"/>
+        <source>Select deck file</source>
+        <translation>选择卡座文件</translation>
+    </message>
+    <message>
+        <location filename="../BattleChipView.cpp" line="215"/>
+        <source>Incompatible deck</source>
+        <translation>不兼容的卡座</translation>
+    </message>
+    <message>
+        <location filename="../BattleChipView.cpp" line="216"/>
+        <source>The selected deck is not compatible with this Chip Gate</source>
+        <translation>选定的卡座与此 Chip Gate 不兼容</translation>
+    </message>
 </context>
 <context>
-    <name>CheatsView</name>
+    <name>QGBA::CheatsModel</name>
+    <message>
+        <location filename="../CheatsModel.cpp" line="53"/>
+        <source>(untitled)</source>
+        <translation>(无标题)</translation>
+    </message>
+    <message>
+        <location filename="../CheatsModel.cpp" line="211"/>
+        <source>Failed to open cheats file: %1</source>
+        <translation>打开作弊码文件失败: %1</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::CheatsView</name>
     <message>
         <location filename="../CheatsView.ui" line="14"/>
         <source>Cheats</source>
         <translation>作弊码</translation>
     </message>
     <message>
-        <location filename="../CheatsView.ui" line="20"/>
+        <location filename="../CheatsView.ui" line="39"/>
+        <source>Add New Code</source>
+        <translation>添加作弊码</translation>
+    </message>
+    <message>
+        <location filename="../CheatsView.ui" line="60"/>
         <source>Remove</source>
         <translation>移除</translation>
     </message>
     <message>
-        <location filename="../CheatsView.ui" line="34"/>
+        <location filename="../CheatsView.ui" line="93"/>
+        <source>Add Lines</source>
+        <translation>添加行</translation>
+    </message>
+    <message>
+        <location filename="../CheatsView.ui" line="100"/>
+        <source>Code type</source>
+        <translation>作弊码类型</translation>
+    </message>
+    <message>
+        <location filename="../CheatsView.ui" line="53"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../CheatsView.ui" line="41"/>
+        <location filename="../CheatsView.ui" line="46"/>
         <source>Load</source>
         <translation>载入</translation>
     </message>
     <message>
-        <location filename="../CheatsView.ui" line="48"/>
-        <source>Add New Set</source>
-        <translation>添加新代码集</translation>
-    </message>
-    <message>
-        <location filename="../CheatsView.ui" line="55"/>
-        <source>Add</source>
-        <translation>添加</translation>
-    </message>
-    <message>
-        <location filename="../CheatsView.ui" line="95"/>
+        <location filename="../CheatsView.ui" line="86"/>
         <source>Enter codes here...</source>
         <translation>在此处输入代码...</translation>
     </message>
+    <message>
+        <location filename="../CheatsView.cpp" line="50"/>
+        <location filename="../CheatsView.cpp" line="58"/>
+        <source>Autodetect (recommended)</source>
+        <translation>自动检测（推荐）</translation>
+    </message>
+    <message>
+        <location filename="../CheatsView.cpp" line="88"/>
+        <location filename="../CheatsView.cpp" line="95"/>
+        <source>Select cheats file</source>
+        <translation>选择作弊码文件</translation>
+    </message>
+    <message>
+        <location filename="../CheatsView.cpp" line="187"/>
+        <source>Some cheats could not be added. Please ensure they&apos;re formatted correctly and/or try other cheat types.</source>
+        <translation>无法添加某些作弊码。请确认它们的格式是否正确并且/或尝试其它的作弊类型。</translation>
+    </message>
 </context>
 <context>
-    <name>DebuggerConsole</name>
+    <name>QGBA::CoreController</name>
+    <message>
+        <location filename="../CoreController.cpp" line="99"/>
+        <source>Reset r%1-%2 %3</source>
+        <translation>重置 r%1-%2 %3</translation>
+    </message>
+    <message>
+        <location filename="../CoreController.cpp" line="505"/>
+        <location filename="../CoreController.cpp" line="525"/>
+        <source>Rewinding not currently enabled</source>
+        <translation>当前未开启倒带</translation>
+    </message>
+    <message>
+        <location filename="../CoreController.cpp" line="568"/>
+        <source>Reset the game?</source>
+        <translation>要重置游戏吗?</translation>
+    </message>
+    <message>
+        <location filename="../CoreController.cpp" line="569"/>
+        <source>Most games will require a reset to load the new save. Do you want to reset now?</source>
+        <translation>大多数游戏需要重置才能加载新的存档。您要立即重启吗?</translation>
+    </message>
+    <message>
+        <location filename="../CoreController.cpp" line="784"/>
+        <source>Failed to open save file: %1</source>
+        <translation>打开存档失败: %1</translation>
+    </message>
+    <message>
+        <location filename="../CoreController.cpp" line="830"/>
+        <source>Failed to open game file: %1</source>
+        <translation>打开游戏文件失败: %1</translation>
+    </message>
+    <message>
+        <location filename="../CoreController.cpp" line="859"/>
+        <source>Can&apos;t yank pack in unexpected platform!</source>
+        <translation>无法在意外平台上抽出卡带！</translation>
+    </message>
+    <message>
+        <location filename="../CoreController.cpp" line="970"/>
+        <source>Failed to open snapshot file for reading: %1</source>
+        <translation>读取快照文件失败: %1</translation>
+    </message>
+    <message>
+        <location filename="../CoreController.cpp" line="987"/>
+        <source>Failed to open snapshot file for writing: %1</source>
+        <translation>写入快照文件失败: %1</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::CoreManager</name>
+    <message>
+        <location filename="../CoreManager.cpp" line="55"/>
+        <source>Failed to open game file: %1</source>
+        <translation>打开游戏文件失败: %1</translation>
+    </message>
+    <message>
+        <location filename="../CoreManager.cpp" line="91"/>
+        <source>Could not load game. Are you sure it&apos;s in the correct format?</source>
+        <translation>无法载入游戏。请确认游戏格式是否正确？</translation>
+    </message>
+    <message>
+        <location filename="../CoreManager.cpp" line="118"/>
+        <source>Failed to open save file; in-game saves cannot be updated. Please ensure the save directory is writable without additional privileges (e.g. UAC on Windows).</source>
+        <translation>无法打开存档；游戏内存档无法更新。请确保保存目录是可写的，且没有额外权限（例如 Windows 上的 UAC）。</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::DebuggerConsole</name>
     <message>
         <location filename="../DebuggerConsole.ui" line="14"/>
         <source>Debugger</source>
         <translation>调试器</translation>
     </message>
     <message>
-        <location filename="../DebuggerConsole.ui" line="25"/>
+        <location filename="../DebuggerConsole.ui" line="20"/>
         <source>Enter command (try `help` for more info)</source>
         <translation>输入命令 (尝试输入 `help` 获取更多信息)</translation>
     </message>
     <message>
-        <location filename="../DebuggerConsole.ui" line="32"/>
+        <location filename="../DebuggerConsole.ui" line="27"/>
         <source>Break</source>
         <translation>断点</translation>
     </message>
 </context>
 <context>
-    <name>FrameView</name>
+    <name>QGBA::DebuggerConsoleController</name>
+    <message>
+        <location filename="../DebuggerConsoleController.cpp" line="171"/>
+        <source>Could not open CLI history for writing</source>
+        <translation>无法打开用于写入的 CLI 历史</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::DolphinConnector</name>
+    <message>
+        <location filename="../DolphinConnector.ui" line="14"/>
+        <source>Connect to Dolphin</source>
+        <translation>连接 Dolphin</translation>
+    </message>
+    <message>
+        <location filename="../DolphinConnector.ui" line="23"/>
+        <source>Local computer</source>
+        <translation>本地电脑</translation>
+    </message>
+    <message>
+        <location filename="../DolphinConnector.ui" line="36"/>
+        <source>IP address</source>
+        <translation>IP 地址</translation>
+    </message>
+    <message>
+        <location filename="../DolphinConnector.ui" line="55"/>
+        <source>Connect</source>
+        <translation>连接</translation>
+    </message>
+    <message>
+        <location filename="../DolphinConnector.ui" line="68"/>
+        <source>Disconnect</source>
+        <translation>断开连接</translation>
+    </message>
+    <message>
+        <location filename="../DolphinConnector.ui" line="78"/>
+        <source>Close</source>
+        <translation>关闭</translation>
+    </message>
+    <message>
+        <location filename="../DolphinConnector.ui" line="90"/>
+        <source>Reset on connect</source>
+        <translation>连接时重置</translation>
+    </message>
+    <message>
+        <location filename="../DolphinConnector.cpp" line="57"/>
+        <source>Couldn&apos;t Connect</source>
+        <translation>无法连接</translation>
+    </message>
+    <message>
+        <location filename="../DolphinConnector.cpp" line="58"/>
+        <source>Could not connect to Dolphin.</source>
+        <translation>无法连接到 Dolphin。</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::FrameView</name>
     <message>
         <location filename="../FrameView.ui" line="14"/>
         <source>Inspect frame</source>
@@ -253,9 +539,153 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
         <source>Reset</source>
         <translation>重置</translation>
     </message>
+    <message>
+        <location filename="../FrameView.cpp" line="578"/>
+        <source>Export frame</source>
+        <translation>导出框架</translation>
+    </message>
+    <message>
+        <location filename="../FrameView.cpp" line="579"/>
+        <source>Portable Network Graphics (*.png)</source>
+        <translation>便携式网络图形 (*.png)</translation>
+    </message>
+    <message>
+        <location filename="../FrameView.cpp" line="600"/>
+        <source>None</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <location filename="../FrameView.cpp" line="602"/>
+        <source>Background</source>
+        <translation>背景</translation>
+    </message>
+    <message>
+        <location filename="../FrameView.cpp" line="605"/>
+        <source>Window</source>
+        <translation>窗口</translation>
+    </message>
+    <message>
+        <location filename="../FrameView.cpp" line="608"/>
+        <source>Objwin</source>
+        <translation>Objwin</translation>
+    </message>
+    <message>
+        <location filename="../FrameView.cpp" line="613"/>
+        <source>Sprite</source>
+        <translation>精灵图</translation>
+    </message>
+    <message>
+        <location filename="../FrameView.cpp" line="616"/>
+        <source>Backdrop</source>
+        <translation>背幕</translation>
+    </message>
+    <message>
+        <location filename="../FrameView.cpp" line="619"/>
+        <source>Frame</source>
+        <translation>帧</translation>
+    </message>
+    <message>
+        <location filename="../FrameView.cpp" line="625"/>
+        <source>%1 %2</source>
+        <translation>%1 %2</translation>
+    </message>
 </context>
 <context>
-    <name>GIFView</name>
+    <name>QGBA::GBAApp</name>
+    <message>
+        <location filename="../GBAApp.cpp" line="73"/>
+        <source>Enable Discord Rich Presence</source>
+        <translation>启用 Discord Rich Presence</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::GBAKeyEditor</name>
+    <message>
+        <location filename="../GBAKeyEditor.cpp" line="67"/>
+        <source>Clear Button</source>
+        <translation>清除按键</translation>
+    </message>
+    <message>
+        <location filename="../GBAKeyEditor.cpp" line="79"/>
+        <source>Clear Analog</source>
+        <translation>清除模拟控制</translation>
+    </message>
+    <message>
+        <location filename="../GBAKeyEditor.cpp" line="90"/>
+        <source>Refresh</source>
+        <translation>刷新</translation>
+    </message>
+    <message>
+        <location filename="../GBAKeyEditor.cpp" line="100"/>
+        <source>Set all</source>
+        <translation>全部设置</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::GDBWindow</name>
+    <message>
+        <location filename="../GDBWindow.cpp" line="31"/>
+        <source>Server settings</source>
+        <translation>服务器设置</translation>
+    </message>
+    <message>
+        <location filename="../GDBWindow.cpp" line="37"/>
+        <source>Local port</source>
+        <translation>本地端口</translation>
+    </message>
+    <message>
+        <location filename="../GDBWindow.cpp" line="39"/>
+        <source>Bind address</source>
+        <translation>绑定地址</translation>
+    </message>
+    <message>
+        <location filename="../GDBWindow.cpp" line="52"/>
+        <source>Write watchpoints behavior</source>
+        <translation>写入监视点行为</translation>
+    </message>
+    <message>
+        <location filename="../GDBWindow.cpp" line="63"/>
+        <source>Standard GDB</source>
+        <translation>标准 GDB</translation>
+    </message>
+    <message>
+        <location filename="../GDBWindow.cpp" line="68"/>
+        <source>Internal change detection</source>
+        <translation>内部改动检测</translation>
+    </message>
+    <message>
+        <location filename="../GDBWindow.cpp" line="72"/>
+        <source>Break on all writes</source>
+        <translation>中断所有写入</translation>
+    </message>
+    <message>
+        <location filename="../GDBWindow.cpp" line="82"/>
+        <source>Break</source>
+        <translation>断点</translation>
+    </message>
+    <message>
+        <location filename="../GDBWindow.cpp" line="124"/>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <location filename="../GDBWindow.cpp" line="137"/>
+        <source>Start</source>
+        <translation>开始</translation>
+    </message>
+    <message>
+        <location filename="../GDBWindow.cpp" line="145"/>
+        <source>Crash</source>
+        <translation>崩溃</translation>
+    </message>
+    <message>
+        <location filename="../GDBWindow.cpp" line="145"/>
+        <source>Could not start GDB server</source>
+        <translation>无法打开 GDB 服务器</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::GIFView</name>
     <message>
         <location filename="../GIFView.ui" line="14"/>
         <source>Record GIF/WebP/APNG</source>
@@ -301,1081 +731,6 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
         <source>Frameskip</source>
         <translation>跳帧</translation>
     </message>
-</context>
-<context>
-    <name>IOViewer</name>
-    <message>
-        <location filename="../IOViewer.ui" line="14"/>
-        <source>I/O Viewer</source>
-        <translation>I/O 查看器</translation>
-    </message>
-    <message>
-        <location filename="../IOViewer.ui" line="26"/>
-        <source>0x0000</source>
-        <translation>0x0000</translation>
-    </message>
-    <message>
-        <location filename="../IOViewer.ui" line="364"/>
-        <source>B</source>
-        <translation>B</translation>
-    </message>
-</context>
-<context>
-    <name>LibraryTree</name>
-    <message>
-        <location filename="../library/LibraryTree.cpp" line="46"/>
-        <source>Name</source>
-        <translation>名称</translation>
-    </message>
-    <message>
-        <location filename="../library/LibraryTree.cpp" line="47"/>
-        <source>Location</source>
-        <translation>位置</translation>
-    </message>
-    <message>
-        <location filename="../library/LibraryTree.cpp" line="48"/>
-        <source>Platform</source>
-        <translation>平台</translation>
-    </message>
-    <message>
-        <location filename="../library/LibraryTree.cpp" line="49"/>
-        <source>Size</source>
-        <translation>大小</translation>
-    </message>
-    <message>
-        <location filename="../library/LibraryTree.cpp" line="50"/>
-        <source>CRC32</source>
-        <translation>CRC32</translation>
-    </message>
-</context>
-<context>
-    <name>LoadSaveState</name>
-    <message>
-        <location filename="../LoadSaveState.ui" line="14"/>
-        <location filename="../LoadSaveState.ui" line="66"/>
-        <source>%1 State</source>
-        <translation>%1 即时存档</translation>
-    </message>
-    <message>
-        <location filename="../LoadSaveState.ui" line="41"/>
-        <location filename="../LoadSaveState.ui" line="85"/>
-        <location filename="../LoadSaveState.ui" line="107"/>
-        <location filename="../LoadSaveState.ui" line="129"/>
-        <location filename="../LoadSaveState.ui" line="151"/>
-        <location filename="../LoadSaveState.ui" line="173"/>
-        <location filename="../LoadSaveState.ui" line="195"/>
-        <location filename="../LoadSaveState.ui" line="217"/>
-        <location filename="../LoadSaveState.ui" line="239"/>
-        <source>No Save</source>
-        <translation>不保存</translation>
-    </message>
-    <message>
-        <location filename="../LoadSaveState.ui" line="50"/>
-        <source>5</source>
-        <translation>5</translation>
-    </message>
-    <message>
-        <location filename="../LoadSaveState.ui" line="94"/>
-        <source>6</source>
-        <translation>6</translation>
-    </message>
-    <message>
-        <location filename="../LoadSaveState.ui" line="116"/>
-        <source>8</source>
-        <translation>8</translation>
-    </message>
-    <message>
-        <location filename="../LoadSaveState.ui" line="138"/>
-        <source>4</source>
-        <translation>4</translation>
-    </message>
-    <message>
-        <location filename="../LoadSaveState.ui" line="160"/>
-        <source>1</source>
-        <translation>1</translation>
-    </message>
-    <message>
-        <location filename="../LoadSaveState.ui" line="182"/>
-        <source>3</source>
-        <translation>3</translation>
-    </message>
-    <message>
-        <location filename="../LoadSaveState.ui" line="204"/>
-        <source>7</source>
-        <translation>7</translation>
-    </message>
-    <message>
-        <location filename="../LoadSaveState.ui" line="226"/>
-        <source>9</source>
-        <translation>9</translation>
-    </message>
-    <message>
-        <location filename="../LoadSaveState.ui" line="248"/>
-        <source>2</source>
-        <translation>2</translation>
-    </message>
-    <message>
-        <location filename="../LoadSaveState.ui" line="261"/>
-        <source>Cancel</source>
-        <translation>取消</translation>
-    </message>
-</context>
-<context>
-    <name>LogView</name>
-    <message>
-        <location filename="../LogView.ui" line="14"/>
-        <source>Logs</source>
-        <translation>日志</translation>
-    </message>
-    <message>
-        <location filename="../LogView.ui" line="22"/>
-        <source>Enabled Levels</source>
-        <translation>启用级别</translation>
-    </message>
-    <message>
-        <location filename="../LogView.ui" line="28"/>
-        <source>Debug</source>
-        <translation>调试</translation>
-    </message>
-    <message>
-        <location filename="../LogView.ui" line="38"/>
-        <source>Stub</source>
-        <translation>桩件</translation>
-    </message>
-    <message>
-        <location filename="../LogView.ui" line="48"/>
-        <source>Info</source>
-        <translation>信息</translation>
-    </message>
-    <message>
-        <location filename="../LogView.ui" line="58"/>
-        <source>Warning</source>
-        <translation>警告</translation>
-    </message>
-    <message>
-        <location filename="../LogView.ui" line="68"/>
-        <source>Error</source>
-        <translation>错误</translation>
-    </message>
-    <message>
-        <location filename="../LogView.ui" line="78"/>
-        <source>Fatal</source>
-        <translation>致命错误</translation>
-    </message>
-    <message>
-        <location filename="../LogView.ui" line="95"/>
-        <source>Game Error</source>
-        <translation>游戏错误</translation>
-    </message>
-    <message>
-        <location filename="../LogView.ui" line="108"/>
-        <source>Advanced settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../LogView.ui" line="128"/>
-        <source>Clear</source>
-        <translation>清除</translation>
-    </message>
-    <message>
-        <location filename="../LogView.ui" line="137"/>
-        <source>Max Lines</source>
-        <translation>最大行数</translation>
-    </message>
-</context>
-<context>
-    <name>MapView</name>
-    <message>
-        <location filename="../MapView.ui" line="14"/>
-        <source>Maps</source>
-        <translation>贴图</translation>
-    </message>
-    <message>
-        <location filename="../MapView.ui" line="43"/>
-        <source>Magnification</source>
-        <translation>缩放率</translation>
-    </message>
-    <message>
-        <location filename="../MapView.ui" line="124"/>
-        <source>Export</source>
-        <translation>导出</translation>
-    </message>
-    <message>
-        <location filename="../MapView.ui" line="139"/>
-        <source>Copy</source>
-        <translation>复制</translation>
-    </message>
-</context>
-<context>
-    <name>MemoryDump</name>
-    <message>
-        <location filename="../MemoryDump.ui" line="14"/>
-        <source>Save Memory Range</source>
-        <translation>保存内存范围</translation>
-    </message>
-    <message>
-        <location filename="../MemoryDump.ui" line="20"/>
-        <source>Start Address:</source>
-        <translation>起始地址:</translation>
-    </message>
-    <message>
-        <location filename="../MemoryDump.ui" line="76"/>
-        <source>Byte Count:</source>
-        <translation>字节数:</translation>
-    </message>
-    <message>
-        <location filename="../MemoryDump.ui" line="108"/>
-        <source>Dump across banks</source>
-        <translation>跨 bank 转储</translation>
-    </message>
-</context>
-<context>
-    <name>MemorySearch</name>
-    <message>
-        <location filename="../MemorySearch.ui" line="26"/>
-        <source>Memory Search</source>
-        <translation>内存查找</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="51"/>
-        <source>Address</source>
-        <translation>地址</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="56"/>
-        <source>Current Value</source>
-        <translation>当前值</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="61"/>
-        <location filename="../MemorySearch.ui" line="81"/>
-        <source>Type</source>
-        <translation>类型</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="71"/>
-        <source>Value</source>
-        <translation>值</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="88"/>
-        <source>Numeric</source>
-        <translation>数字</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="101"/>
-        <source>Text</source>
-        <translation>文本</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="118"/>
-        <source>Width</source>
-        <translation>位宽</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="125"/>
-        <location filename="../MemorySearch.ui" line="185"/>
-        <source>Guess</source>
-        <translation>估计</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="138"/>
-        <source>1 Byte (8-bit)</source>
-        <translation>1 字节 (8 位)</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="148"/>
-        <source>2 Bytes (16-bit)</source>
-        <translation>2 字节 (16 位)</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="158"/>
-        <source>4 Bytes (32-bit)</source>
-        <translation>4 字节 (32 位)</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="178"/>
-        <source>Number type</source>
-        <translation>数字进制</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="195"/>
-        <source>Decimal</source>
-        <translation>十进制</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="202"/>
-        <source>Hexadecimal</source>
-        <translation>十六进制</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="216"/>
-        <source>Search type</source>
-        <translation>搜索类型</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="223"/>
-        <source>Equal to value</source>
-        <translation>约等于下值</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="236"/>
-        <source>Greater than value</source>
-        <translation>大于下值</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="246"/>
-        <source>Less than value</source>
-        <translation>小于下值</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="256"/>
-        <source>Unknown/changed</source>
-        <translation>未知/已更改</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="269"/>
-        <source>Changed by value</source>
-        <translation>由下值更改</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="282"/>
-        <source>Unchanged</source>
-        <translation>无更改</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="295"/>
-        <source>Increased</source>
-        <translation>增加</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="308"/>
-        <source>Decreased</source>
-        <translation>减少</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="318"/>
-        <source>Search ROM</source>
-        <translation>查找 ROM</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="336"/>
-        <source>New Search</source>
-        <translation>新的查找</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="343"/>
-        <source>Search Within</source>
-        <translation>在结果中查找</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="350"/>
-        <source>Open in Memory Viewer</source>
-        <translation>在内存查看器中打开</translation>
-    </message>
-    <message>
-        <location filename="../MemorySearch.ui" line="357"/>
-        <source>Refresh</source>
-        <translation>刷新</translation>
-    </message>
-</context>
-<context>
-    <name>MemoryView</name>
-    <message>
-        <location filename="../MemoryView.ui" line="14"/>
-        <source>Memory</source>
-        <translation>内存</translation>
-    </message>
-    <message>
-        <location filename="../MemoryView.ui" line="38"/>
-        <source>Inspect Address:</source>
-        <translation>检查地址:</translation>
-    </message>
-    <message>
-        <location filename="../MemoryView.ui" line="88"/>
-        <source>Set Alignment:</source>
-        <translation>设定对齐单位:</translation>
-    </message>
-    <message>
-        <location filename="../MemoryView.ui" line="108"/>
-        <source>&amp;1 Byte</source>
-        <translation>1 字节(&amp;1)</translation>
-    </message>
-    <message>
-        <location filename="../MemoryView.ui" line="131"/>
-        <source>&amp;2 Bytes</source>
-        <translation>2 字节(&amp;2)</translation>
-    </message>
-    <message>
-        <location filename="../MemoryView.ui" line="151"/>
-        <source>&amp;4 Bytes</source>
-        <translation>4 字节(&amp;4)</translation>
-    </message>
-    <message>
-        <location filename="../MemoryView.ui" line="187"/>
-        <source>Unsigned Integer:</source>
-        <translation>无符号整数:</translation>
-    </message>
-    <message>
-        <location filename="../MemoryView.ui" line="208"/>
-        <source>Signed Integer:</source>
-        <translation>有符号整数:</translation>
-    </message>
-    <message>
-        <location filename="../MemoryView.ui" line="229"/>
-        <source>String:</source>
-        <translation>字符串:</translation>
-    </message>
-    <message>
-        <location filename="../MemoryView.ui" line="243"/>
-        <source>Load TBL</source>
-        <translation>载入 TBL</translation>
-    </message>
-    <message>
-        <location filename="../MemoryView.ui" line="256"/>
-        <source>Copy Selection</source>
-        <translation>复制所选</translation>
-    </message>
-    <message>
-        <location filename="../MemoryView.ui" line="263"/>
-        <source>Paste</source>
-        <translation>粘贴</translation>
-    </message>
-    <message>
-        <location filename="../MemoryView.ui" line="283"/>
-        <source>Save Selection</source>
-        <translation>保存所选</translation>
-    </message>
-    <message>
-        <location filename="../MemoryView.ui" line="297"/>
-        <source>Load</source>
-        <translation>载入</translation>
-    </message>
-    <message>
-        <location filename="../MemoryView.ui" line="290"/>
-        <source>Save Range</source>
-        <translation>保存范围</translation>
-    </message>
-</context>
-<context>
-    <name>ObjView</name>
-    <message>
-        <location filename="../ObjView.ui" line="14"/>
-        <source>Sprites</source>
-        <translation>精灵图</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="72"/>
-        <source>Address</source>
-        <translation>地址</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="94"/>
-        <source>Copy</source>
-        <translation>复制</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="254"/>
-        <source>×</source>
-        <translation>×</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="122"/>
-        <source>Magnification</source>
-        <translation>缩放率</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="137"/>
-        <source>Geometry</source>
-        <translation>几何图</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="145"/>
-        <source>Position</source>
-        <translation>位置</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="181"/>
-        <source>, </source>
-        <translation>, </translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="218"/>
-        <source>Dimensions</source>
-        <translation>维度</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="298"/>
-        <source>Matrix</source>
-        <translation>矩阵</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="365"/>
-        <source>Export</source>
-        <translation>导出</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="378"/>
-        <source>Attributes</source>
-        <translation>属性</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="386"/>
-        <source>Transform</source>
-        <translation>变换</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="406"/>
-        <source>Off</source>
-        <translation>关</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="417"/>
-        <source>Palette</source>
-        <translation>调色板</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="451"/>
-        <source>Double Size</source>
-        <translation>双倍大小</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="477"/>
-        <location filename="../ObjView.ui" line="521"/>
-        <location filename="../ObjView.ui" line="534"/>
-        <location filename="../ObjView.ui" line="602"/>
-        <source>Return, Ctrl+R</source>
-        <translation>回车键、Ctrl+R</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="495"/>
-        <source>Flipped</source>
-        <translation>已翻转</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="518"/>
-        <source>H</source>
-        <extracomment>Short for horizontal</extracomment>
-        <translation>H</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="531"/>
-        <source>V</source>
-        <extracomment>Short for vertical</extracomment>
-        <translation>V</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="545"/>
-        <source>Mode</source>
-        <translation>模式</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="565"/>
-        <source>Normal</source>
-        <translation>普通</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="576"/>
-        <source>Mosaic</source>
-        <translation>马赛克</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="613"/>
-        <source>Enabled</source>
-        <translation>已启用</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="647"/>
-        <source>Priority</source>
-        <translation>优先级</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.ui" line="682"/>
-        <source>Tile</source>
-        <translation>图块</translation>
-    </message>
-</context>
-<context>
-    <name>OverrideView</name>
-    <message>
-        <location filename="../OverrideView.ui" line="20"/>
-        <source>Game Overrides</source>
-        <translation>游戏覆写</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="30"/>
-        <source>Game Boy Advance</source>
-        <translation>Game Boy Advance</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="42"/>
-        <location filename="../OverrideView.ui" line="121"/>
-        <location filename="../OverrideView.ui" line="225"/>
-        <location filename="../OverrideView.ui" line="241"/>
-        <source>Autodetect</source>
-        <translation>自动检测</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="55"/>
-        <source>Realtime clock</source>
-        <translation>实时时钟</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="65"/>
-        <source>Gyroscope</source>
-        <translation>陀螺仪</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="75"/>
-        <source>Tilt</source>
-        <translation>图块</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="85"/>
-        <source>Light sensor</source>
-        <translation>光线传感器</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="95"/>
-        <source>Rumble</source>
-        <translation>振动</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="113"/>
-        <source>Save type</source>
-        <translation>保存类型</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="126"/>
-        <source>None</source>
-        <translation>无</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="131"/>
-        <source>SRAM</source>
-        <translation>SRAM</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="136"/>
-        <source>Flash 512kb</source>
-        <translation>Flash 512kb</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="141"/>
-        <source>Flash 1Mb</source>
-        <translation>Flash 1Mb</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="146"/>
-        <source>EEPROM</source>
-        <translation>EEPROM</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="154"/>
-        <source>Idle loop</source>
-        <translation>空循环</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="180"/>
-        <source>Game Boy Player features</source>
-        <translation>Game Boy Player 功能</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="187"/>
-        <source>VBA bug compatibility mode</source>
-        <translation>VBA 错误兼容模式</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="211"/>
-        <source>Game Boy</source>
-        <translation>Game Boy</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="217"/>
-        <source>Game Boy model</source>
-        <translation>Game Boy 型号</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="233"/>
-        <source>Memory bank controller</source>
-        <translation>内存 bank 控制器</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="249"/>
-        <source>Background Colors</source>
-        <translation>背景颜色</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="336"/>
-        <source>Sprite Colors 1</source>
-        <translation>精灵图颜色 1</translation>
-    </message>
-    <message>
-        <location filename="../OverrideView.ui" line="343"/>
-        <source>Sprite Colors 2</source>
-        <translation>精灵图颜色 2</translation>
-    </message>
-</context>
-<context>
-    <name>PaletteView</name>
-    <message>
-        <location filename="../PaletteView.ui" line="14"/>
-        <source>Palette</source>
-        <translation>调色板</translation>
-    </message>
-    <message>
-        <location filename="../PaletteView.ui" line="44"/>
-        <source>Background</source>
-        <translation>背景</translation>
-    </message>
-    <message>
-        <location filename="../PaletteView.ui" line="94"/>
-        <source>Objects</source>
-        <translation>对象</translation>
-    </message>
-    <message>
-        <location filename="../PaletteView.ui" line="153"/>
-        <source>Selection</source>
-        <translation>选择</translation>
-    </message>
-    <message>
-        <location filename="../PaletteView.ui" line="184"/>
-        <source>Red</source>
-        <translation>红</translation>
-    </message>
-    <message>
-        <location filename="../PaletteView.ui" line="191"/>
-        <source>Green</source>
-        <translation>绿</translation>
-    </message>
-    <message>
-        <location filename="../PaletteView.ui" line="198"/>
-        <source>Blue</source>
-        <translation>蓝</translation>
-    </message>
-    <message>
-        <location filename="../PaletteView.ui" line="244"/>
-        <source>16-bit value</source>
-        <translation>16 位值</translation>
-    </message>
-    <message>
-        <location filename="../PaletteView.ui" line="251"/>
-        <source>Hex code</source>
-        <translation>十六进制代码</translation>
-    </message>
-    <message>
-        <location filename="../PaletteView.ui" line="258"/>
-        <source>Palette index</source>
-        <translation>调色板索引</translation>
-    </message>
-    <message>
-        <location filename="../PaletteView.ui" line="322"/>
-        <source>Export BG</source>
-        <translation>导出背景</translation>
-    </message>
-    <message>
-        <location filename="../PaletteView.ui" line="342"/>
-        <source>Export OBJ</source>
-        <translation>导出 OBJ</translation>
-    </message>
-</context>
-<context>
-    <name>PlacementControl</name>
-    <message>
-        <location filename="../PlacementControl.ui" line="20"/>
-        <source>Adjust placement</source>
-        <translation>更改布局</translation>
-    </message>
-    <message>
-        <location filename="../PlacementControl.ui" line="26"/>
-        <source>All</source>
-        <translation>全部</translation>
-    </message>
-    <message>
-        <location filename="../PlacementControl.ui" line="65"/>
-        <source>Offset</source>
-        <translation>偏移</translation>
-    </message>
-    <message>
-        <location filename="../PlacementControl.ui" line="72"/>
-        <source>X</source>
-        <translation>X</translation>
-    </message>
-    <message>
-        <location filename="../PlacementControl.ui" line="79"/>
-        <source>Y</source>
-        <translation>Y</translation>
-    </message>
-</context>
-<context>
-    <name>PrinterView</name>
-    <message>
-        <location filename="../PrinterView.ui" line="14"/>
-        <source>Game Boy Printer</source>
-        <translation>Game Boy 打印机</translation>
-    </message>
-    <message>
-        <location filename="../PrinterView.ui" line="130"/>
-        <source>Hurry up!</source>
-        <translation>快点！</translation>
-    </message>
-    <message>
-        <location filename="../PrinterView.ui" line="137"/>
-        <source>Tear off</source>
-        <translation>剪下</translation>
-    </message>
-    <message>
-        <location filename="../PrinterView.ui" line="180"/>
-        <source>Magnification</source>
-        <translation>缩放率</translation>
-    </message>
-    <message>
-        <location filename="../PrinterView.ui" line="223"/>
-        <source>Copy</source>
-        <translation>复制</translation>
-    </message>
-</context>
-<context>
-    <name>QGBA::AboutScreen</name>
-    <message>
-        <location filename="../AboutScreen.cpp" line="77"/>
-        <source>2021</source>
-        <translation type="unfinished">2021</translation>
-    </message>
-</context>
-<context>
-    <name>QGBA::AssetTile</name>
-    <message>
-        <location filename="../AssetTile.cpp" line="103"/>
-        <source>%0%1%2</source>
-        <translation>%0%1%2</translation>
-    </message>
-    <message>
-        <location filename="../AssetTile.cpp" line="140"/>
-        <location filename="../AssetTile.cpp" line="141"/>
-        <location filename="../AssetTile.cpp" line="142"/>
-        <source>0x%0 (%1)</source>
-        <translation>0x%0 (%1)</translation>
-    </message>
-</context>
-<context>
-    <name>QGBA::CheatsModel</name>
-    <message>
-        <location filename="../CheatsModel.cpp" line="53"/>
-        <source>(untitled)</source>
-        <translation>(无标题)</translation>
-    </message>
-    <message>
-        <location filename="../CheatsModel.cpp" line="211"/>
-        <source>Failed to open cheats file: %1</source>
-        <translation>打开作弊码文件失败: %1</translation>
-    </message>
-</context>
-<context>
-    <name>QGBA::CheatsView</name>
-    <message>
-        <location filename="../CheatsView.cpp" line="49"/>
-        <location filename="../CheatsView.cpp" line="74"/>
-        <source>Add GameShark</source>
-        <translation>添加 GameShark</translation>
-    </message>
-    <message>
-        <location filename="../CheatsView.cpp" line="55"/>
-        <source>Add Pro Action Replay</source>
-        <translation>添加 Pro Action Replay</translation>
-    </message>
-    <message>
-        <location filename="../CheatsView.cpp" line="61"/>
-        <source>Add CodeBreaker</source>
-        <translation>添加 CodeBreaker</translation>
-    </message>
-    <message>
-        <location filename="../CheatsView.cpp" line="80"/>
-        <source>Add GameGenie</source>
-        <translation>添加 GameGenie</translation>
-    </message>
-    <message>
-        <location filename="../CheatsView.cpp" line="112"/>
-        <location filename="../CheatsView.cpp" line="119"/>
-        <source>Select cheats file</source>
-        <translation>选择作弊码文件</translation>
-    </message>
-</context>
-<context>
-    <name>QGBA::CoreController</name>
-    <message>
-        <location filename="../CoreController.cpp" line="664"/>
-        <source>Failed to open save file: %1</source>
-        <translation>打开存档失败: %1</translation>
-    </message>
-    <message>
-        <location filename="../CoreController.cpp" line="693"/>
-        <source>Failed to open game file: %1</source>
-        <translation>打开游戏文件失败: %1</translation>
-    </message>
-    <message>
-        <location filename="../CoreController.cpp" line="717"/>
-        <source>Can&apos;t yank pack in unexpected platform!</source>
-        <translation>无法在意外平台上抽出卡带！</translation>
-    </message>
-    <message>
-        <location filename="../CoreController.cpp" line="794"/>
-        <source>Failed to open snapshot file for reading: %1</source>
-        <translation>读取快照文件失败: %1</translation>
-    </message>
-    <message>
-        <location filename="../CoreController.cpp" line="810"/>
-        <source>Failed to open snapshot file for writing: %1</source>
-        <translation>写入快照文件失败: %1</translation>
-    </message>
-</context>
-<context>
-    <name>QGBA::CoreManager</name>
-    <message>
-        <location filename="../CoreManager.cpp" line="55"/>
-        <source>Failed to open game file: %1</source>
-        <translation>打开游戏文件失败: %1</translation>
-    </message>
-    <message>
-        <location filename="../CoreManager.cpp" line="88"/>
-        <source>Could not load game. Are you sure it&apos;s in the correct format?</source>
-        <translation>无法载入游戏。请确认游戏格式是否正确？</translation>
-    </message>
-    <message>
-        <location filename="../CoreManager.cpp" line="115"/>
-        <source>Failed to open save file. Is the save directory writable?</source>
-        <translation>无法打开存档文件。存档目录是否可写入？</translation>
-    </message>
-</context>
-<context>
-    <name>QGBA::FrameView</name>
-    <message>
-        <location filename="../FrameView.cpp" line="578"/>
-        <source>Export frame</source>
-        <translation>导出框架</translation>
-    </message>
-    <message>
-        <location filename="../FrameView.cpp" line="579"/>
-        <source>Portable Network Graphics (*.png)</source>
-        <translation>便携式网络图形 (*.png)</translation>
-    </message>
-    <message>
-        <location filename="../FrameView.cpp" line="597"/>
-        <source>None</source>
-        <translation>无</translation>
-    </message>
-    <message>
-        <location filename="../FrameView.cpp" line="599"/>
-        <source>Background</source>
-        <translation>背景</translation>
-    </message>
-    <message>
-        <location filename="../FrameView.cpp" line="602"/>
-        <source>Window</source>
-        <translation>窗口</translation>
-    </message>
-    <message>
-        <location filename="../FrameView.cpp" line="605"/>
-        <source>Objwin</source>
-        <translation>Objwin</translation>
-    </message>
-    <message>
-        <location filename="../FrameView.cpp" line="610"/>
-        <source>Sprite</source>
-        <translation>精灵图</translation>
-    </message>
-    <message>
-        <location filename="../FrameView.cpp" line="613"/>
-        <source>Backdrop</source>
-        <translation>背幕</translation>
-    </message>
-    <message>
-        <location filename="../FrameView.cpp" line="616"/>
-        <source>Frame</source>
-        <translation>帧</translation>
-    </message>
-    <message>
-        <location filename="../FrameView.cpp" line="622"/>
-        <source>%1 %2</source>
-        <translation>%1 %2</translation>
-    </message>
-</context>
-<context>
-    <name>QGBA::GBAApp</name>
-    <message>
-        <location filename="../GBAApp.cpp" line="71"/>
-        <source>Enable Discord Rich Presence</source>
-        <translation>启用 Discord Rich Presence</translation>
-    </message>
-</context>
-<context>
-    <name>QGBA::GBAKeyEditor</name>
-    <message>
-        <location filename="../GBAKeyEditor.cpp" line="67"/>
-        <source>Clear Button</source>
-        <translation>清除按键</translation>
-    </message>
-    <message>
-        <location filename="../GBAKeyEditor.cpp" line="79"/>
-        <source>Clear Analog</source>
-        <translation>清除模拟控制</translation>
-    </message>
-    <message>
-        <location filename="../GBAKeyEditor.cpp" line="90"/>
-        <source>Refresh</source>
-        <translation>刷新</translation>
-    </message>
-    <message>
-        <location filename="../GBAKeyEditor.cpp" line="100"/>
-        <source>Set all</source>
-        <translation>全部设置</translation>
-    </message>
-</context>
-<context>
-    <name>QGBA::GDBWindow</name>
-    <message>
-        <location filename="../GDBWindow.cpp" line="28"/>
-        <source>Server settings</source>
-        <translation>服务器设置</translation>
-    </message>
-    <message>
-        <location filename="../GDBWindow.cpp" line="34"/>
-        <source>Local port</source>
-        <translation>本地端口</translation>
-    </message>
-    <message>
-        <location filename="../GDBWindow.cpp" line="36"/>
-        <source>Bind address</source>
-        <translation>绑定地址</translation>
-    </message>
-    <message>
-        <location filename="../GDBWindow.cpp" line="55"/>
-        <source>Break</source>
-        <translation>断点</translation>
-    </message>
-    <message>
-        <location filename="../GDBWindow.cpp" line="104"/>
-        <source>Stop</source>
-        <translation>停止</translation>
-    </message>
-    <message>
-        <location filename="../GDBWindow.cpp" line="114"/>
-        <source>Start</source>
-        <translation>开始</translation>
-    </message>
-    <message>
-        <location filename="../GDBWindow.cpp" line="122"/>
-        <source>Crash</source>
-        <translation>崩溃</translation>
-    </message>
-    <message>
-        <location filename="../GDBWindow.cpp" line="122"/>
-        <source>Could not start GDB server</source>
-        <translation>无法打开 GDB 服务器</translation>
-    </message>
-</context>
-<context>
-    <name>QGBA::GIFView</name>
     <message>
         <location filename="../GIFView.cpp" line="61"/>
         <source>Failed to open output file: %1</source>
@@ -1393,7 +748,173 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
     </message>
 </context>
 <context>
+    <name>QGBA::GameBoy</name>
+    <message>
+        <location filename="../GameBoy.cpp" line="55"/>
+        <location filename="../GameBoy.cpp" line="74"/>
+        <source>Autodetect</source>
+        <translation>自动检测</translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="56"/>
+        <source>Game Boy (DMG)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="57"/>
+        <source>Game Boy Pocket (MGB)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="58"/>
+        <source>Super Game Boy (SGB)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="59"/>
+        <source>Super Game Boy 2 (SGB)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="60"/>
+        <source>Game Boy Color (CGB)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="61"/>
+        <source>Game Boy Advance (AGB)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="62"/>
+        <source>Super Game Boy Color (SGB + CGB)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="75"/>
+        <source>ROM Only</source>
+        <translation>仅 ROM</translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="76"/>
+        <source>MBC1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="77"/>
+        <source>MBC2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="78"/>
+        <source>MBC3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="79"/>
+        <source>MBC3 + RTC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="80"/>
+        <source>MBC5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="81"/>
+        <source>MBC5 + Rumble</source>
+        <translation>MB5 + 震动</translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="82"/>
+        <source>MBC6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="83"/>
+        <source>MBC7 (Tilt)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="84"/>
+        <source>MMM01</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="85"/>
+        <source>HuC-1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="86"/>
+        <source>HuC-3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="87"/>
+        <source>Pocket Cam</source>
+        <translation>口袋摄像机</translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="88"/>
+        <source>TAMA5</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="89"/>
+        <source>Wisdom Tree</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="90"/>
+        <source>NT (new)</source>
+        <translation>NT(新)</translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="91"/>
+        <source>Pokémon Jade/Diamond</source>
+        <translation>宝可梦翡翠/钻石</translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="92"/>
+        <source>BBD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="93"/>
+        <source>Hitek</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="94"/>
+        <source>Sachen (MMC1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GameBoy.cpp" line="95"/>
+        <source>Sachen (MMC2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QGBA::IOViewer</name>
+    <message>
+        <location filename="../IOViewer.ui" line="14"/>
+        <source>I/O Viewer</source>
+        <translation>I/O 查看器</translation>
+    </message>
+    <message>
+        <location filename="../IOViewer.ui" line="26"/>
+        <source>0x0000</source>
+        <translation>0x0000</translation>
+    </message>
+    <message>
+        <location filename="../IOViewer.ui" line="367"/>
+        <location filename="../IOViewer.cpp" line="870"/>
+        <location filename="../IOViewer.cpp" line="883"/>
+        <source>B</source>
+        <translation>B</translation>
+    </message>
     <message>
         <location filename="../IOViewer.cpp" line="39"/>
         <source>Background mode</source>
@@ -1497,7 +1018,7 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
     <message>
         <location filename="../IOViewer.cpp" line="65"/>
         <source>Swap green components</source>
-        <translation type="unfinished"></translation>
+        <translation>交换绿色组件</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="69"/>
@@ -1647,7 +1168,7 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
         <location filename="../IOViewer.cpp" line="212"/>
         <location filename="../IOViewer.cpp" line="221"/>
         <source>Integer part (low)</source>
-        <translation type="unfinished"></translation>
+        <translation>整数部分（低）</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="178"/>
@@ -1655,7 +1176,7 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
         <location filename="../IOViewer.cpp" line="216"/>
         <location filename="../IOViewer.cpp" line="225"/>
         <source>Integer part (high)</source>
-        <translation type="unfinished"></translation>
+        <translation>整数部分（高）</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="229"/>
@@ -1802,22 +1323,22 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
         <translation>OBJ 窗口启用叠加</translation>
     </message>
     <message>
-        <location filename="../IOViewer.cpp" line="279"/>
+        <location filename="../IOViewer.cpp" line="280"/>
         <source>Background mosaic size vertical</source>
         <translation>背景马赛克垂直大小</translation>
     </message>
     <message>
-        <location filename="../IOViewer.cpp" line="280"/>
+        <location filename="../IOViewer.cpp" line="279"/>
         <source>Background mosaic size horizontal</source>
         <translation>背景马赛克水平大小</translation>
     </message>
     <message>
-        <location filename="../IOViewer.cpp" line="281"/>
+        <location filename="../IOViewer.cpp" line="282"/>
         <source>Object mosaic size vertical</source>
         <translation>对象马赛克垂直大小</translation>
     </message>
     <message>
-        <location filename="../IOViewer.cpp" line="282"/>
+        <location filename="../IOViewer.cpp" line="281"/>
         <source>Object mosaic size horizontal</source>
         <translation>对象马赛克水平大小</translation>
     </message>
@@ -2365,7 +1886,7 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
         <location filename="../IOViewer.cpp" line="696"/>
         <location filename="../IOViewer.cpp" line="704"/>
         <source>Address (low)</source>
-        <translation type="unfinished"></translation>
+        <translation>地址（低）</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="565"/>
@@ -2377,53 +1898,53 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
         <location filename="../IOViewer.cpp" line="700"/>
         <location filename="../IOViewer.cpp" line="708"/>
         <source>Address (high)</source>
-        <translation type="unfinished"></translation>
+        <translation>地址（高）</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1116"/>
         <location filename="../IOViewer.cpp" line="1139"/>
         <location filename="../IOViewer.cpp" line="1166"/>
         <source>Sound frequency (low)</source>
-        <translation type="unfinished"></translation>
+        <translation>声音频率（低）</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1120"/>
         <location filename="../IOViewer.cpp" line="1143"/>
         <location filename="../IOViewer.cpp" line="1170"/>
         <source>Sound frequency (high)</source>
-        <translation type="unfinished"></translation>
+        <translation>声音频率（高）</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1424"/>
         <source>Source (high)</source>
-        <translation type="unfinished"></translation>
+        <translation>源（高）</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1428"/>
         <source>Source (low)</source>
-        <translation type="unfinished"></translation>
+        <translation>源（低）</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1432"/>
         <source>Destination (high)</source>
-        <translation type="unfinished"></translation>
+        <translation>目的地（高）</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1436"/>
         <source>Destination (low)</source>
-        <translation type="unfinished"></translation>
+        <translation>目的地（低）</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1499"/>
         <location filename="../IOViewer.cpp" line="1511"/>
         <source>Green (low)</source>
-        <translation type="unfinished"></translation>
+        <translation>绿色（低）</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1500"/>
         <location filename="../IOViewer.cpp" line="1512"/>
         <source>Green (high)</source>
-        <translation type="unfinished"></translation>
+        <translation>绿色（高）</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="577"/>
@@ -2653,12 +2174,6 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
         <location filename="../IOViewer.cpp" line="882"/>
         <source>A</source>
         <translation>A</translation>
-    </message>
-    <message>
-        <location filename="../IOViewer.cpp" line="870"/>
-        <location filename="../IOViewer.cpp" line="883"/>
-        <source>B</source>
-        <translation>B</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="871"/>
@@ -2914,360 +2429,360 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
     <message>
         <location filename="../IOViewer.cpp" line="1034"/>
         <source>Right/A</source>
-        <translation type="unfinished"></translation>
+        <translation>右/A</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1035"/>
         <source>Left/B</source>
-        <translation type="unfinished"></translation>
+        <translation>左/B</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1036"/>
         <source>Up/Select</source>
-        <translation type="unfinished"></translation>
+        <translation>上/选择</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1037"/>
         <source>Down/Start</source>
-        <translation type="unfinished"></translation>
+        <translation>下/开始</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1038"/>
         <source>Active D-pad</source>
-        <translation type="unfinished"></translation>
+        <translation>活跃的方向键</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1039"/>
         <source>Active face buttons</source>
-        <translation type="unfinished"></translation>
+        <translation>活跃正面按钮</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1047"/>
         <source>Internal clock</source>
-        <translation type="unfinished"></translation>
+        <translation>内部时钟</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1048"/>
         <source>32× clocking (CGB only)</source>
-        <translation type="unfinished"></translation>
+        <translation>32× 时钟（CGB 特有）</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1049"/>
         <source>Transfer active</source>
-        <translation type="unfinished"></translation>
+        <translation>传输处于活动状态</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1067"/>
         <source>Divider</source>
-        <translation type="unfinished"></translation>
+        <translation>除数</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1069"/>
         <source>1/16</source>
-        <translation type="unfinished">4K {1/16?}</translation>
+        <translation>1/16</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1092"/>
         <location filename="../IOViewer.cpp" line="1553"/>
         <source>LCD STAT</source>
-        <translation type="unfinished"></translation>
+        <translation>LCD 统计</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1093"/>
         <location filename="../IOViewer.cpp" line="1554"/>
         <source>Timer</source>
-        <translation type="unfinished"></translation>
+        <translation>定时器</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1094"/>
         <location filename="../IOViewer.cpp" line="1555"/>
         <source>Serial</source>
-        <translation type="unfinished"></translation>
+        <translation>串口</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1095"/>
         <location filename="../IOViewer.cpp" line="1556"/>
         <source>Joypad</source>
-        <translation type="unfinished"></translation>
+        <translation>手柄</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1202"/>
         <source>Volume right</source>
-        <translation type="unfinished"></translation>
+        <translation>右侧音量</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1203"/>
         <source>Output right</source>
-        <translation type="unfinished"></translation>
+        <translation>右侧输出</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1204"/>
         <source>Volume left</source>
-        <translation type="unfinished"></translation>
+        <translation>左侧音量</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1205"/>
         <source>Output left</source>
-        <translation type="unfinished"></translation>
+        <translation>左侧输出</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1326"/>
         <source>Background enable/priority</source>
-        <translation type="unfinished"></translation>
+        <translation>后台启用/优先级</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1327"/>
         <source>Enable sprites</source>
-        <translation type="unfinished"></translation>
+        <translation>启用精灵</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1328"/>
         <source>Double-height sprites</source>
-        <translation type="unfinished"></translation>
+        <translation>二倍高度精灵</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1329"/>
         <source>Background tile map</source>
-        <translation type="unfinished"></translation>
+        <translation>背景图块集</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1330"/>
         <location filename="../IOViewer.cpp" line="1339"/>
         <source>0x9800 – 0x9BFF</source>
-        <translation type="unfinished"></translation>
+        <translation>0x9800 – 0x9BFF</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1331"/>
         <location filename="../IOViewer.cpp" line="1340"/>
         <source>0x9C00 – 0x9FFF</source>
-        <translation type="unfinished"></translation>
+        <translation>0x9C00 – 0x9FFF</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1333"/>
         <source>Background tile data</source>
-        <translation type="unfinished"></translation>
+        <translation>背景图块数据</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1334"/>
         <source>0x8800 – 0x87FF</source>
-        <translation type="unfinished"></translation>
+        <translation>0x8800 – 0x87FF</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1335"/>
         <source>0x8000 – 0x8FFF</source>
-        <translation type="unfinished"></translation>
+        <translation>0x8000 – 0x8FFF</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1337"/>
         <source>Enable window</source>
-        <translation type="unfinished"></translation>
+        <translation>启用窗口</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1338"/>
         <source>Window tile map</source>
-        <translation type="unfinished"></translation>
+        <translation>窗口图块集</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1342"/>
         <source>Enable LCD</source>
-        <translation type="unfinished"></translation>
+        <translation>启用 LCD</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1346"/>
         <source>Mode</source>
-        <translation type="unfinished">模式</translation>
+        <translation>模式</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1347"/>
         <source>0: HBlank</source>
-        <translation type="unfinished"></translation>
+        <translation>0：HBlank</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1348"/>
         <source>1: VBlank</source>
-        <translation type="unfinished"></translation>
+        <translation>1：VBlank</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1349"/>
         <source>2: OAM scan</source>
-        <translation type="unfinished"></translation>
+        <translation>2：OAM 扫描</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1350"/>
         <source>3: HDraw</source>
-        <translation type="unfinished"></translation>
+        <translation>3：HDraw</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1352"/>
         <source>In LYC</source>
-        <translation type="unfinished"></translation>
+        <translation>在 LYC 中</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1353"/>
         <source>Enable HBlank (mode 0) IRQ</source>
-        <translation type="unfinished"></translation>
+        <translation>启用 HBlank（模式 0）IRQ</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1354"/>
         <source>Enable VBlank (mode 1) IRQ</source>
-        <translation type="unfinished"></translation>
+        <translation>启用 VBlank（模式 1）IRQ</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1355"/>
         <source>Enable OAM (mode 2) IRQ</source>
-        <translation type="unfinished"></translation>
+        <translation>启用 OAM（模式 2）IRQ</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1356"/>
         <source>Enable LYC IRQ</source>
-        <translation type="unfinished"></translation>
+        <translation>启用 LYC IRQ</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1368"/>
         <source>Current Y coordinate</source>
-        <translation type="unfinished"></translation>
+        <translation>当前 Y 坐标</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1372"/>
         <source>Comparison Y coordinate</source>
-        <translation type="unfinished"></translation>
+        <translation>对比 Y 坐标</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1376"/>
         <source>Start upper byte</source>
-        <translation type="unfinished"></translation>
+        <translation>开始上部字节</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1380"/>
         <location filename="../IOViewer.cpp" line="1387"/>
         <location filename="../IOViewer.cpp" line="1394"/>
         <source>Color 0 shade</source>
-        <translation type="unfinished"></translation>
+        <translation>颜色 0 阴影</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1381"/>
         <location filename="../IOViewer.cpp" line="1388"/>
         <location filename="../IOViewer.cpp" line="1395"/>
         <source>Color 1 shade</source>
-        <translation type="unfinished"></translation>
+        <translation>颜色 1 阴影</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1382"/>
         <location filename="../IOViewer.cpp" line="1389"/>
         <location filename="../IOViewer.cpp" line="1396"/>
         <source>Color 2 shade</source>
-        <translation type="unfinished"></translation>
+        <translation>颜色 2 阴影</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1383"/>
         <location filename="../IOViewer.cpp" line="1390"/>
         <location filename="../IOViewer.cpp" line="1397"/>
         <source>Color 3 shade</source>
-        <translation type="unfinished"></translation>
+        <translation>颜色 3 阴影</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1411"/>
         <source>Prepare to switch speed</source>
-        <translation type="unfinished"></translation>
+        <translation>准备切换速度</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1412"/>
         <source>Double speed</source>
-        <translation type="unfinished"></translation>
+        <translation>双倍速度</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1418"/>
         <source>VRAM bank</source>
-        <translation type="unfinished"></translation>
+        <translation>显存库</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1440"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>长度</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1441"/>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>定时</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1448"/>
         <source>Write bit</source>
-        <translation type="unfinished"></translation>
+        <translation>写位</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1449"/>
         <source>Read bit</source>
-        <translation type="unfinished"></translation>
+        <translation>读位</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1452"/>
         <location filename="../IOViewer.cpp" line="1453"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>未知</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1493"/>
         <location filename="../IOViewer.cpp" line="1505"/>
         <source>Current index</source>
-        <translation type="unfinished"></translation>
+        <translation>当前索引</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1494"/>
         <location filename="../IOViewer.cpp" line="1506"/>
         <source>Auto-increment</source>
-        <translation type="unfinished"></translation>
+        <translation>自动递增</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1498"/>
         <location filename="../IOViewer.cpp" line="1510"/>
         <source>Red</source>
-        <translation type="unfinished">红</translation>
+        <translation>红</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1501"/>
         <location filename="../IOViewer.cpp" line="1513"/>
         <source>Blue</source>
-        <translation type="unfinished">蓝</translation>
+        <translation>蓝</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1517"/>
         <source>Sprite ordering</source>
-        <translation type="unfinished"></translation>
+        <translation>精灵排序</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1518"/>
         <source>OAM order</source>
-        <translation type="unfinished"></translation>
+        <translation>OAM 顺序</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1519"/>
         <source>x coordinate sorting</source>
-        <translation type="unfinished"></translation>
+        <translation>x 坐标排序</translation>
     </message>
     <message>
         <location filename="../IOViewer.cpp" line="1530"/>
         <source>WRAM bank</source>
-        <translation type="unfinished"></translation>
+        <translation>内存库</translation>
     </message>
 </context>
 <context>
     <name>QGBA::KeyEditor</name>
     <message>
         <location filename="../KeyEditor.cpp" line="34"/>
-        <location filename="../KeyEditor.cpp" line="236"/>
+        <location filename="../KeyEditor.cpp" line="240"/>
         <source>---</source>
         <translation>---</translation>
     </message>
     <message>
         <location filename="../KeyEditor.cpp" line="53"/>
         <source>Super (L)</source>
-        <translation>Super (L)</translation>
+        <translation>Super（L）</translation>
     </message>
     <message>
         <location filename="../KeyEditor.cpp" line="56"/>
         <source>Super (R)</source>
-        <translation>Super (R)</translation>
+        <translation>Super（R）</translation>
     </message>
     <message>
         <location filename="../KeyEditor.cpp" line="59"/>
@@ -3276,29 +2791,126 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
     </message>
 </context>
 <context>
+    <name>QGBA::LibraryTree</name>
+    <message>
+        <location filename="../library/LibraryTree.cpp" line="51"/>
+        <source>Name</source>
+        <translation>名称</translation>
+    </message>
+    <message>
+        <location filename="../library/LibraryTree.cpp" line="52"/>
+        <source>Location</source>
+        <translation>位置</translation>
+    </message>
+    <message>
+        <location filename="../library/LibraryTree.cpp" line="53"/>
+        <source>Platform</source>
+        <translation>平台</translation>
+    </message>
+    <message>
+        <location filename="../library/LibraryTree.cpp" line="54"/>
+        <source>Size</source>
+        <translation>大小</translation>
+    </message>
+    <message>
+        <location filename="../library/LibraryTree.cpp" line="55"/>
+        <source>CRC32</source>
+        <translation>CRC32</translation>
+    </message>
+</context>
+<context>
     <name>QGBA::LoadSaveState</name>
     <message>
-        <location filename="../LoadSaveState.cpp" line="74"/>
+        <location filename="../LoadSaveState.ui" line="14"/>
+        <location filename="../LoadSaveState.ui" line="66"/>
+        <source>%1 State</source>
+        <translation>%1 即时存档</translation>
+    </message>
+    <message>
+        <location filename="../LoadSaveState.ui" line="41"/>
+        <location filename="../LoadSaveState.ui" line="85"/>
+        <location filename="../LoadSaveState.ui" line="107"/>
+        <location filename="../LoadSaveState.ui" line="129"/>
+        <location filename="../LoadSaveState.ui" line="151"/>
+        <location filename="../LoadSaveState.ui" line="173"/>
+        <location filename="../LoadSaveState.ui" line="195"/>
+        <location filename="../LoadSaveState.ui" line="217"/>
+        <location filename="../LoadSaveState.ui" line="239"/>
+        <source>No Save</source>
+        <translation>不保存</translation>
+    </message>
+    <message>
+        <location filename="../LoadSaveState.ui" line="50"/>
+        <source>5</source>
+        <translation>5</translation>
+    </message>
+    <message>
+        <location filename="../LoadSaveState.ui" line="94"/>
+        <source>6</source>
+        <translation>6</translation>
+    </message>
+    <message>
+        <location filename="../LoadSaveState.ui" line="116"/>
+        <source>8</source>
+        <translation>8</translation>
+    </message>
+    <message>
+        <location filename="../LoadSaveState.ui" line="138"/>
+        <source>4</source>
+        <translation>4</translation>
+    </message>
+    <message>
+        <location filename="../LoadSaveState.ui" line="160"/>
+        <source>1</source>
+        <translation>1</translation>
+    </message>
+    <message>
+        <location filename="../LoadSaveState.ui" line="182"/>
+        <source>3</source>
+        <translation>3</translation>
+    </message>
+    <message>
+        <location filename="../LoadSaveState.ui" line="204"/>
+        <source>7</source>
+        <translation>7</translation>
+    </message>
+    <message>
+        <location filename="../LoadSaveState.ui" line="226"/>
+        <source>9</source>
+        <translation>9</translation>
+    </message>
+    <message>
+        <location filename="../LoadSaveState.ui" line="248"/>
+        <source>2</source>
+        <translation>2</translation>
+    </message>
+    <message>
+        <location filename="../LoadSaveState.ui" line="261"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../LoadSaveState.cpp" line="75"/>
         <source>Load State</source>
         <translation>载入即时存档</translation>
     </message>
     <message>
-        <location filename="../LoadSaveState.cpp" line="74"/>
+        <location filename="../LoadSaveState.cpp" line="75"/>
         <source>Save State</source>
         <translation>即时存档</translation>
     </message>
     <message>
-        <location filename="../LoadSaveState.cpp" line="183"/>
+        <location filename="../LoadSaveState.cpp" line="184"/>
         <source>Empty</source>
         <translation>空</translation>
     </message>
     <message>
-        <location filename="../LoadSaveState.cpp" line="192"/>
+        <location filename="../LoadSaveState.cpp" line="193"/>
         <source>Corrupted</source>
         <translation>已损坏</translation>
     </message>
     <message>
-        <location filename="../LoadSaveState.cpp" line="221"/>
+        <location filename="../LoadSaveState.cpp" line="222"/>
         <source>Slot %1</source>
         <translation>插槽 %1</translation>
     </message>
@@ -3306,43 +2918,43 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
 <context>
     <name>QGBA::LogConfigModel</name>
     <message>
-        <location filename="../LogConfigModel.cpp" line="84"/>
-        <location filename="../LogConfigModel.cpp" line="105"/>
+        <location filename="../LogConfigModel.cpp" line="90"/>
+        <location filename="../LogConfigModel.cpp" line="111"/>
         <source>Default</source>
         <translation>默认</translation>
     </message>
     <message>
-        <location filename="../LogConfigModel.cpp" line="86"/>
+        <location filename="../LogConfigModel.cpp" line="92"/>
         <source>Fatal</source>
         <translation>致命错误</translation>
     </message>
     <message>
-        <location filename="../LogConfigModel.cpp" line="88"/>
+        <location filename="../LogConfigModel.cpp" line="94"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../LogConfigModel.cpp" line="90"/>
+        <location filename="../LogConfigModel.cpp" line="96"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../LogConfigModel.cpp" line="92"/>
+        <location filename="../LogConfigModel.cpp" line="98"/>
         <source>Info</source>
         <translation>信息</translation>
     </message>
     <message>
-        <location filename="../LogConfigModel.cpp" line="94"/>
+        <location filename="../LogConfigModel.cpp" line="100"/>
         <source>Debug</source>
         <translation>调试</translation>
     </message>
     <message>
-        <location filename="../LogConfigModel.cpp" line="96"/>
+        <location filename="../LogConfigModel.cpp" line="102"/>
         <source>Stub</source>
         <translation>桩位</translation>
     </message>
     <message>
-        <location filename="../LogConfigModel.cpp" line="98"/>
+        <location filename="../LogConfigModel.cpp" line="104"/>
         <source>Game Error</source>
         <translation>游戏错误</translation>
     </message>
@@ -3350,136 +2962,239 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
 <context>
     <name>QGBA::LogController</name>
     <message>
-        <location filename="../LogController.cpp" line="68"/>
+        <location filename="../LogController.cpp" line="72"/>
         <source>[%1] %2: %3</source>
         <translation>[%1] %2: %3</translation>
     </message>
     <message>
-        <location filename="../LogController.cpp" line="79"/>
+        <location filename="../LogController.cpp" line="83"/>
         <source>An error occurred</source>
         <translation>发生错误</translation>
     </message>
     <message>
-        <location filename="../LogController.cpp" line="151"/>
+        <location filename="../LogController.cpp" line="155"/>
         <source>DEBUG</source>
         <translation>DEBUG</translation>
     </message>
     <message>
-        <location filename="../LogController.cpp" line="153"/>
+        <location filename="../LogController.cpp" line="157"/>
         <source>STUB</source>
         <translation>STUB</translation>
     </message>
     <message>
-        <location filename="../LogController.cpp" line="155"/>
+        <location filename="../LogController.cpp" line="159"/>
         <source>INFO</source>
         <translation>INFO</translation>
     </message>
     <message>
-        <location filename="../LogController.cpp" line="157"/>
+        <location filename="../LogController.cpp" line="161"/>
         <source>WARN</source>
         <translation>WARN</translation>
     </message>
     <message>
-        <location filename="../LogController.cpp" line="159"/>
+        <location filename="../LogController.cpp" line="163"/>
         <source>ERROR</source>
         <translation>ERROR</translation>
     </message>
     <message>
-        <location filename="../LogController.cpp" line="161"/>
+        <location filename="../LogController.cpp" line="165"/>
         <source>FATAL</source>
         <translation>FATAL</translation>
     </message>
     <message>
-        <location filename="../LogController.cpp" line="163"/>
+        <location filename="../LogController.cpp" line="167"/>
         <source>GAME ERROR</source>
         <translation>GAME ERROR</translation>
     </message>
 </context>
 <context>
+    <name>QGBA::LogView</name>
+    <message>
+        <location filename="../LogView.ui" line="14"/>
+        <source>Logs</source>
+        <translation>日志</translation>
+    </message>
+    <message>
+        <location filename="../LogView.ui" line="22"/>
+        <source>Enabled Levels</source>
+        <translation>启用级别</translation>
+    </message>
+    <message>
+        <location filename="../LogView.ui" line="28"/>
+        <source>Debug</source>
+        <translation>调试</translation>
+    </message>
+    <message>
+        <location filename="../LogView.ui" line="38"/>
+        <source>Stub</source>
+        <translation>桩件</translation>
+    </message>
+    <message>
+        <location filename="../LogView.ui" line="48"/>
+        <source>Info</source>
+        <translation>信息</translation>
+    </message>
+    <message>
+        <location filename="../LogView.ui" line="58"/>
+        <source>Warning</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../LogView.ui" line="68"/>
+        <source>Error</source>
+        <translation>错误</translation>
+    </message>
+    <message>
+        <location filename="../LogView.ui" line="78"/>
+        <source>Fatal</source>
+        <translation>致命错误</translation>
+    </message>
+    <message>
+        <location filename="../LogView.ui" line="95"/>
+        <source>Game Error</source>
+        <translation>游戏错误</translation>
+    </message>
+    <message>
+        <location filename="../LogView.ui" line="108"/>
+        <source>Advanced settings</source>
+        <translation>高级设置</translation>
+    </message>
+    <message>
+        <location filename="../LogView.ui" line="128"/>
+        <source>Clear</source>
+        <translation>清除</translation>
+    </message>
+    <message>
+        <location filename="../LogView.ui" line="137"/>
+        <source>Max Lines</source>
+        <translation>最大行数</translation>
+    </message>
+</context>
+<context>
     <name>QGBA::MapView</name>
     <message>
-        <location filename="../MapView.cpp" line="47"/>
+        <location filename="../MapView.ui" line="14"/>
+        <source>Maps</source>
+        <translation>贴图</translation>
+    </message>
+    <message>
+        <location filename="../MapView.ui" line="43"/>
+        <source>Magnification</source>
+        <translation>缩放率</translation>
+    </message>
+    <message>
+        <location filename="../MapView.ui" line="124"/>
+        <source>Export</source>
+        <translation>导出</translation>
+    </message>
+    <message>
+        <location filename="../MapView.ui" line="139"/>
+        <source>Copy</source>
+        <translation>复制</translation>
+    </message>
+    <message>
+        <location filename="../MapView.cpp" line="48"/>
         <source>Priority</source>
         <translation>优先级</translation>
     </message>
     <message>
-        <location filename="../MapView.cpp" line="48"/>
-        <location filename="../MapView.cpp" line="60"/>
+        <location filename="../MapView.cpp" line="49"/>
+        <location filename="../MapView.cpp" line="62"/>
         <source>Map base</source>
         <translation>映射基</translation>
     </message>
     <message>
-        <location filename="../MapView.cpp" line="49"/>
-        <location filename="../MapView.cpp" line="61"/>
+        <location filename="../MapView.cpp" line="50"/>
+        <location filename="../MapView.cpp" line="63"/>
         <source>Tile base</source>
         <translation>图块基</translation>
     </message>
     <message>
-        <location filename="../MapView.cpp" line="50"/>
+        <location filename="../MapView.cpp" line="51"/>
         <source>Size</source>
         <translation>大小</translation>
     </message>
     <message>
-        <location filename="../MapView.cpp" line="51"/>
-        <location filename="../MapView.cpp" line="62"/>
+        <location filename="../MapView.cpp" line="52"/>
+        <location filename="../MapView.cpp" line="64"/>
         <source>Offset</source>
         <translation>偏移</translation>
     </message>
     <message>
-        <location filename="../MapView.cpp" line="52"/>
+        <location filename="../MapView.cpp" line="53"/>
         <source>Xform</source>
         <translation>Xform</translation>
     </message>
     <message>
-        <location filename="../MapView.cpp" line="106"/>
+        <location filename="../MapView.cpp" line="108"/>
         <source>Map Addr.</source>
-        <translation>映射地址</translation>
+        <translation>映射地址.</translation>
     </message>
     <message>
-        <location filename="../MapView.cpp" line="107"/>
+        <location filename="../MapView.cpp" line="109"/>
         <source>Mirror</source>
         <translation>镜像</translation>
     </message>
     <message>
-        <location filename="../MapView.cpp" line="135"/>
+        <location filename="../MapView.cpp" line="143"/>
         <source>None</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="../MapView.cpp" line="137"/>
+        <location filename="../MapView.cpp" line="145"/>
         <source>Both</source>
         <translation>两者</translation>
     </message>
     <message>
-        <location filename="../MapView.cpp" line="139"/>
+        <location filename="../MapView.cpp" line="147"/>
         <source>Horizontal</source>
         <translation>水平</translation>
     </message>
     <message>
-        <location filename="../MapView.cpp" line="141"/>
+        <location filename="../MapView.cpp" line="149"/>
         <source>Vertical</source>
         <translation>垂直</translation>
     </message>
     <message>
-        <location filename="../MapView.cpp" line="167"/>
-        <location filename="../MapView.cpp" line="168"/>
-        <location filename="../MapView.cpp" line="216"/>
+        <location filename="../MapView.cpp" line="175"/>
+        <location filename="../MapView.cpp" line="176"/>
+        <location filename="../MapView.cpp" line="224"/>
         <source>N/A</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="../MapView.cpp" line="259"/>
+        <location filename="../MapView.cpp" line="267"/>
         <source>Export map</source>
         <translation>导出映射</translation>
     </message>
     <message>
-        <location filename="../MapView.cpp" line="260"/>
+        <location filename="../MapView.cpp" line="268"/>
         <source>Portable Network Graphics (*.png)</source>
         <translation>便携式网络图形 (*.png)</translation>
     </message>
 </context>
 <context>
     <name>QGBA::MemoryDump</name>
+    <message>
+        <location filename="../MemoryDump.ui" line="14"/>
+        <source>Save Memory Range</source>
+        <translation>保存内存范围</translation>
+    </message>
+    <message>
+        <location filename="../MemoryDump.ui" line="20"/>
+        <source>Start Address:</source>
+        <translation>起始地址:</translation>
+    </message>
+    <message>
+        <location filename="../MemoryDump.ui" line="76"/>
+        <source>Byte Count:</source>
+        <translation>字节数:</translation>
+    </message>
+    <message>
+        <location filename="../MemoryDump.ui" line="108"/>
+        <source>Dump across banks</source>
+        <translation>跨 bank 转储</translation>
+    </message>
     <message>
         <location filename="../MemoryDump.cpp" line="24"/>
         <source>Save memory region</source>
@@ -3514,48 +3229,195 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
         <translation>载入</translation>
     </message>
     <message>
-        <location filename="../MemoryModel.cpp" line="108"/>
+        <location filename="../MemoryModel.cpp" line="113"/>
         <source>All</source>
         <translation>全部</translation>
     </message>
     <message>
-        <location filename="../MemoryModel.cpp" line="153"/>
+        <location filename="../MemoryModel.cpp" line="158"/>
         <source>Load TBL</source>
         <translation>载入 TBL</translation>
     </message>
     <message>
-        <location filename="../MemoryModel.cpp" line="207"/>
+        <location filename="../MemoryModel.cpp" line="212"/>
         <source>Save selected memory</source>
         <translation>保存所选内存</translation>
     </message>
     <message>
-        <location filename="../MemoryModel.cpp" line="213"/>
+        <location filename="../MemoryModel.cpp" line="218"/>
         <source>Failed to open output file: %1</source>
         <translation>打开输出文件失败: %1</translation>
     </message>
     <message>
-        <location filename="../MemoryModel.cpp" line="221"/>
+        <location filename="../MemoryModel.cpp" line="226"/>
         <source>Load memory</source>
         <translation>载入内存</translation>
     </message>
     <message>
-        <location filename="../MemoryModel.cpp" line="227"/>
+        <location filename="../MemoryModel.cpp" line="232"/>
         <source>Failed to open input file: %1</source>
         <translation>打开输入文件失败: %1</translation>
     </message>
     <message>
-        <location filename="../MemoryModel.cpp" line="342"/>
+        <location filename="../MemoryModel.cpp" line="347"/>
         <source>TBL</source>
         <translation>TBL</translation>
     </message>
     <message>
-        <location filename="../MemoryModel.cpp" line="342"/>
+        <location filename="../MemoryModel.cpp" line="347"/>
         <source>ISO-8859-1</source>
         <translation>ISO-8859-1</translation>
     </message>
 </context>
 <context>
     <name>QGBA::MemorySearch</name>
+    <message>
+        <location filename="../MemorySearch.ui" line="26"/>
+        <source>Memory Search</source>
+        <translation>内存查找</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="51"/>
+        <source>Address</source>
+        <translation>地址</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="56"/>
+        <source>Current Value</source>
+        <translation>当前值</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="61"/>
+        <location filename="../MemorySearch.ui" line="81"/>
+        <source>Type</source>
+        <translation>类型</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="71"/>
+        <source>Value</source>
+        <translation>值</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="88"/>
+        <source>Numeric</source>
+        <translation>数字</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="101"/>
+        <source>Text</source>
+        <translation>文本</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="118"/>
+        <source>Width</source>
+        <translation>位宽</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="125"/>
+        <location filename="../MemorySearch.ui" line="185"/>
+        <source>Guess</source>
+        <translation>估计</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="138"/>
+        <source>1 Byte (8-bit)</source>
+        <translation>1 字节 (8 位)</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="148"/>
+        <source>2 Bytes (16-bit)</source>
+        <translation>2 字节 (16 位)</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="158"/>
+        <source>4 Bytes (32-bit)</source>
+        <translation>4 字节 (32 位)</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="178"/>
+        <source>Number type</source>
+        <translation>数字进制</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="195"/>
+        <source>Decimal</source>
+        <translation>十进制</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="202"/>
+        <source>Hexadecimal</source>
+        <translation>十六进制</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="216"/>
+        <source>Search type</source>
+        <translation>搜索类型</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="223"/>
+        <source>Equal to value</source>
+        <translation>约等于下值</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="236"/>
+        <source>Greater than value</source>
+        <translation>大于下值</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="246"/>
+        <source>Less than value</source>
+        <translation>小于下值</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="256"/>
+        <source>Unknown/changed</source>
+        <translation>未知/已更改</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="269"/>
+        <source>Changed by value</source>
+        <translation>由下值更改</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="282"/>
+        <source>Unchanged</source>
+        <translation>无更改</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="295"/>
+        <source>Increased</source>
+        <translation>增加</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="308"/>
+        <source>Decreased</source>
+        <translation>减少</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="318"/>
+        <source>Search ROM</source>
+        <translation>查找 ROM</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="336"/>
+        <source>New Search</source>
+        <translation>新的查找</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="343"/>
+        <source>Search Within</source>
+        <translation>在结果中查找</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="350"/>
+        <source>Open in Memory Viewer</source>
+        <translation>在内存查看器中打开</translation>
+    </message>
+    <message>
+        <location filename="../MemorySearch.ui" line="357"/>
+        <source>Refresh</source>
+        <translation>刷新</translation>
+    </message>
     <message>
         <location filename="../MemorySearch.cpp" line="221"/>
         <source> (%0/%1×)</source>
@@ -3578,69 +3440,404 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
     </message>
 </context>
 <context>
-    <name>QGBA::ObjView</name>
+    <name>QGBA::MemoryView</name>
     <message>
-        <location filename="../ObjView.cpp" line="154"/>
-        <location filename="../ObjView.cpp" line="242"/>
-        <source>0x%0</source>
-        <translation>0x%0</translation>
+        <location filename="../MemoryView.ui" line="14"/>
+        <source>Memory</source>
+        <translation>内存</translation>
     </message>
     <message>
-        <location filename="../ObjView.cpp" line="175"/>
+        <location filename="../MemoryView.ui" line="38"/>
+        <source>Inspect Address:</source>
+        <translation>检查地址:</translation>
+    </message>
+    <message>
+        <location filename="../MemoryView.ui" line="88"/>
+        <source>Set Alignment:</source>
+        <translation>设定对齐单位:</translation>
+    </message>
+    <message>
+        <location filename="../MemoryView.ui" line="108"/>
+        <source>&amp;1 Byte</source>
+        <translation>1 字节(&amp;1)</translation>
+    </message>
+    <message>
+        <location filename="../MemoryView.ui" line="131"/>
+        <source>&amp;2 Bytes</source>
+        <translation>2 字节(&amp;2)</translation>
+    </message>
+    <message>
+        <location filename="../MemoryView.ui" line="151"/>
+        <source>&amp;4 Bytes</source>
+        <translation>4 字节(&amp;4)</translation>
+    </message>
+    <message>
+        <location filename="../MemoryView.ui" line="187"/>
+        <source>Unsigned Integer:</source>
+        <translation>无符号整数:</translation>
+    </message>
+    <message>
+        <location filename="../MemoryView.ui" line="208"/>
+        <source>Signed Integer:</source>
+        <translation>有符号整数:</translation>
+    </message>
+    <message>
+        <location filename="../MemoryView.ui" line="229"/>
+        <source>String:</source>
+        <translation>字符串:</translation>
+    </message>
+    <message>
+        <location filename="../MemoryView.ui" line="243"/>
+        <source>Load TBL</source>
+        <translation>载入 TBL</translation>
+    </message>
+    <message>
+        <location filename="../MemoryView.ui" line="256"/>
+        <source>Copy Selection</source>
+        <translation>复制所选</translation>
+    </message>
+    <message>
+        <location filename="../MemoryView.ui" line="263"/>
+        <source>Paste</source>
+        <translation>粘贴</translation>
+    </message>
+    <message>
+        <location filename="../MemoryView.ui" line="283"/>
+        <source>Save Selection</source>
+        <translation>保存所选</translation>
+    </message>
+    <message>
+        <location filename="../MemoryView.ui" line="297"/>
+        <source>Load</source>
+        <translation>载入</translation>
+    </message>
+    <message>
+        <location filename="../MemoryView.ui" line="290"/>
+        <source>Save Range</source>
+        <translation>保存范围</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::MessagePainter</name>
+    <message>
+        <location filename="../MessagePainter.cpp" line="81"/>
+        <source>Frame %1</source>
+        <translation>帧 %1</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::ObjView</name>
+    <message>
+        <location filename="../ObjView.ui" line="14"/>
+        <source>Sprites</source>
+        <translation>精灵图</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="72"/>
+        <source>Address</source>
+        <translation>地址</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="94"/>
+        <source>Copy</source>
+        <translation>复制</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="122"/>
+        <source>Magnification</source>
+        <translation>缩放率</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="137"/>
+        <source>Geometry</source>
+        <translation>几何图</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="145"/>
+        <source>Position</source>
+        <translation>位置</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="224"/>
+        <source>Dimensions</source>
+        <translation>维度</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="316"/>
+        <source>Matrix</source>
+        <translation>矩阵</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="389"/>
+        <source>Export</source>
+        <translation>导出</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="402"/>
+        <source>Attributes</source>
+        <translation>属性</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="410"/>
+        <source>Transform</source>
+        <translation>变换</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="430"/>
+        <location filename="../ObjView.cpp" line="181"/>
         <source>Off</source>
         <translation>关</translation>
     </message>
     <message>
-        <location filename="../ObjView.cpp" line="176"/>
-        <location filename="../ObjView.cpp" line="177"/>
-        <location filename="../ObjView.cpp" line="178"/>
-        <location filename="../ObjView.cpp" line="179"/>
-        <location filename="../ObjView.cpp" line="250"/>
-        <location filename="../ObjView.cpp" line="251"/>
-        <location filename="../ObjView.cpp" line="252"/>
-        <location filename="../ObjView.cpp" line="253"/>
+        <location filename="../ObjView.ui" line="444"/>
+        <source>Palette</source>
+        <translation>调色板</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="481"/>
+        <source>Double Size</source>
+        <translation>双倍大小</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="548"/>
+        <location filename="../ObjView.ui" line="561"/>
+        <location filename="../ObjView.ui" line="632"/>
+        <source>Return, Ctrl+R</source>
+        <translation>回车键、Ctrl+R</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="522"/>
+        <source>Flipped</source>
+        <translation>已翻转</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="545"/>
+        <source>H</source>
+        <extracomment>Short for horizontal</extracomment>
+        <translation>H</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="558"/>
+        <source>V</source>
+        <extracomment>Short for vertical</extracomment>
+        <translation>V</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="572"/>
+        <source>Mode</source>
+        <translation>模式</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="592"/>
+        <location filename="../ObjView.cpp" line="190"/>
+        <source>Normal</source>
+        <translation>普通</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="606"/>
+        <source>Mosaic</source>
+        <translation>马赛克</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="643"/>
+        <source>Enabled</source>
+        <translation>已启用</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="677"/>
+        <source>Priority</source>
+        <translation>优先级</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.ui" line="715"/>
+        <source>Tile</source>
+        <translation>图块</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.cpp" line="160"/>
+        <location filename="../ObjView.cpp" line="249"/>
+        <source>0x%0</source>
+        <translation>0x%0</translation>
+    </message>
+    <message>
+        <location filename="../ObjView.cpp" line="182"/>
+        <location filename="../ObjView.cpp" line="183"/>
+        <location filename="../ObjView.cpp" line="184"/>
+        <location filename="../ObjView.cpp" line="185"/>
+        <location filename="../ObjView.cpp" line="257"/>
+        <location filename="../ObjView.cpp" line="258"/>
+        <location filename="../ObjView.cpp" line="259"/>
+        <location filename="../ObjView.cpp" line="260"/>
         <source>---</source>
         <translation>---</translation>
     </message>
     <message>
-        <location filename="../ObjView.cpp" line="184"/>
-        <source>Normal</source>
-        <translation>一般</translation>
-    </message>
-    <message>
-        <location filename="../ObjView.cpp" line="187"/>
+        <location filename="../ObjView.cpp" line="193"/>
         <source>Trans</source>
         <translation>变换</translation>
     </message>
     <message>
-        <location filename="../ObjView.cpp" line="190"/>
+        <location filename="../ObjView.cpp" line="196"/>
         <source>OBJWIN</source>
         <translation>OBJWIN</translation>
     </message>
     <message>
-        <location filename="../ObjView.cpp" line="193"/>
+        <location filename="../ObjView.cpp" line="199"/>
         <source>Invalid</source>
         <translation>无效</translation>
     </message>
     <message>
-        <location filename="../ObjView.cpp" line="249"/>
-        <location filename="../ObjView.cpp" line="254"/>
+        <location filename="../ObjView.cpp" line="256"/>
+        <location filename="../ObjView.cpp" line="261"/>
         <source>N/A</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="../ObjView.cpp" line="279"/>
+        <location filename="../ObjView.cpp" line="287"/>
         <source>Export sprite</source>
         <translation>导出精灵图</translation>
     </message>
     <message>
-        <location filename="../ObjView.cpp" line="280"/>
+        <location filename="../ObjView.cpp" line="288"/>
         <source>Portable Network Graphics (*.png)</source>
         <translation>便携式网络图形 (*.png)</translation>
     </message>
 </context>
 <context>
     <name>QGBA::OverrideView</name>
+    <message>
+        <location filename="../OverrideView.ui" line="20"/>
+        <source>Game Overrides</source>
+        <translation>游戏替代</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="30"/>
+        <source>Game Boy Advance</source>
+        <translation>Game Boy Advance</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="42"/>
+        <location filename="../OverrideView.ui" line="121"/>
+        <location filename="../OverrideView.ui" line="241"/>
+        <location filename="../OverrideView.ui" line="257"/>
+        <source>Autodetect</source>
+        <translation>自动检测</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="55"/>
+        <source>Realtime clock</source>
+        <translation>实时时钟</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="65"/>
+        <source>Gyroscope</source>
+        <translation>陀螺仪</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="75"/>
+        <source>Tilt</source>
+        <translation>图块</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="85"/>
+        <source>Light sensor</source>
+        <translation>光线传感器</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="95"/>
+        <source>Rumble</source>
+        <translation>振动</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="113"/>
+        <source>Save type</source>
+        <translation>保存类型</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="126"/>
+        <source>None</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="131"/>
+        <source>SRAM</source>
+        <translation>SRAM</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="136"/>
+        <source>Flash 512kb</source>
+        <translation>Flash 512kb</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="141"/>
+        <source>Flash 1Mb</source>
+        <translation>Flash 1Mb</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="146"/>
+        <source>EEPROM 8kB</source>
+        <translation>EEPROM 8kB</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="151"/>
+        <source>EEPROM 512 bytes</source>
+        <translation>EEPROM 512 字节</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="156"/>
+        <source>SRAM 64kB (bootlegs only)</source>
+        <translation>SRAM 64kB（盗版专用）</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="164"/>
+        <source>Idle loop</source>
+        <translation>空循环</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="190"/>
+        <source>Game Boy Player features</source>
+        <translation>Game Boy Player 功能</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="197"/>
+        <source>VBA bug compatibility mode</source>
+        <translation>VBA 错误兼容模式</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="227"/>
+        <source>Game Boy</source>
+        <translation>Game Boy</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="233"/>
+        <source>Game Boy model</source>
+        <translation>Game Boy 型号</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="249"/>
+        <source>Memory bank controller</source>
+        <translation>内存 bank 控制器</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="265"/>
+        <source>Background Colors</source>
+        <translation>背景颜色</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="352"/>
+        <source>Sprite Colors 1</source>
+        <translation>精灵图颜色 1</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="359"/>
+        <source>Sprite Colors 2</source>
+        <translation>精灵图颜色 2</translation>
+    </message>
+    <message>
+        <location filename="../OverrideView.ui" line="529"/>
+        <source>Palette preset</source>
+        <translation>调色板预设</translation>
+    </message>
     <message>
         <location filename="../OverrideView.cpp" line="54"/>
         <source>Official MBCs</source>
@@ -3659,6 +3856,66 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
 </context>
 <context>
     <name>QGBA::PaletteView</name>
+    <message>
+        <location filename="../PaletteView.ui" line="14"/>
+        <source>Palette</source>
+        <translation>调色板</translation>
+    </message>
+    <message>
+        <location filename="../PaletteView.ui" line="44"/>
+        <source>Background</source>
+        <translation>背景</translation>
+    </message>
+    <message>
+        <location filename="../PaletteView.ui" line="94"/>
+        <source>Objects</source>
+        <translation>对象</translation>
+    </message>
+    <message>
+        <location filename="../PaletteView.ui" line="153"/>
+        <source>Selection</source>
+        <translation>选择</translation>
+    </message>
+    <message>
+        <location filename="../PaletteView.ui" line="184"/>
+        <source>Red</source>
+        <translation>红</translation>
+    </message>
+    <message>
+        <location filename="../PaletteView.ui" line="191"/>
+        <source>Green</source>
+        <translation>绿</translation>
+    </message>
+    <message>
+        <location filename="../PaletteView.ui" line="198"/>
+        <source>Blue</source>
+        <translation>蓝</translation>
+    </message>
+    <message>
+        <location filename="../PaletteView.ui" line="253"/>
+        <source>16-bit value</source>
+        <translation>16 位值</translation>
+    </message>
+    <message>
+        <location filename="../PaletteView.ui" line="260"/>
+        <source>Hex code</source>
+        <translation>十六进制代码</translation>
+    </message>
+    <message>
+        <location filename="../PaletteView.ui" line="267"/>
+        <source>Palette index</source>
+        <translation>调色板索引</translation>
+    </message>
+    <message>
+        <location filename="../PaletteView.ui" line="340"/>
+        <source>Export BG</source>
+        <translation>导出背景</translation>
+    </message>
+    <message>
+        <location filename="../PaletteView.ui" line="360"/>
+        <source>Export OBJ</source>
+        <translation>导出 OBJ</translation>
+    </message>
     <message>
         <location filename="../PaletteView.cpp" line="120"/>
         <source>#%0</source>
@@ -3688,45 +3945,174 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
         <translation>Windows 调色板 (*.pal);;Adobe 颜色表 (*.act)</translation>
     </message>
     <message>
-        <location filename="../PaletteView.cpp" line="141"/>
+        <location filename="../PaletteView.cpp" line="144"/>
         <source>Failed to open output palette file: %1</source>
         <translation>打开输出调色板文件失败: %1</translation>
     </message>
 </context>
 <context>
+    <name>QGBA::PlacementControl</name>
+    <message>
+        <location filename="../PlacementControl.ui" line="20"/>
+        <source>Adjust placement</source>
+        <translation>更改布局</translation>
+    </message>
+    <message>
+        <location filename="../PlacementControl.ui" line="26"/>
+        <source>All</source>
+        <translation>全部</translation>
+    </message>
+    <message>
+        <location filename="../PlacementControl.ui" line="65"/>
+        <source>Offset</source>
+        <translation>偏移</translation>
+    </message>
+    <message>
+        <location filename="../PlacementControl.ui" line="72"/>
+        <source>X</source>
+        <translation>X</translation>
+    </message>
+    <message>
+        <location filename="../PlacementControl.ui" line="79"/>
+        <source>Y</source>
+        <translation>Y</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::PrinterView</name>
+    <message>
+        <location filename="../PrinterView.ui" line="14"/>
+        <source>Game Boy Printer</source>
+        <translation>Game Boy 打印机</translation>
+    </message>
+    <message>
+        <location filename="../PrinterView.ui" line="130"/>
+        <source>Hurry up!</source>
+        <translation>快点！</translation>
+    </message>
+    <message>
+        <location filename="../PrinterView.ui" line="137"/>
+        <source>Tear off</source>
+        <translation>剪下</translation>
+    </message>
+    <message>
+        <location filename="../PrinterView.ui" line="180"/>
+        <source>Magnification</source>
+        <translation>缩放率</translation>
+    </message>
+    <message>
+        <location filename="../PrinterView.ui" line="223"/>
+        <source>Copy</source>
+        <translation>复制</translation>
+    </message>
+    <message>
+        <location filename="../PrinterView.cpp" line="59"/>
+        <source>Save Printout</source>
+        <translation>保存打印输出</translation>
+    </message>
+    <message>
+        <location filename="../PrinterView.cpp" line="59"/>
+        <source>Portable Network Graphics (*.png)</source>
+        <translation>便携式网络图形 (*.png)</translation>
+    </message>
+</context>
+<context>
     <name>QGBA::ROMInfo</name>
     <message>
-        <location filename="../ROMInfo.cpp" line="44"/>
-        <location filename="../ROMInfo.cpp" line="65"/>
-        <location filename="../ROMInfo.cpp" line="76"/>
-        <location filename="../ROMInfo.cpp" line="85"/>
-        <location filename="../ROMInfo.cpp" line="86"/>
+        <location filename="../ROMInfo.cpp" line="38"/>
+        <location filename="../ROMInfo.cpp" line="53"/>
+        <location filename="../ROMInfo.cpp" line="62"/>
+        <location filename="../ROMInfo.cpp" line="63"/>
         <source>(unknown)</source>
         <translation>(未知)</translation>
     </message>
     <message>
-        <location filename="../ROMInfo.cpp" line="53"/>
-        <location filename="../ROMInfo.cpp" line="60"/>
+        <location filename="../ROMInfo.cpp" line="43"/>
         <source> bytes</source>
         <translation> 字节</translation>
     </message>
     <message>
-        <location filename="../ROMInfo.cpp" line="79"/>
+        <location filename="../ROMInfo.cpp" line="56"/>
         <source>(no database present)</source>
         <translation>(无现存数据库)</translation>
+    </message>
+    <message>
+        <location filename="../ROMInfo.ui" line="14"/>
+        <source>ROM Info</source>
+        <translation>ROM 信息</translation>
+    </message>
+    <message>
+        <location filename="../ROMInfo.ui" line="26"/>
+        <source>Game name:</source>
+        <translation>游戏名称:</translation>
+    </message>
+    <message>
+        <location filename="../ROMInfo.ui" line="46"/>
+        <source>Internal name:</source>
+        <translation>内部名称:</translation>
+    </message>
+    <message>
+        <location filename="../ROMInfo.ui" line="63"/>
+        <source>Game ID:</source>
+        <translation>游戏 ID:</translation>
+    </message>
+    <message>
+        <location filename="../ROMInfo.ui" line="80"/>
+        <source>File size:</source>
+        <translation>文件大小:</translation>
+    </message>
+    <message>
+        <location filename="../ROMInfo.ui" line="97"/>
+        <source>CRC32:</source>
+        <translation>CRC32:</translation>
     </message>
 </context>
 <context>
     <name>QGBA::ReportView</name>
     <message>
-        <location filename="../ReportView.cpp" line="316"/>
+        <location filename="../ReportView.cpp" line="351"/>
         <source>Bug report archive</source>
         <translation>错误报告存档</translation>
     </message>
     <message>
-        <location filename="../ReportView.cpp" line="316"/>
+        <location filename="../ReportView.cpp" line="351"/>
         <source>ZIP archive (*.zip)</source>
         <translation>ZIP 存档 (*.zip)</translation>
+    </message>
+    <message>
+        <location filename="../ReportView.ui" line="14"/>
+        <source>Generate Bug Report</source>
+        <translation>生成错误报告</translation>
+    </message>
+    <message>
+        <location filename="../ReportView.ui" line="67"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;To file a bug report, please first generate a report file to attach to the bug report you&apos;re about to file. It is recommended that you include the save files, as these often help with debugging issues. This will collect some information about the version of {projectName} you&apos;re running, your configuration, your computer, and the game you currently have open (if any). Once this collection is completed you can review all of the information gathered below and save it to a zip file. The collection will automatically attempt to redact any personal information, such as your username if it&apos;s in any of the paths gathered, but just in case you can edit it afterwards. After you have generated and saved it, please click the button below or go to &lt;a href=&quot;https://mgba.io/i/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;mgba.io/i&lt;/span&gt;&lt;/a&gt; to file the bug report on GitHub. Make sure to attach the report you generated!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;要提交错误报告，请首先生成报告文件并将其附加到要提交的错误报告当中。推荐您包含存档文件，因为这些存档通常会有助于调试问题。报告文件会收集一些信息，包括正在运行的 {projectName} 版本、配置、计算机以及当前已打开的游戏（若存在）。一旦收集完成，您可以查看下方收集的所有信息，并将其保存为 ZIP 文件。信息收集会自动尝试抹消所有的个人信息，例如您的用户名（如果它位于所收集的任意路径中），但以防万一，您之后可以对其进行编辑。生成并保存报告文件后，请单击下方按钮或转到 &lt;a href=&quot;https://mgba.io/i/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;mgba.io/i&lt;/span&gt;&lt;/a&gt; 在 GitHub 上提交错误报告。请确保您附加所生成的报告！&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ReportView.ui" line="85"/>
+        <source>Generate report</source>
+        <translation>生成报告</translation>
+    </message>
+    <message>
+        <location filename="../ReportView.ui" line="99"/>
+        <source>Save</source>
+        <translation>保存</translation>
+    </message>
+    <message>
+        <location filename="../ReportView.ui" line="113"/>
+        <source>Open issue list in browser</source>
+        <translation>在浏览器中打开问题列表</translation>
+    </message>
+    <message>
+        <location filename="../ReportView.ui" line="134"/>
+        <source>Include save file</source>
+        <translation>包含存档文件</translation>
+    </message>
+    <message>
+        <location filename="../ReportView.ui" line="150"/>
+        <source>Create and include savestate</source>
+        <translation>创建并包含即时存档</translation>
     </message>
 </context>
 <context>
@@ -3734,132 +4120,1144 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
     <message>
         <location filename="../SaveConverter.cpp" line="39"/>
         <source>Save games and save states (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>保存游戏和即时存档（%1）</translation>
     </message>
     <message>
         <location filename="../SaveConverter.cpp" line="40"/>
         <source>Select save game or save state</source>
-        <translation type="unfinished"></translation>
+        <translation>选择保存游戏或即时存档</translation>
     </message>
     <message>
         <location filename="../SaveConverter.cpp" line="52"/>
         <source>Save games (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>保存游戏（%1）</translation>
     </message>
     <message>
         <location filename="../SaveConverter.cpp" line="53"/>
         <source>Select save game</source>
-        <translation type="unfinished"></translation>
+        <translation>选择保存游戏</translation>
     </message>
     <message>
         <location filename="../SaveConverter.cpp" line="74"/>
         <source>Conversion failed</source>
-        <translation type="unfinished"></translation>
+        <translation>转换失败</translation>
     </message>
     <message>
         <location filename="../SaveConverter.cpp" line="74"/>
         <source>Failed to convert the save game. This is probably a bug.</source>
-        <translation type="unfinished"></translation>
+        <translation>未能转换保存游戏。这可能是一个错误。</translation>
     </message>
     <message>
         <location filename="../SaveConverter.cpp" line="90"/>
         <source>No file selected</source>
-        <translation type="unfinished"></translation>
+        <translation>未选择文件</translation>
     </message>
     <message>
         <location filename="../SaveConverter.cpp" line="97"/>
         <source>Could not open file</source>
-        <translation type="unfinished"></translation>
+        <translation>无法打开文件</translation>
     </message>
     <message>
-        <location filename="../SaveConverter.cpp" line="111"/>
+        <location filename="../SaveConverter.cpp" line="112"/>
         <source>No valid formats found</source>
-        <translation type="unfinished"></translation>
+        <translation>未找到有效格式</translation>
     </message>
     <message>
-        <location filename="../SaveConverter.cpp" line="119"/>
+        <location filename="../SaveConverter.cpp" line="120"/>
         <source>Please select a valid input file</source>
-        <translation type="unfinished"></translation>
+        <translation>请选择一个有效的输入文件</translation>
     </message>
     <message>
-        <location filename="../SaveConverter.cpp" line="130"/>
+        <location filename="../SaveConverter.cpp" line="131"/>
         <source>No valid conversions found</source>
-        <translation type="unfinished"></translation>
+        <translation>未发现有效转换</translation>
     </message>
     <message>
-        <location filename="../SaveConverter.cpp" line="576"/>
+        <location filename="../SaveConverter.cpp" line="638"/>
         <source>Cannot convert save games between platforms</source>
-        <translation type="unfinished"></translation>
+        <translation>无法在平台之间转换保存游戏</translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.ui" line="14"/>
+        <source>Convert/Extract Save Game</source>
+        <translation>转换或提取保存游戏</translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.ui" line="20"/>
+        <source>Input file</source>
+        <translation>输入文件</translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.ui" line="29"/>
+        <location filename="../SaveConverter.ui" line="55"/>
+        <source>Browse</source>
+        <translation>浏览</translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.ui" line="46"/>
+        <source>Output file</source>
+        <translation>输出文件</translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.cpp" line="450"/>
+        <source>%1 %2 save game</source>
+        <translation>%1 %2 保存游戏</translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.cpp" line="454"/>
+        <source>little endian</source>
+        <translation>小端</translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.cpp" line="457"/>
+        <source>big endian</source>
+        <translation>大端</translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.cpp" line="468"/>
+        <source>SRAM</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.cpp" line="472"/>
+        <source>%1 flash</source>
+        <translation>%1 闪存</translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.cpp" line="476"/>
+        <source>%1 EEPROM</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.cpp" line="488"/>
+        <source>%1 SRAM + RTC</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.cpp" line="490"/>
+        <source>%1 SRAM</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.cpp" line="495"/>
+        <source>packed MBC2</source>
+        <translation>包装的 MBC2</translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.cpp" line="497"/>
+        <source>unpacked MBC2</source>
+        <translation>未包装的 MBC2</translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.cpp" line="502"/>
+        <source>MBC6 flash</source>
+        <translation>MBC6 闪存</translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.cpp" line="504"/>
+        <source>MBC6 combined SRAM + flash</source>
+        <translation>MBC6组合SRAM+闪存</translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.cpp" line="506"/>
+        <source>MBC6 SRAM</source>
+        <translation>MBC6 SRAM</translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.cpp" line="510"/>
+        <source>TAMA5</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.cpp" line="522"/>
+        <source>%1 (%2)</source>
+        <translation>%1（%2）</translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.cpp" line="526"/>
+        <source>%1 save state with embedded %2 save game</source>
+        <translation>带嵌入的 %2 保存游戏的 %1 保存状态</translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.cpp" line="529"/>
+        <source>%1 SharkPort %2 save game</source>
+        <translation>%1 SharkPort %2 存档</translation>
+    </message>
+    <message>
+        <location filename="../SaveConverter.cpp" line="532"/>
+        <source>%1 GameShark Advance SP %2 save game</source>
+        <translation>%1 GameShark Advance SP %2 存档</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::ScriptingTextBuffer</name>
+    <message>
+        <location filename="../scripting/ScriptingTextBuffer.cpp" line="42"/>
+        <source>Untitled buffer</source>
+        <translation>无标题缓存</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::ScriptingView</name>
+    <message>
+        <location filename="../scripting/ScriptingView.ui" line="14"/>
+        <source>Scripting</source>
+        <translation>脚本</translation>
+    </message>
+    <message>
+        <location filename="../scripting/ScriptingView.ui" line="45"/>
+        <source>Run</source>
+        <translation>运行</translation>
+    </message>
+    <message>
+        <location filename="../scripting/ScriptingView.ui" line="92"/>
+        <source>File</source>
+        <translation>文件</translation>
+    </message>
+    <message>
+        <location filename="../scripting/ScriptingView.ui" line="96"/>
+        <source>Load recent script</source>
+        <translation>载入历史脚本</translation>
+    </message>
+    <message>
+        <location filename="../scripting/ScriptingView.ui" line="109"/>
+        <source>Load script...</source>
+        <translation>载入脚本...</translation>
+    </message>
+    <message>
+        <location filename="../scripting/ScriptingView.ui" line="114"/>
+        <source>&amp;Reset</source>
+        <translation>重置(&amp;R)</translation>
+    </message>
+    <message>
+        <location filename="../scripting/ScriptingView.ui" line="119"/>
+        <source>0</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../scripting/ScriptingView.cpp" line="60"/>
+        <source>Select script to load</source>
+        <translation>选择要载入的脚本</translation>
+    </message>
+    <message>
+        <location filename="../scripting/ScriptingView.cpp" line="85"/>
+        <source>Lua scripts (*.lua)</source>
+        <translation>Lua 脚本 (*.lua)</translation>
+    </message>
+    <message>
+        <location filename="../scripting/ScriptingView.cpp" line="87"/>
+        <source>All files (*.*)</source>
+        <translation>所有文件 (*.*)</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::SensorView</name>
+    <message>
+        <location filename="../SensorView.ui" line="20"/>
+        <source>Sensors</source>
+        <translation>传感器</translation>
+    </message>
+    <message>
+        <location filename="../SensorView.ui" line="31"/>
+        <source>Realtime clock</source>
+        <translation>实时时钟</translation>
+    </message>
+    <message>
+        <location filename="../SensorView.ui" line="50"/>
+        <source>Fixed time</source>
+        <translation>定时</translation>
+    </message>
+    <message>
+        <location filename="../SensorView.ui" line="37"/>
+        <source>System time</source>
+        <translation>系统时间</translation>
+    </message>
+    <message>
+        <location filename="../SensorView.ui" line="96"/>
+        <source>Start time at</source>
+        <translation>开始时间</translation>
+    </message>
+    <message>
+        <location filename="../SensorView.ui" line="60"/>
+        <source>Now</source>
+        <translation>现在</translation>
+    </message>
+    <message>
+        <location filename="../SensorView.ui" line="67"/>
+        <source>Offset time</source>
+        <translation>偏移时间</translation>
+    </message>
+    <message>
+        <location filename="../SensorView.ui" line="80"/>
+        <source> sec</source>
+        <translation> 秒</translation>
+    </message>
+    <message>
+        <location filename="../SensorView.ui" line="126"/>
+        <source>MM/dd/yy hh:mm:ss AP</source>
+        <translation>yyyy/MM/dd HH:mm:ss</translation>
+    </message>
+    <message>
+        <location filename="../SensorView.ui" line="136"/>
+        <source>Light sensor</source>
+        <translation>光线传感器</translation>
+    </message>
+    <message>
+        <location filename="../SensorView.ui" line="142"/>
+        <source>Brightness</source>
+        <translation>亮度</translation>
+    </message>
+    <message>
+        <location filename="../SensorView.ui" line="179"/>
+        <source>Tilt sensor</source>
+        <translation>倾斜传感器</translation>
+    </message>
+    <message>
+        <location filename="../SensorView.ui" line="187"/>
+        <location filename="../SensorView.ui" line="276"/>
+        <source>Set Y</source>
+        <translation>设定 Y 轴</translation>
+    </message>
+    <message>
+        <location filename="../SensorView.ui" line="197"/>
+        <location filename="../SensorView.ui" line="286"/>
+        <source>Set X</source>
+        <translation>设定 X 轴</translation>
+    </message>
+    <message>
+        <location filename="../SensorView.ui" line="268"/>
+        <source>Gyroscope</source>
+        <translation>陀螺仪</translation>
+    </message>
+    <message>
+        <location filename="../SensorView.ui" line="296"/>
+        <source>Sensitivity</source>
+        <translation>灵敏度</translation>
     </message>
 </context>
 <context>
     <name>QGBA::SettingsView</name>
     <message>
-        <location filename="../SettingsView.cpp" line="143"/>
-        <location filename="../SettingsView.cpp" line="186"/>
+        <location filename="../SettingsView.cpp" line="147"/>
+        <location filename="../SettingsView.cpp" line="222"/>
         <source>Qt Multimedia</source>
         <translation>Qt Multimedia</translation>
     </message>
     <message>
-        <location filename="../SettingsView.cpp" line="150"/>
+        <location filename="../SettingsView.cpp" line="154"/>
         <source>SDL</source>
         <translation>SDL</translation>
     </message>
     <message>
-        <location filename="../SettingsView.cpp" line="158"/>
+        <location filename="../SettingsView.cpp" line="162"/>
         <source>Software (Qt)</source>
         <translation>软件渲染 (Qt)</translation>
     </message>
     <message>
-        <location filename="../SettingsView.cpp" line="164"/>
+        <location filename="../SettingsView.ui" line="1240"/>
+        <location filename="../SettingsView.cpp" line="168"/>
         <source>OpenGL</source>
         <translation>OpenGL</translation>
     </message>
     <message>
-        <location filename="../SettingsView.cpp" line="171"/>
+        <location filename="../SettingsView.cpp" line="175"/>
         <source>OpenGL (force version 1.x)</source>
         <translation>OpenGL (强制版本 1.x)</translation>
     </message>
     <message>
-        <location filename="../SettingsView.cpp" line="179"/>
+        <location filename="../SettingsView.cpp" line="208"/>
+        <source>None</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.cpp" line="215"/>
         <source>None (Still Image)</source>
         <translation>无 (静止图像)</translation>
     </message>
     <message>
-        <location filename="../SettingsView.cpp" line="269"/>
+        <location filename="../SettingsView.cpp" line="319"/>
         <source>Keyboard</source>
         <translation>键盘</translation>
     </message>
     <message>
-        <location filename="../SettingsView.cpp" line="277"/>
+        <location filename="../SettingsView.cpp" line="327"/>
         <source>Controllers</source>
         <translation>控制器</translation>
     </message>
     <message>
-        <location filename="../SettingsView.cpp" line="323"/>
+        <location filename="../SettingsView.cpp" line="382"/>
         <source>Shortcuts</source>
         <translation>快捷键</translation>
     </message>
     <message>
-        <location filename="../SettingsView.cpp" line="335"/>
-        <location filename="../SettingsView.cpp" line="345"/>
+        <location filename="../SettingsView.cpp" line="394"/>
+        <location filename="../SettingsView.cpp" line="404"/>
         <source>Shaders</source>
         <translation>着色器</translation>
     </message>
     <message>
-        <location filename="../SettingsView.cpp" line="367"/>
+        <location filename="../SettingsView.cpp" line="426"/>
         <source>Select BIOS</source>
         <translation>选择 BIOS</translation>
     </message>
     <message>
-        <location filename="../SettingsView.cpp" line="374"/>
+        <location filename="../SettingsView.cpp" line="433"/>
         <source>Select directory</source>
-        <translation type="unfinished"></translation>
+        <translation>选择目录</translation>
     </message>
     <message>
-        <location filename="../SettingsView.cpp" line="714"/>
+        <location filename="../SettingsView.cpp" line="827"/>
         <source>(%1×%2)</source>
         <translation>(%1×%2)</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.cpp" line="845"/>
+        <source>Never</source>
+        <translation>从不</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.cpp" line="850"/>
+        <source>Just now</source>
+        <translation>刚刚</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.cpp" line="854"/>
+        <source>Less than an hour ago</source>
+        <translation>不到一小时前</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../SettingsView.cpp" line="859"/>
+        <source>%n hour(s) ago</source>
+        <translation>
+            <numerusform>%n 小时前</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../SettingsView.cpp" line="863"/>
+        <source>%n day(s) ago</source>
+        <translation>
+            <numerusform>%n 天前</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="20"/>
+        <source>Settings</source>
+        <translation>设置</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="45"/>
+        <source>Audio/Video</source>
+        <translation>音频/视频</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="50"/>
+        <source>Gameplay</source>
+        <translation>游玩设置</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="55"/>
+        <source>Interface</source>
+        <translation>用户界面</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="60"/>
+        <source>Update</source>
+        <translation>更新</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="65"/>
+        <source>Emulation</source>
+        <translation>模拟器</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="70"/>
+        <source>Enhancements</source>
+        <translation>增强</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="75"/>
+        <source>BIOS</source>
+        <translation>BIOS</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="80"/>
+        <source>Paths</source>
+        <translation>路径</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="85"/>
+        <source>Logging</source>
+        <translation>日志记录</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="90"/>
+        <source>Game Boy</source>
+        <translation>Game Boy</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="111"/>
+        <source>Audio driver:</source>
+        <translation>音频驱动程序:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="128"/>
+        <source>Audio buffer:</source>
+        <translation>音频缓冲:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="140"/>
+        <location filename="../SettingsView.ui" line="162"/>
+        <source>1536</source>
+        <translation>1536</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="147"/>
+        <source>512</source>
+        <translation>512</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="152"/>
+        <source>768</source>
+        <translation>768</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="157"/>
+        <source>1024</source>
+        <translation>1024</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="167"/>
+        <source>2048</source>
+        <translation>2048</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="172"/>
+        <source>3072</source>
+        <translation>3072</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="177"/>
+        <source>4096</source>
+        <translation>4096</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="185"/>
+        <source>samples</source>
+        <translation>采样</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="194"/>
+        <source>Sample rate:</source>
+        <translation>采样率:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="206"/>
+        <location filename="../SettingsView.ui" line="223"/>
+        <source>44100</source>
+        <translation>44100</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="213"/>
+        <source>22050</source>
+        <translation>22050</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="218"/>
+        <source>32000</source>
+        <translation>32000</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="228"/>
+        <source>48000</source>
+        <translation>48000</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="236"/>
+        <source>Hz</source>
+        <translation>Hz</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="245"/>
+        <source>Volume:</source>
+        <translation>音量:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="276"/>
+        <location filename="../SettingsView.ui" line="316"/>
+        <location filename="../SettingsView.ui" line="804"/>
+        <location filename="../SettingsView.ui" line="829"/>
+        <source>Mute</source>
+        <translation>静音</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="285"/>
+        <source>Fast forward volume:</source>
+        <translation>快进音量:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="325"/>
+        <source>Audio in multiplayer:</source>
+        <translation>多人游戏中的音频：</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="332"/>
+        <source>All windows</source>
+        <translation>所有窗口</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="345"/>
+        <source>Player 1 window only</source>
+        <translation>仅 P1 窗口</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="355"/>
+        <source>Currently active player window</source>
+        <translation>当前活跃的玩家窗口</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="388"/>
+        <source>Display driver:</source>
+        <translation>显示驱动程序:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="405"/>
+        <source>Frameskip:</source>
+        <translation>跳帧:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="414"/>
+        <source>Skip every</source>
+        <translation>每间隔</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="424"/>
+        <location filename="../SettingsView.ui" line="1157"/>
+        <source>frames</source>
+        <translation>帧</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="475"/>
+        <source>FPS target:</source>
+        <translation>目标 FPS:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="500"/>
+        <source>frames per second</source>
+        <translation>帧每秒</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="516"/>
+        <source>Sync:</source>
+        <translation>同步:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="382"/>
+        <location filename="../SettingsView.ui" line="525"/>
+        <source>Video</source>
+        <translation>视频</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="105"/>
+        <location filename="../SettingsView.ui" line="532"/>
+        <source>Audio</source>
+        <translation>音频</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="433"/>
+        <source>Lock aspect ratio</source>
+        <translation>锁定纵横比</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="440"/>
+        <source>Force integer scaling</source>
+        <translation>强制整数缩放</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="454"/>
+        <source>Bilinear filtering</source>
+        <translation>双线性过滤</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="750"/>
+        <source>Show filename instead of ROM name in library view</source>
+        <translation>库视图中显示文件名替代 ROM 名</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="797"/>
+        <location filename="../SettingsView.ui" line="822"/>
+        <source>Pause</source>
+        <translation>暂停</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="788"/>
+        <source>When inactive:</source>
+        <translation>不活跃时：</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="548"/>
+        <source>On loading a game:</source>
+        <translation>在加载游戏时:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="555"/>
+        <source>Load last state</source>
+        <translation>加载最后的即时存档</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="565"/>
+        <source>Load cheats</source>
+        <translation>加载作弊</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="592"/>
+        <source>Save entered cheats</source>
+        <translation>保存已输入的作弊码</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="813"/>
+        <source>When minimized:</source>
+        <translation>最小化时：</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="917"/>
+        <source>Current channel:</source>
+        <translation>当前通道：</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="931"/>
+        <source>Current version:</source>
+        <translation>当前版本：</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="955"/>
+        <source>Update channel:</source>
+        <translation>更新通道：</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="965"/>
+        <source>Available version:</source>
+        <translation>可用版本：</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="972"/>
+        <source>(Unknown)</source>
+        <translation>(未知)</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="982"/>
+        <source>Last checked:</source>
+        <translation>上次检查更新时间：</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1003"/>
+        <source>Automatically check on start</source>
+        <translation>启动时自动检查</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1010"/>
+        <source>Check now</source>
+        <translation>立即检查更新</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="2097"/>
+        <source>Default color palette only</source>
+        <translation>只使用默认调色板</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="2107"/>
+        <source>SGB color palette if available</source>
+        <translation>可用时使用 SGB 调色板</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="2117"/>
+        <source>GBC color palette if available</source>
+        <translation>可用时使用 GBC 调色板</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="2127"/>
+        <source>SGB (preferred) or GBC color palette if available</source>
+        <translation>可用时使用 SGB（首选）或 GBC 调色板</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="2140"/>
+        <source>Game Boy Camera</source>
+        <translation>Game Boy Camera</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="2146"/>
+        <source>Driver:</source>
+        <translation>驱动：</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="2163"/>
+        <source>Source:</source>
+        <translation>来源：</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="509"/>
+        <source>Native (59.7275)</source>
+        <translation>原生 (59.7275)</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="447"/>
+        <source>Interframe blending</source>
+        <translation>帧间混合</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="702"/>
+        <source>Language</source>
+        <translation>语言</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="719"/>
+        <source>Library:</source>
+        <translation>库:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="727"/>
+        <source>List view</source>
+        <translation>列表视图</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="732"/>
+        <source>Tree view</source>
+        <translation>树状视图</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="740"/>
+        <source>Show when no game open</source>
+        <translation>未打开游戏时显示</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="757"/>
+        <source>Clear cache</source>
+        <translation>清除缓存</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="771"/>
+        <source>Allow opposing input directions</source>
+        <translation>允许相对方向输入</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="778"/>
+        <source>Suspend screensaver</source>
+        <translation>停用屏幕保护程序</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="845"/>
+        <source>Dynamically update window title</source>
+        <translation>动态更新窗口标题</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="865"/>
+        <source>Show filename instead of ROM name in title bar</source>
+        <translation>标题栏显示文件名而不显示 ROM 名称</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="882"/>
+        <source>Show OSD messages</source>
+        <translation>显示 OSD 信息</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="691"/>
+        <source>Enable Discord Rich Presence</source>
+        <translation>启用 Discord Rich Presence</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="582"/>
+        <source>Periodically autosave state</source>
+        <translation>定时自动即时存档</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="855"/>
+        <source>Show FPS in title bar</source>
+        <translation>在标题栏显示 FPS</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="897"/>
+        <source>Show frame count in OSD</source>
+        <translation>OSD 中显示帧数</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="904"/>
+        <source>Show emulation info on reset</source>
+        <translation>重置时显示模拟信息</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1024"/>
+        <source>Fast forward speed:</source>
+        <translation>快进速度:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1055"/>
+        <location filename="../SettingsView.ui" line="1098"/>
+        <source>Unbounded</source>
+        <translation>不限制</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1067"/>
+        <source>Fast forward (held) speed:</source>
+        <translation>快进 (按住) 速度:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1110"/>
+        <source>Autofire interval:</source>
+        <translation>连发间隔:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1134"/>
+        <source>Enable rewind</source>
+        <translation>启用倒带</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1141"/>
+        <source>Rewind history:</source>
+        <translation>倒带历史:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1173"/>
+        <source>Idle loops:</source>
+        <translation>空循环:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1181"/>
+        <source>Run all</source>
+        <translation>全部运行</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1186"/>
+        <source>Remove known</source>
+        <translation>移除已知</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1191"/>
+        <source>Detect and remove</source>
+        <translation>检测并移除</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1199"/>
+        <source>Preload entire ROM into memory</source>
+        <translation>将整个 ROM 预载到内存中</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="609"/>
+        <source>Save state extra data:</source>
+        <translation>保存存档附加数据：</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="626"/>
+        <location filename="../SettingsView.ui" line="670"/>
+        <source>Save game</source>
+        <translation>保存游戏</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="653"/>
+        <source>Load state extra data:</source>
+        <translation>载入存档附加数据：</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1747"/>
+        <source>Models</source>
+        <translation>型号</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1753"/>
+        <source>GB only:</source>
+        <translation>仅 GB：</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1763"/>
+        <source>SGB compatible:</source>
+        <translation>兼容 SGB：</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1773"/>
+        <source>GBC only:</source>
+        <translation>仅 GBC：</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1783"/>
+        <source>GBC compatible:</source>
+        <translation>兼容 GBC：</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1793"/>
+        <source>SGB and GBC compatible:</source>
+        <translation>兼容 SGB 和 GBC：</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1813"/>
+        <source>Game Boy palette</source>
+        <translation>Game Boy 调色板</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1819"/>
+        <source>Preset:</source>
+        <translation>预设：</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="616"/>
+        <location filename="../SettingsView.ui" line="660"/>
+        <source>Screenshot</source>
+        <translation>截图</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="636"/>
+        <location filename="../SettingsView.ui" line="677"/>
+        <source>Cheat codes</source>
+        <translation>作弊码</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1206"/>
+        <source>Enable Game Boy Player features by default</source>
+        <translation>默认启用 Game Boy Player 功能</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1213"/>
+        <source>Enable VBA bug compatibility in ROM hacks</source>
+        <translation>启用用于改版的 VBA 漏洞兼容模式</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1227"/>
+        <source>Video renderer:</source>
+        <translation>视频渲染器:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1235"/>
+        <source>Software</source>
+        <translation>软件</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1255"/>
+        <source>OpenGL enhancements</source>
+        <translation>OpenGL 增强</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1261"/>
+        <source>High-resolution scale:</source>
+        <translation>高分辨率比例:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1299"/>
+        <source>(240×160)</source>
+        <translation>(240×160)</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1248"/>
+        <source>XQ GBA audio (experimental)</source>
+        <translation>XQ GBA 音频 (实验性)</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1328"/>
+        <source>GB BIOS file:</source>
+        <translation>GB BIOS 文件:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1347"/>
+        <location filename="../SettingsView.ui" line="1375"/>
+        <location filename="../SettingsView.ui" line="1403"/>
+        <location filename="../SettingsView.ui" line="1431"/>
+        <location filename="../SettingsView.ui" line="1489"/>
+        <location filename="../SettingsView.ui" line="1537"/>
+        <location filename="../SettingsView.ui" line="1585"/>
+        <location filename="../SettingsView.ui" line="1633"/>
+        <location filename="../SettingsView.ui" line="1681"/>
+        <source>Browse</source>
+        <translation>浏览</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1440"/>
+        <source>Use BIOS file if found</source>
+        <translation>当可用时使用 BIOS 文件</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1450"/>
+        <source>Skip BIOS intro</source>
+        <translation>跳过 BIOS 启动画面</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1412"/>
+        <source>GBA BIOS file:</source>
+        <translation>GBA BIOS 文件:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1384"/>
+        <source>GBC BIOS file:</source>
+        <translation>GBC BIOS 文件:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1356"/>
+        <source>SGB BIOS file:</source>
+        <translation>SGB BIOS 文件:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1464"/>
+        <source>Save games</source>
+        <translation>游戏存档</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1498"/>
+        <location filename="../SettingsView.ui" line="1546"/>
+        <location filename="../SettingsView.ui" line="1594"/>
+        <location filename="../SettingsView.ui" line="1642"/>
+        <location filename="../SettingsView.ui" line="1690"/>
+        <source>Same directory as the ROM</source>
+        <translation>与 ROM 所在目录相同</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1512"/>
+        <source>Save states</source>
+        <translation>即时存档</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1560"/>
+        <source>Screenshots</source>
+        <translation>截图</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1608"/>
+        <source>Patches</source>
+        <translation>补丁</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1656"/>
+        <source>Cheats</source>
+        <translation>作弊码</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1713"/>
+        <source>Log to file</source>
+        <translation>记录日志到文件</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1720"/>
+        <source>Log to console</source>
+        <translation>记录日志到控制台</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1734"/>
+        <source>Select Log File</source>
+        <translation>选择日志文件</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1829"/>
+        <source>Default BG colors:</source>
+        <translation>默认背景色:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1916"/>
+        <source>Default sprite colors 1:</source>
+        <translation>默认精灵图颜色 1:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="2003"/>
+        <source>Default sprite colors 2:</source>
+        <translation>默认精灵图颜色 2:</translation>
+    </message>
+    <message>
+        <location filename="../SettingsView.ui" line="1803"/>
+        <source>Super Game Boy borders</source>
+        <translation>Super Game Boy 边框</translation>
     </message>
 </context>
 <context>
@@ -3894,1716 +5292,6 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
         <source>Pass %1</source>
         <translation>通道 %1</translation>
     </message>
-</context>
-<context>
-    <name>QGBA::ShortcutModel</name>
-    <message>
-        <location filename="../ShortcutModel.cpp" line="66"/>
-        <source>Action</source>
-        <translation>动作</translation>
-    </message>
-    <message>
-        <location filename="../ShortcutModel.cpp" line="68"/>
-        <source>Keyboard</source>
-        <translation>键盘</translation>
-    </message>
-    <message>
-        <location filename="../ShortcutModel.cpp" line="70"/>
-        <source>Gamepad</source>
-        <translation>游戏手柄</translation>
-    </message>
-</context>
-<context>
-    <name>QGBA::TileView</name>
-    <message>
-        <location filename="../TileView.cpp" line="177"/>
-        <source>Export tiles</source>
-        <translation>导出图块</translation>
-    </message>
-    <message>
-        <location filename="../TileView.cpp" line="178"/>
-        <location filename="../TileView.cpp" line="190"/>
-        <source>Portable Network Graphics (*.png)</source>
-        <translation>便携式网络图形 (*.png)</translation>
-    </message>
-    <message>
-        <location filename="../TileView.cpp" line="189"/>
-        <source>Export tile</source>
-        <translation>导出图块</translation>
-    </message>
-</context>
-<context>
-    <name>QGBA::VideoView</name>
-    <message>
-        <location filename="../VideoView.cpp" line="197"/>
-        <source>Failed to open output video file: %1</source>
-        <translation>打开输出视频文件失败: %1</translation>
-    </message>
-    <message>
-        <location filename="../VideoView.cpp" line="218"/>
-        <source>Native (%0x%1)</source>
-        <translation>原生 (%0x%1)</translation>
-    </message>
-    <message>
-        <location filename="../VideoView.cpp" line="233"/>
-        <source>Select output file</source>
-        <translation>选择输出文件</translation>
-    </message>
-</context>
-<context>
-    <name>QGBA::Window</name>
-    <message>
-        <location filename="../Window.cpp" line="288"/>
-        <source>Game Boy Advance ROMs (%1)</source>
-        <translation>Game Boy Advance ROM (%1)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="305"/>
-        <source>Game Boy ROMs (%1)</source>
-        <translation>Game Boy ROM (%1)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="309"/>
-        <source>All ROMs (%1)</source>
-        <translation>所有 ROM (%1)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="310"/>
-        <source>%1 Video Logs (*.mvl)</source>
-        <translation>%1 视频日志 (*.mvl)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="325"/>
-        <source>Archives (%1)</source>
-        <translation>压缩文件 (%1)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="330"/>
-        <location filename="../Window.cpp" line="338"/>
-        <location filename="../Window.cpp" line="365"/>
-        <source>Select ROM</source>
-        <translation>选择 ROM</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="356"/>
-        <source>Select folder</source>
-        <translation>选择文件夹</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="442"/>
-        <location filename="../Window.cpp" line="449"/>
-        <source>Select save</source>
-        <translation>选择存档</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="411"/>
-        <source>Select patch</source>
-        <translation>选择补丁</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="411"/>
-        <source>Patches (*.ips *.ups *.bps)</source>
-        <translation>补丁 (*.ips *.ups *.bps)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="422"/>
-        <source>Select e-Reader dotcode</source>
-        <translation>选择 e-Reader 点码</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="422"/>
-        <source>e-Reader card (*.raw *.bin *.bmp)</source>
-        <translation>e-Reader 卡 (*.raw *.bin *.bmp)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="435"/>
-        <source>Select image</source>
-        <translation>选择图片</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="435"/>
-        <source>Image file (*.png *.gif *.jpg *.jpeg);;All files (*)</source>
-        <translation>图像文件 (*.png *.gif *.jpg *.jpeg);;所有文件 (*)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="442"/>
-        <location filename="../Window.cpp" line="449"/>
-        <source>GameShark saves (*.sps *.xps)</source>
-        <translation>GameShark 存档 (*.sps *.xps)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="481"/>
-        <source>Select video log</source>
-        <translation>选择视频日志</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="481"/>
-        <source>Video logs (*.mvl)</source>
-        <translation>视频日志文件 (*.mvl)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="858"/>
-        <source>Crash</source>
-        <translation>崩溃</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="859"/>
-        <source>The game has crashed with the following error:
-
-%1</source>
-        <translation>游戏因以下错误而崩溃:
-
-%1</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="866"/>
-        <source>Couldn&apos;t Start</source>
-        <translation>无法启动</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="867"/>
-        <source>Could not start game.</source>
-        <translation>无法启动游戏。</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="881"/>
-        <source>Unimplemented BIOS call</source>
-        <translation>未实现的 BIOS 调用</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="882"/>
-        <source>This game uses a BIOS call that is not implemented. Please use the official BIOS for best experience.</source>
-        <translation>此游戏使用尚未实现的 BIOS 调用。请使用官方 BIOS 以获得最佳体验。</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="895"/>
-        <source>Failed to create an appropriate display device, falling back to software display. Games may run slowly, especially with larger windows.</source>
-        <translation>无法创建适合的显示设备，正在回滚到软件显示。游戏的运行速度（特别在大窗口的情况下）可能会变慢。</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="987"/>
-        <source>Really make portable?</source>
-        <translation>确定进行程序便携化？</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="988"/>
-        <source>This will make the emulator load its configuration from the same directory as the executable. Do you want to continue?</source>
-        <translation>进行此操作后，模拟器将从其可执行文件所在目录中载入模拟器配置。您想继续吗？</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1000"/>
-        <source>Restart needed</source>
-        <translation>需要重新启动</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1001"/>
-        <source>Some changes will not take effect until the emulator is restarted.</source>
-        <translation>更改将在模拟器下次重新启动时生效。</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1056"/>
-        <source> -  Player %1 of %2</source>
-        <translation> -  玩家 %1 共 %2</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1067"/>
-        <source>%1 - %2</source>
-        <translation>%1 - %2</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1069"/>
-        <source>%1 - %2 - %3</source>
-        <translation>%1 - %2 - %3</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1071"/>
-        <source>%1 - %2 (%3 fps) - %4</source>
-        <translation>%1 - %2 (%3 fps) - %4</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1113"/>
-        <source>&amp;File</source>
-        <translation>文件(&amp;F)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1115"/>
-        <source>Load &amp;ROM...</source>
-        <translation>载入 ROM(&amp;R)...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1118"/>
-        <source>Load ROM in archive...</source>
-        <translation>从压缩文件中载入 ROM...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1119"/>
-        <source>Add folder to library...</source>
-        <translation>将文件夹添加到库中...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="373"/>
-        <source>Save games (%1)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="374"/>
-        <source>Select save game</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="382"/>
-        <source>mGBA save state files (%1)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="384"/>
-        <location filename="../Window.cpp" line="389"/>
-        <source>Select save state</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1122"/>
-        <source>Load alternate save game...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1125"/>
-        <source>Load temporary save game...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1129"/>
-        <source>Load &amp;patch...</source>
-        <translation>载入补丁(&amp;P)...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1132"/>
-        <source>Boot BIOS</source>
-        <translation>引导 BIOS</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1137"/>
-        <source>Replace ROM...</source>
-        <translation>替换 ROM...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1139"/>
-        <source>Scan e-Reader dotcodes...</source>
-        <translation>扫描 e-Reader 点码...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1143"/>
-        <source>ROM &amp;info...</source>
-        <translation>ROM 信息(&amp;I)...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1145"/>
-        <source>Recent</source>
-        <translation>最近打开</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1148"/>
-        <source>Make portable</source>
-        <translation>程序便携化</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1151"/>
-        <source>&amp;Load state</source>
-        <translation>载入即时存档(&amp;L)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1156"/>
-        <source>Load state file...</source>
-        <translation>载入即时存档文件...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1161"/>
-        <source>&amp;Save state</source>
-        <translation>保存即时存档(&amp;S)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1166"/>
-        <source>Save state file...</source>
-        <translation>保存即时存档文件...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1171"/>
-        <source>Quick load</source>
-        <translation>快速读档</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1172"/>
-        <source>Quick save</source>
-        <translation>快速存档</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1174"/>
-        <source>Load recent</source>
-        <translation>载入最近存档</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1179"/>
-        <source>Save recent</source>
-        <translation>保存最近存档</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1187"/>
-        <source>Undo load state</source>
-        <translation>撤消读档</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1190"/>
-        <source>Undo save state</source>
-        <translation>撤消存档</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1197"/>
-        <location filename="../Window.cpp" line="1202"/>
-        <source>State &amp;%1</source>
-        <translation>即时存档 (&amp;%1)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1209"/>
-        <source>Load camera image...</source>
-        <translation>载入相机图片...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1213"/>
-        <source>Convert save game...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1215"/>
-        <source>Import GameShark Save...</source>
-        <translation>导入 GameShark 存档...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1218"/>
-        <source>Export GameShark Save...</source>
-        <translation>导出 GameShark 存档...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1223"/>
-        <source>New multiplayer window</source>
-        <translation>新建多人游戏窗口</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1231"/>
-        <source>Report bug...</source>
-        <translation>报告错误...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1232"/>
-        <source>About...</source>
-        <translation>关于...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1235"/>
-        <source>E&amp;xit</source>
-        <translation>退出(&amp;X)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1238"/>
-        <source>&amp;Emulation</source>
-        <translation>模拟(&amp;E)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1239"/>
-        <source>&amp;Reset</source>
-        <translation>重置(&amp;R)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1240"/>
-        <source>Sh&amp;utdown</source>
-        <translation>关机(&amp;U)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1241"/>
-        <source>Yank game pak</source>
-        <translation>快速抽出游戏卡带</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1245"/>
-        <source>&amp;Pause</source>
-        <translation>暂停(&amp;P)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1254"/>
-        <source>&amp;Next frame</source>
-        <translation>下一帧(&amp;N)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1258"/>
-        <source>Fast forward (held)</source>
-        <translation>快进 (长按)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1264"/>
-        <source>&amp;Fast forward</source>
-        <translation>快进(&amp;F)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1268"/>
-        <source>Fast forward speed</source>
-        <translation>快进速度</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1273"/>
-        <source>Unbounded</source>
-        <translation>不限制</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1277"/>
-        <source>%0x</source>
-        <translation>%0x</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1281"/>
-        <source>Rewind (held)</source>
-        <translation>倒带 (长按)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1288"/>
-        <source>Re&amp;wind</source>
-        <translation>倒带(&amp;W)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1293"/>
-        <source>Step backwards</source>
-        <translation>步退</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1299"/>
-        <source>Sync to &amp;video</source>
-        <translation>视频同步(&amp;V)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1306"/>
-        <source>Sync to &amp;audio</source>
-        <translation>音频同步(&amp;A)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1314"/>
-        <source>Solar sensor</source>
-        <translation>太阳光传感器</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1315"/>
-        <source>Increase solar level</source>
-        <translation>增加太阳光等级</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1316"/>
-        <source>Decrease solar level</source>
-        <translation>降低太阳光等级</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1317"/>
-        <source>Brightest solar level</source>
-        <translation>太阳光等级为最亮</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1320"/>
-        <source>Darkest solar level</source>
-        <translation>太阳光等级为最暗</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1326"/>
-        <source>Brightness %1</source>
-        <translation>亮度 %1</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1332"/>
-        <source>Game Boy Printer...</source>
-        <translation>Game Boy 打印机...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1341"/>
-        <source>BattleChip Gate...</source>
-        <translation>BattleChip Gate...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1345"/>
-        <source>Audio/&amp;Video</source>
-        <translation>音频/视频(&amp;V)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1346"/>
-        <source>Frame size</source>
-        <translation>画面大小</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1348"/>
-        <source>%1×</source>
-        <translation>%1×</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1373"/>
-        <source>Toggle fullscreen</source>
-        <translation>切换全屏</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1376"/>
-        <source>Lock aspect ratio</source>
-        <translation>锁定纵横比</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1388"/>
-        <source>Force integer scaling</source>
-        <translation>强制整数缩放</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1400"/>
-        <source>Interframe blending</source>
-        <translation>帧间混合</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1409"/>
-        <source>Bilinear filtering</source>
-        <translation>双线性过滤</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1420"/>
-        <source>Frame&amp;skip</source>
-        <translation>跳帧(&amp;S)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1433"/>
-        <source>Mute</source>
-        <translation>静音</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1439"/>
-        <source>FPS target</source>
-        <translation>目标 FPS</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1447"/>
-        <source>Native (59.7275)</source>
-        <translation>原生 (59.7275)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1462"/>
-        <source>Take &amp;screenshot</source>
-        <translation>截图(&amp;S)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1464"/>
-        <source>F12</source>
-        <translation>F12</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1468"/>
-        <source>Record A/V...</source>
-        <translation>录制音频/视频...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1469"/>
-        <source>Record GIF/WebP/APNG...</source>
-        <translation>录制 GIF/WebP/APNG...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1473"/>
-        <source>Video layers</source>
-        <translation>视频图层</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1474"/>
-        <source>Audio channels</source>
-        <translation>音频声道</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1476"/>
-        <source>Adjust layer placement...</source>
-        <translation>调整图层布局...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1478"/>
-        <source>&amp;Tools</source>
-        <translation>工具(&amp;T)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1479"/>
-        <source>View &amp;logs...</source>
-        <translation>查看日志(&amp;L)...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1481"/>
-        <source>Game &amp;overrides...</source>
-        <translation>覆写游戏(&amp;O)...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1493"/>
-        <source>Game Pak sensors...</source>
-        <translation>游戏卡带传感器...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1504"/>
-        <source>&amp;Cheats...</source>
-        <translation>作弊码(&amp;C)...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1507"/>
-        <source>Settings...</source>
-        <translation>设置...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1511"/>
-        <source>Open debugger console...</source>
-        <translation>打开调试器控制台...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1513"/>
-        <source>Start &amp;GDB server...</source>
-        <translation>打开 GDB 服务器(&amp;G)...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1519"/>
-        <source>View &amp;palette...</source>
-        <translation>查看调色板(&amp;P)...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1520"/>
-        <source>View &amp;sprites...</source>
-        <translation>查看精灵图(&amp;S)...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1521"/>
-        <source>View &amp;tiles...</source>
-        <translation>查看图块(&amp;T)...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1522"/>
-        <source>View &amp;map...</source>
-        <translation>查看映射(&amp;M)...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1524"/>
-        <source>&amp;Frame inspector...</source>
-        <translation>框架检查器(&amp;F)...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1540"/>
-        <source>View memory...</source>
-        <translation>查看内存...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1541"/>
-        <source>Search memory...</source>
-        <translation>搜索内存...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1542"/>
-        <source>View &amp;I/O registers...</source>
-        <translation>查看 I/O 寄存器(&amp;I)...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1545"/>
-        <source>Record debug video log...</source>
-        <translation>记录调试视频日志...</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1546"/>
-        <source>Stop debug video log</source>
-        <translation>停止记录调试视频日志</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1646"/>
-        <source>Exit fullscreen</source>
-        <translation>退出全屏</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1648"/>
-        <source>GameShark Button (held)</source>
-        <translation>GameShark 键 (长按)</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1654"/>
-        <source>Autofire</source>
-        <translation>连发</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1655"/>
-        <source>Autofire A</source>
-        <translation>连发 A</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1660"/>
-        <source>Autofire B</source>
-        <translation>连发 B</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1665"/>
-        <source>Autofire L</source>
-        <translation>连发 L</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1670"/>
-        <source>Autofire R</source>
-        <translation>连发 R</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1675"/>
-        <source>Autofire Start</source>
-        <translation>连发 Start</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1680"/>
-        <source>Autofire Select</source>
-        <translation>连发 Select</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1685"/>
-        <source>Autofire Up</source>
-        <translation>连发 上</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1690"/>
-        <source>Autofire Right</source>
-        <translation>连发 右</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1695"/>
-        <source>Autofire Down</source>
-        <translation>连发 下</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1700"/>
-        <source>Autofire Left</source>
-        <translation>连发 左</translation>
-    </message>
-    <message>
-        <location filename="../Window.cpp" line="1754"/>
-        <source>Clear</source>
-        <translation>清除</translation>
-    </message>
-</context>
-<context>
-    <name>QObject</name>
-    <message>
-        <location filename="../utils.cpp" line="14"/>
-        <source>%1 byte</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../utils.cpp" line="17"/>
-        <source>%1 kiB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../utils.cpp" line="21"/>
-        <source>%1 MiB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../utils.cpp" line="29"/>
-        <source>GBA</source>
-        <translation>GBA</translation>
-    </message>
-    <message>
-        <location filename="../utils.cpp" line="33"/>
-        <source>GB</source>
-        <translation>GB</translation>
-    </message>
-    <message>
-        <location filename="../utils.cpp" line="36"/>
-        <source>?</source>
-        <translation>?</translation>
-    </message>
-</context>
-<context>
-    <name>QShortcut</name>
-    <message>
-        <location filename="../KeyEditor.cpp" line="40"/>
-        <source>Shift</source>
-        <translation>Shift</translation>
-    </message>
-    <message>
-        <location filename="../KeyEditor.cpp" line="43"/>
-        <source>Control</source>
-        <translation>Control</translation>
-    </message>
-    <message>
-        <location filename="../KeyEditor.cpp" line="46"/>
-        <source>Alt</source>
-        <translation>Alt</translation>
-    </message>
-    <message>
-        <location filename="../KeyEditor.cpp" line="49"/>
-        <source>Meta</source>
-        <translation>Meta</translation>
-    </message>
-</context>
-<context>
-    <name>ROMInfo</name>
-    <message>
-        <location filename="../ROMInfo.ui" line="14"/>
-        <source>ROM Info</source>
-        <translation>ROM 信息</translation>
-    </message>
-    <message>
-        <location filename="../ROMInfo.ui" line="26"/>
-        <source>Game name:</source>
-        <translation>游戏名称:</translation>
-    </message>
-    <message>
-        <location filename="../ROMInfo.ui" line="33"/>
-        <source>{NAME}</source>
-        <translation>{NAME}</translation>
-    </message>
-    <message>
-        <location filename="../ROMInfo.ui" line="46"/>
-        <source>Internal name:</source>
-        <translation>内部名称:</translation>
-    </message>
-    <message>
-        <location filename="../ROMInfo.ui" line="53"/>
-        <source>{TITLE}</source>
-        <translation>{TITLE}</translation>
-    </message>
-    <message>
-        <location filename="../ROMInfo.ui" line="63"/>
-        <source>Game ID:</source>
-        <translation>游戏 ID:</translation>
-    </message>
-    <message>
-        <location filename="../ROMInfo.ui" line="70"/>
-        <source>{ID}</source>
-        <translation>{ID}</translation>
-    </message>
-    <message>
-        <location filename="../ROMInfo.ui" line="80"/>
-        <source>File size:</source>
-        <translation>文件大小:</translation>
-    </message>
-    <message>
-        <location filename="../ROMInfo.ui" line="87"/>
-        <source>{SIZE}</source>
-        <translation>{SIZE}</translation>
-    </message>
-    <message>
-        <location filename="../ROMInfo.ui" line="97"/>
-        <source>CRC32:</source>
-        <translation>CRC32:</translation>
-    </message>
-    <message>
-        <location filename="../ROMInfo.ui" line="104"/>
-        <source>{CRC}</source>
-        <translation>{CRC}</translation>
-    </message>
-</context>
-<context>
-    <name>ReportView</name>
-    <message>
-        <location filename="../ReportView.ui" line="14"/>
-        <source>Generate Bug Report</source>
-        <translation>生成错误报告</translation>
-    </message>
-    <message>
-        <location filename="../ReportView.ui" line="72"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;To file a bug report, please first generate a report file to attach to the bug report you&apos;re about to file. It is recommended that you include the save files, as these often help with debugging issues. This will collect some information about the version of {projectName} you&apos;re running, your configuration, your computer, and the game you currently have open (if any). Once this collection is completed you can review all of the information gathered below and save it to a zip file. The collection will automatically attempt to redact any personal information, such as your username if it&apos;s in any of the paths gathered, but just in case you can edit it afterwards. After you have generated and saved it, please click the button below or go to &lt;a href=&quot;https://mgba.io/i/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;mgba.io/i&lt;/span&gt;&lt;/a&gt; to file the bug report on GitHub. Make sure to attach the report you generated!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;要提交错误报告，请首先生成报告文件并将其附加到要提交的错误报告当中。推荐您包含存档文件，因为这些存档通常会有助于调试问题。报告文件会收集一些信息，包括正在运行的 {projectName} 版本、配置、计算机以及当前已打开的游戏（若存在）。一旦收集完成，您可以查看下方收集的所有信息，并将其保存为 ZIP 文件。信息收集会自动尝试抹消所有的个人信息，例如您的用户名（如果它位于所收集的任意路径中），但以防万一，您之后可以对其进行编辑。生成并保存报告文件后，请单击下方按钮或转到 &lt;a href=&quot;https://mgba.io/i/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;mgba.io/i&lt;/span&gt;&lt;/a&gt; 在 GitHub 上提交错误报告。请确保您附加所生成的报告！&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../ReportView.ui" line="90"/>
-        <source>Generate report</source>
-        <translation>生成报告</translation>
-    </message>
-    <message>
-        <location filename="../ReportView.ui" line="104"/>
-        <source>Save</source>
-        <translation>保存</translation>
-    </message>
-    <message>
-        <location filename="../ReportView.ui" line="118"/>
-        <source>Open issue list in browser</source>
-        <translation>在浏览器中打开问题列表</translation>
-    </message>
-    <message>
-        <location filename="../ReportView.ui" line="139"/>
-        <source>Include save file</source>
-        <translation>包含存档文件</translation>
-    </message>
-    <message>
-        <location filename="../ReportView.ui" line="155"/>
-        <source>Create and include savestate</source>
-        <translation>创建并包含即时存档</translation>
-    </message>
-</context>
-<context>
-    <name>SaveConverter</name>
-    <message>
-        <location filename="../SaveConverter.ui" line="14"/>
-        <source>Convert/Extract Save Game</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.ui" line="20"/>
-        <source>Input file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.ui" line="29"/>
-        <location filename="../SaveConverter.ui" line="55"/>
-        <source>Browse</source>
-        <translation type="unfinished">浏览</translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.ui" line="46"/>
-        <source>Output file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.cpp" line="397"/>
-        <source>%1 %2 save game</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.cpp" line="401"/>
-        <source>little endian</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.cpp" line="404"/>
-        <source>big endian</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.cpp" line="415"/>
-        <source>SRAM</source>
-        <translation type="unfinished">SRAM</translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.cpp" line="419"/>
-        <source>%1 flash</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.cpp" line="423"/>
-        <source>%1 EEPROM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.cpp" line="435"/>
-        <source>%1 SRAM + RTC</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.cpp" line="437"/>
-        <source>%1 SRAM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.cpp" line="442"/>
-        <source>packed MBC2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.cpp" line="444"/>
-        <source>unpacked MBC2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.cpp" line="449"/>
-        <source>MBC6 flash</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.cpp" line="451"/>
-        <source>MBC6 combined SRAM + flash</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.cpp" line="453"/>
-        <source>MBC6 SRAM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.cpp" line="457"/>
-        <source>TAMA5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.cpp" line="469"/>
-        <source>%1 (%2)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SaveConverter.cpp" line="472"/>
-        <source>%1 save state with embedded %2 save game</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SensorView</name>
-    <message>
-        <location filename="../SensorView.ui" line="20"/>
-        <source>Sensors</source>
-        <translation>传感器</translation>
-    </message>
-    <message>
-        <location filename="../SensorView.ui" line="31"/>
-        <source>Realtime clock</source>
-        <translation>实时时钟</translation>
-    </message>
-    <message>
-        <location filename="../SensorView.ui" line="37"/>
-        <source>Fixed time</source>
-        <translation>定时</translation>
-    </message>
-    <message>
-        <location filename="../SensorView.ui" line="47"/>
-        <source>System time</source>
-        <translation>系统时间</translation>
-    </message>
-    <message>
-        <location filename="../SensorView.ui" line="60"/>
-        <source>Start time at</source>
-        <translation>开始时间</translation>
-    </message>
-    <message>
-        <location filename="../SensorView.ui" line="70"/>
-        <source>Now</source>
-        <translation>现在</translation>
-    </message>
-    <message>
-        <location filename="../SensorView.ui" line="97"/>
-        <source>MM/dd/yy hh:mm:ss AP</source>
-        <translation>yyyy/MM/dd HH:mm:ss</translation>
-    </message>
-    <message>
-        <location filename="../SensorView.ui" line="107"/>
-        <source>Light sensor</source>
-        <translation>光线传感器</translation>
-    </message>
-    <message>
-        <location filename="../SensorView.ui" line="113"/>
-        <source>Brightness</source>
-        <translation>亮度</translation>
-    </message>
-    <message>
-        <location filename="../SensorView.ui" line="150"/>
-        <source>Tilt sensor</source>
-        <translation>倾斜传感器</translation>
-    </message>
-    <message>
-        <location filename="../SensorView.ui" line="158"/>
-        <location filename="../SensorView.ui" line="247"/>
-        <source>Set Y</source>
-        <translation>设定 Y 轴</translation>
-    </message>
-    <message>
-        <location filename="../SensorView.ui" line="168"/>
-        <location filename="../SensorView.ui" line="257"/>
-        <source>Set X</source>
-        <translation>设定 X 轴</translation>
-    </message>
-    <message>
-        <location filename="../SensorView.ui" line="239"/>
-        <source>Gyroscope</source>
-        <translation>陀螺仪</translation>
-    </message>
-    <message>
-        <location filename="../SensorView.ui" line="267"/>
-        <source>Sensitivity</source>
-        <translation>灵敏度</translation>
-    </message>
-</context>
-<context>
-    <name>SettingsView</name>
-    <message>
-        <location filename="../SettingsView.ui" line="20"/>
-        <source>Settings</source>
-        <translation>设置</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="52"/>
-        <source>Audio/Video</source>
-        <translation>音频/视频</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="57"/>
-        <source>Interface</source>
-        <translation>用户界面</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="62"/>
-        <source>Emulation</source>
-        <translation>模拟器</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="67"/>
-        <source>Enhancements</source>
-        <translation>增强</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="72"/>
-        <source>BIOS</source>
-        <translation>BIOS</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="77"/>
-        <source>Paths</source>
-        <translation>路径</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="82"/>
-        <source>Logging</source>
-        <translation>日志记录</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="87"/>
-        <source>Game Boy</source>
-        <translation>Game Boy</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="105"/>
-        <source>Audio driver:</source>
-        <translation>音频驱动程序:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="122"/>
-        <source>Audio buffer:</source>
-        <translation>音频缓冲:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="134"/>
-        <location filename="../SettingsView.ui" line="156"/>
-        <source>1536</source>
-        <translation>1536</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="141"/>
-        <source>512</source>
-        <translation>512</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="146"/>
-        <source>768</source>
-        <translation>768</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="151"/>
-        <source>1024</source>
-        <translation>1024</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="161"/>
-        <source>2048</source>
-        <translation>2048</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="166"/>
-        <source>3072</source>
-        <translation>3072</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="171"/>
-        <source>4096</source>
-        <translation>4096</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="179"/>
-        <source>samples</source>
-        <translation>采样</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="188"/>
-        <source>Sample rate:</source>
-        <translation>采样率:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="200"/>
-        <location filename="../SettingsView.ui" line="217"/>
-        <source>44100</source>
-        <translation>44100</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="207"/>
-        <source>22050</source>
-        <translation>22050</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="212"/>
-        <source>32000</source>
-        <translation>32000</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="222"/>
-        <source>48000</source>
-        <translation>48000</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="230"/>
-        <source>Hz</source>
-        <translation>Hz</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="239"/>
-        <source>Volume:</source>
-        <translation>音量:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="270"/>
-        <location filename="../SettingsView.ui" line="310"/>
-        <source>Mute</source>
-        <translation>静音</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="279"/>
-        <source>Fast forward volume:</source>
-        <translation>快进音量:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="326"/>
-        <source>Display driver:</source>
-        <translation>显示驱动程序:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="343"/>
-        <source>Frameskip:</source>
-        <translation>跳帧:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="352"/>
-        <source>Skip every</source>
-        <translation>每间隔</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="362"/>
-        <location filename="../SettingsView.ui" line="830"/>
-        <source>frames</source>
-        <translation>帧</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="371"/>
-        <source>FPS target:</source>
-        <translation>目标 FPS:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="396"/>
-        <source>frames per second</source>
-        <translation>帧每秒</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="412"/>
-        <source>Sync:</source>
-        <translation>同步:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="421"/>
-        <source>Video</source>
-        <translation>视频</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="428"/>
-        <source>Audio</source>
-        <translation>音频</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="437"/>
-        <source>Lock aspect ratio</source>
-        <translation>锁定纵横比</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="444"/>
-        <source>Force integer scaling</source>
-        <translation>强制整数缩放</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="451"/>
-        <source>Bilinear filtering</source>
-        <translation>双线性过滤</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="458"/>
-        <source>Native (59.7275)</source>
-        <translation>原生 (59.7275)</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="465"/>
-        <source>Interframe blending</source>
-        <translation>帧间混合</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="476"/>
-        <source>Language</source>
-        <translation>语言</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="484"/>
-        <source>English</source>
-        <translation>英语</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="499"/>
-        <source>Library:</source>
-        <translation>库:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="507"/>
-        <source>List view</source>
-        <translation>列表视图</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="512"/>
-        <source>Tree view</source>
-        <translation>树状视图</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="520"/>
-        <source>Show when no game open</source>
-        <translation>未打开游戏时显示</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="530"/>
-        <source>Clear cache</source>
-        <translation>清除缓存</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="544"/>
-        <source>Allow opposing input directions</source>
-        <translation>允许相对方向输入</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="551"/>
-        <source>Suspend screensaver</source>
-        <translation>停用屏幕保护程序</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="561"/>
-        <source>Pause when inactive</source>
-        <translation>非活动时暂停</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="568"/>
-        <source>Pause when minimized</source>
-        <translation>最小化时暂停</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="582"/>
-        <source>Dynamically update window title</source>
-        <translation>动态更新窗口标题</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="592"/>
-        <source>Show filename instead of ROM name in title bar</source>
-        <translation>标题栏显示文件名而不显示 ROM 名称</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="602"/>
-        <source>Show OSD messages</source>
-        <translation>显示 OSD 信息</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="612"/>
-        <source>Enable Discord Rich Presence</source>
-        <translation>启用 Discord Rich Presence</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="626"/>
-        <source>Automatically save state</source>
-        <translation>自动存档</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="636"/>
-        <source>Automatically load state</source>
-        <translation>自动读档</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="653"/>
-        <source>Automatically save cheats</source>
-        <translation>自动保存作弊码</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="663"/>
-        <source>Automatically load cheats</source>
-        <translation>自动载入作弊码</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="673"/>
-        <source>Show FPS in title bar</source>
-        <translation>在标题栏显示 FPS</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="697"/>
-        <source>Fast forward speed:</source>
-        <translation>快进速度:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="728"/>
-        <location filename="../SettingsView.ui" line="771"/>
-        <source>Unbounded</source>
-        <translation>不限制</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="740"/>
-        <source>Fast forward (held) speed:</source>
-        <translation>快进 (按住) 速度:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="783"/>
-        <source>Autofire interval:</source>
-        <translation>连发间隔:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="807"/>
-        <source>Enable rewind</source>
-        <translation>启用倒带</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="814"/>
-        <source>Rewind history:</source>
-        <translation>倒带历史:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="846"/>
-        <source>Idle loops:</source>
-        <translation>空循环:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="854"/>
-        <source>Run all</source>
-        <translation>全部运行</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="859"/>
-        <source>Remove known</source>
-        <translation>移除已知</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="864"/>
-        <source>Detect and remove</source>
-        <translation>检测并移除</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="872"/>
-        <source>Preload entire ROM into memory</source>
-        <translation>将整个 ROM 预载到内存中</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="886"/>
-        <source>Save state extra data:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="903"/>
-        <location filename="../SettingsView.ui" line="947"/>
-        <source>Save game</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="930"/>
-        <source>Load state extra data:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="893"/>
-        <location filename="../SettingsView.ui" line="937"/>
-        <source>Screenshot</source>
-        <translation>截图</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="913"/>
-        <location filename="../SettingsView.ui" line="954"/>
-        <source>Cheat codes</source>
-        <translation>作弊码</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="961"/>
-        <source>Enable Game Boy Player features by default</source>
-        <translation>默认启用 Game Boy Player 功能</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="972"/>
-        <source>Video renderer:</source>
-        <translation>视频渲染器:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="980"/>
-        <source>Software</source>
-        <translation>软件</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="985"/>
-        <source>OpenGL</source>
-        <translation>OpenGL</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="993"/>
-        <source>OpenGL enhancements</source>
-        <translation>OpenGL 增强</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="999"/>
-        <source>High-resolution scale:</source>
-        <translation>高分辨率比例:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1037"/>
-        <source>(240×160)</source>
-        <translation>(240×160)</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1062"/>
-        <source>XQ GBA audio (experimental)</source>
-        <translation>XQ GBA 音频 (实验性)</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1073"/>
-        <source>GB BIOS file:</source>
-        <translation>GB BIOS 文件:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1092"/>
-        <location filename="../SettingsView.ui" line="1130"/>
-        <location filename="../SettingsView.ui" line="1165"/>
-        <location filename="../SettingsView.ui" line="1193"/>
-        <location filename="../SettingsView.ui" line="1234"/>
-        <location filename="../SettingsView.ui" line="1282"/>
-        <location filename="../SettingsView.ui" line="1330"/>
-        <location filename="../SettingsView.ui" line="1378"/>
-        <location filename="../SettingsView.ui" line="1426"/>
-        <source>Browse</source>
-        <translation>浏览</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1101"/>
-        <source>Use BIOS file if found</source>
-        <translation>当可用时使用 BIOS 文件</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1111"/>
-        <source>Skip BIOS intro</source>
-        <translation>跳过 BIOS 启动画面</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1139"/>
-        <source>GBA BIOS file:</source>
-        <translation>GBA BIOS 文件:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1146"/>
-        <source>GBC BIOS file:</source>
-        <translation>GBC BIOS 文件:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1174"/>
-        <source>SGB BIOS file:</source>
-        <translation>SGB BIOS 文件:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1209"/>
-        <source>Save games</source>
-        <translation>游戏存档</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1243"/>
-        <location filename="../SettingsView.ui" line="1291"/>
-        <location filename="../SettingsView.ui" line="1339"/>
-        <location filename="../SettingsView.ui" line="1387"/>
-        <location filename="../SettingsView.ui" line="1435"/>
-        <source>Same directory as the ROM</source>
-        <translation>与 ROM 所在目录相同</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1257"/>
-        <source>Save states</source>
-        <translation>即时存档</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1305"/>
-        <source>Screenshots</source>
-        <translation>截图</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1353"/>
-        <source>Patches</source>
-        <translation>补丁</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1401"/>
-        <source>Cheats</source>
-        <translation>作弊码</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1458"/>
-        <source>Log to file</source>
-        <translation>记录日志到文件</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1465"/>
-        <source>Log to console</source>
-        <translation>记录日志到控制台</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1479"/>
-        <source>Select Log File</source>
-        <translation>选择日志文件</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1492"/>
-        <source>Game Boy-only model:</source>
-        <translation>Game Boy 专用型号:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1502"/>
-        <source>Super Game Boy model:</source>
-        <translation>Super Game Boy 型号:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1512"/>
-        <source>Game Boy Color-only model:</source>
-        <translation>Game Boy Color 专用型号:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1522"/>
-        <source>Game Boy/Game Boy Color model:</source>
-        <translation>Game Boy/Game Boy Color 型号:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1536"/>
-        <source>Default BG colors:</source>
-        <translation>默认背景色:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1623"/>
-        <source>Default sprite colors 1:</source>
-        <translation>默认精灵图颜色 1:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1710"/>
-        <source>Default sprite colors 2:</source>
-        <translation>默认精灵图颜色 2:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1797"/>
-        <source>Use GBC colors in GB games</source>
-        <translation>在 GB 游戏中使用 GBC 颜色</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1804"/>
-        <source>Super Game Boy borders</source>
-        <translation>Super Game Boy 边框</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1818"/>
-        <source>Camera driver:</source>
-        <translation>相机驱动程序:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1835"/>
-        <source>Camera:</source>
-        <translation>相机:</translation>
-    </message>
-    <message>
-        <location filename="../SettingsView.ui" line="1858"/>
-        <source>Super Game Boy/Game Boy Color model:</source>
-        <translation>Super Game Boy/Game Boy Color 型号:</translation>
-    </message>
-</context>
-<context>
-    <name>ShaderSelector</name>
     <message>
         <location filename="../ShaderSelector.ui" line="14"/>
         <source>Shaders</source>
@@ -5641,7 +5329,25 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
     </message>
 </context>
 <context>
-    <name>ShortcutView</name>
+    <name>QGBA::ShortcutModel</name>
+    <message>
+        <location filename="../ShortcutModel.cpp" line="66"/>
+        <source>Action</source>
+        <translation>动作</translation>
+    </message>
+    <message>
+        <location filename="../ShortcutModel.cpp" line="68"/>
+        <source>Keyboard</source>
+        <translation>键盘</translation>
+    </message>
+    <message>
+        <location filename="../ShortcutModel.cpp" line="70"/>
+        <source>Gamepad</source>
+        <translation>游戏手柄</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::ShortcutView</name>
     <message>
         <location filename="../ShortcutView.ui" line="14"/>
         <source>Edit Shortcuts</source>
@@ -5664,55 +5370,111 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
     </message>
 </context>
 <context>
-    <name>TileView</name>
+    <name>QGBA::TileView</name>
+    <message>
+        <location filename="../TileView.cpp" line="225"/>
+        <source>Export tiles</source>
+        <translation>导出图块</translation>
+    </message>
+    <message>
+        <location filename="../TileView.cpp" line="226"/>
+        <location filename="../TileView.cpp" line="238"/>
+        <source>Portable Network Graphics (*.png)</source>
+        <translation>便携式网络图形 (*.png)</translation>
+    </message>
+    <message>
+        <location filename="../TileView.cpp" line="237"/>
+        <source>Export tile</source>
+        <translation>导出图块</translation>
+    </message>
     <message>
         <location filename="../TileView.ui" line="14"/>
         <source>Tiles</source>
         <translation>图块</translation>
     </message>
     <message>
-        <location filename="../TileView.ui" line="20"/>
+        <location filename="../TileView.ui" line="170"/>
         <source>Export Selected</source>
         <translation>导出所选</translation>
     </message>
     <message>
-        <location filename="../TileView.ui" line="27"/>
+        <location filename="../TileView.ui" line="184"/>
         <source>Export All</source>
         <translation>全部导出</translation>
     </message>
     <message>
-        <location filename="../TileView.ui" line="43"/>
+        <location filename="../TileView.ui" line="40"/>
         <source>256 colors</source>
         <translation>256 色</translation>
     </message>
     <message>
-        <location filename="../TileView.ui" line="69"/>
+        <location filename="../TileView.ui" line="33"/>
+        <source>Palette</source>
+        <translation>调色板</translation>
+    </message>
+    <message>
+        <location filename="../TileView.ui" line="73"/>
         <source>Magnification</source>
         <translation>缩放率</translation>
     </message>
     <message>
-        <location filename="../TileView.ui" line="92"/>
+        <location filename="../TileView.ui" line="96"/>
         <source>Tiles per row</source>
         <translation>每行图块</translation>
     </message>
     <message>
-        <location filename="../TileView.ui" line="99"/>
+        <location filename="../TileView.ui" line="103"/>
         <source>Fit to window</source>
         <translation>自适应窗口</translation>
     </message>
     <message>
-        <location filename="../TileView.ui" line="192"/>
+        <location filename="../TileView.ui" line="119"/>
+        <source>Displayed tiles</source>
+        <translation>已显示的图块</translation>
+    </message>
+    <message>
+        <location filename="../TileView.ui" line="125"/>
+        <source>Only BG tiles</source>
+        <translation>仅 BG 图块</translation>
+    </message>
+    <message>
+        <location filename="../TileView.ui" line="135"/>
+        <source>Only OBJ tiles</source>
+        <translation>仅 OBJ 图块</translation>
+    </message>
+    <message>
+        <location filename="../TileView.ui" line="145"/>
+        <source>Both</source>
+        <translation>两者</translation>
+    </message>
+    <message>
+        <location filename="../TileView.ui" line="163"/>
         <source>Copy Selected</source>
         <translation>复制所选</translation>
     </message>
     <message>
-        <location filename="../TileView.ui" line="199"/>
+        <location filename="../TileView.ui" line="177"/>
         <source>Copy All</source>
         <translation>全部复制</translation>
     </message>
 </context>
 <context>
-    <name>VideoView</name>
+    <name>QGBA::VideoView</name>
+    <message>
+        <location filename="../VideoView.cpp" line="202"/>
+        <source>Failed to open output video file: %1</source>
+        <translation>打开输出视频文件失败: %1</translation>
+    </message>
+    <message>
+        <location filename="../VideoView.cpp" line="223"/>
+        <source>Native (%0x%1)</source>
+        <translation>原生 (%0x%1)</translation>
+    </message>
+    <message>
+        <location filename="../VideoView.cpp" line="238"/>
+        <source>Select output file</source>
+        <translation>选择输出文件</translation>
+    </message>
     <message>
         <location filename="../VideoView.ui" line="20"/>
         <source>Record Video</source>
@@ -5750,13 +5512,13 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
     </message>
     <message>
         <location filename="../VideoView.ui" line="129"/>
-        <location filename="../VideoView.ui" line="251"/>
+        <location filename="../VideoView.ui" line="255"/>
         <source>WebM</source>
         <translation>WebM</translation>
     </message>
     <message>
         <location filename="../VideoView.ui" line="139"/>
-        <location filename="../VideoView.ui" line="261"/>
+        <location filename="../VideoView.ui" line="265"/>
         <source>MP4</source>
         <translation>MP4</translation>
     </message>
@@ -5766,145 +5528,998 @@ Game Boy Advance 是任天堂有限公司（Nintendo Co., Ltd.）的注册商标
         <translation>无损(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="163"/>
+        <location filename="../VideoView.ui" line="167"/>
         <source>4K</source>
         <translation>4K</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="170"/>
+        <location filename="../VideoView.ui" line="174"/>
         <source>&amp;1080p</source>
         <translation>1080p(&amp;1)</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="180"/>
+        <location filename="../VideoView.ui" line="184"/>
         <source>&amp;720p</source>
         <translation>720p(&amp;7)</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="190"/>
+        <location filename="../VideoView.ui" line="194"/>
         <source>&amp;480p</source>
         <translation>480p(&amp;4)</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="203"/>
+        <location filename="../VideoView.ui" line="207"/>
         <source>&amp;Native</source>
         <translation>原生(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="236"/>
+        <location filename="../VideoView.ui" line="240"/>
         <source>Format</source>
         <translation>格式</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="246"/>
+        <location filename="../VideoView.ui" line="250"/>
         <source>MKV</source>
         <translation>MKV</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="256"/>
+        <location filename="../VideoView.ui" line="260"/>
         <source>AVI</source>
         <translation>AVI</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="273"/>
-        <source>h.264</source>
-        <translation>h.264</translation>
-    </message>
-    <message>
-        <location filename="../VideoView.ui" line="278"/>
-        <source>h.264 (NVENC)</source>
-        <translation>h.264 (NVENC)</translation>
-    </message>
-    <message>
-        <location filename="../VideoView.ui" line="283"/>
+        <location filename="../VideoView.ui" line="287"/>
         <source>HEVC</source>
         <translation>HEVC</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="288"/>
+        <location filename="../VideoView.ui" line="292"/>
         <source>HEVC (NVENC)</source>
         <translation>HEVC (NVENC)</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="293"/>
+        <location filename="../VideoView.ui" line="297"/>
         <source>VP8</source>
         <translation>VP8</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="298"/>
+        <location filename="../VideoView.ui" line="302"/>
         <source>VP9</source>
         <translation>VP9</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="303"/>
+        <location filename="../VideoView.ui" line="307"/>
         <source>FFV1</source>
         <translation>FFV1</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="308"/>
-        <location filename="../VideoView.ui" line="350"/>
+        <location filename="../VideoView.ui" line="312"/>
+        <location filename="../VideoView.ui" line="359"/>
         <source>None</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="320"/>
+        <location filename="../VideoView.ui" line="324"/>
         <source>FLAC</source>
         <translation>FLAC</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="325"/>
+        <location filename="../VideoView.ui" line="329"/>
+        <source>WavPack</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../VideoView.ui" line="334"/>
         <source>Opus</source>
         <translation>Opus</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="330"/>
+        <location filename="../VideoView.ui" line="339"/>
         <source>Vorbis</source>
         <translation>Vorbis</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="335"/>
+        <location filename="../VideoView.ui" line="344"/>
         <source>MP3</source>
         <translation>MP3</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="340"/>
+        <location filename="../VideoView.ui" line="349"/>
         <source>AAC</source>
         <translation>AAC</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="345"/>
+        <location filename="../VideoView.ui" line="354"/>
         <source>Uncompressed</source>
         <translation>未压缩</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="361"/>
+        <location filename="../VideoView.ui" line="370"/>
         <source> Bitrate (kbps)</source>
         <translation> 比特率 (kbps)</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="367"/>
-        <source>VBR </source>
-        <translation>VBR </translation>
-    </message>
-    <message>
-        <location filename="../VideoView.ui" line="412"/>
+        <location filename="../VideoView.ui" line="415"/>
         <source>ABR</source>
         <translation>ABR</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="428"/>
+        <location filename="../VideoView.ui" line="277"/>
+        <source>H.264</source>
+        <translation>H.264</translation>
+    </message>
+    <message>
+        <location filename="../VideoView.ui" line="282"/>
+        <source>H.264 (NVENC)</source>
+        <translation>H.264 (NVENC)</translation>
+    </message>
+    <message>
+        <location filename="../VideoView.ui" line="460"/>
+        <source>VBR</source>
+        <translation>VBR</translation>
+    </message>
+    <message>
+        <location filename="../VideoView.ui" line="473"/>
+        <source>CRF</source>
+        <translation>CRF</translation>
+    </message>
+    <message>
+        <location filename="../VideoView.ui" line="489"/>
         <source>Dimensions</source>
         <translation>维度</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="494"/>
+        <location filename="../VideoView.ui" line="555"/>
         <source>Lock aspect ratio</source>
         <translation>锁定纵横比</translation>
     </message>
     <message>
-        <location filename="../VideoView.ui" line="509"/>
+        <location filename="../VideoView.ui" line="570"/>
         <source>Show advanced</source>
         <translation>显示高级选项</translation>
+    </message>
+</context>
+<context>
+    <name>QGBA::Window</name>
+    <message>
+        <location filename="../Window.cpp" line="328"/>
+        <source>Game Boy Advance ROMs (%1)</source>
+        <translation>Game Boy Advance ROM (%1)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="345"/>
+        <source>Game Boy ROMs (%1)</source>
+        <translation>Game Boy ROM (%1)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="349"/>
+        <source>All ROMs (%1)</source>
+        <translation>所有 ROM (%1)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="350"/>
+        <source>%1 Video Logs (*.mvl)</source>
+        <translation>%1 视频日志 (*.mvl)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="365"/>
+        <source>Archives (%1)</source>
+        <translation>压缩文件 (%1)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="370"/>
+        <location filename="../Window.cpp" line="386"/>
+        <location filename="../Window.cpp" line="413"/>
+        <source>Select ROM</source>
+        <translation>选择 ROM</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="404"/>
+        <source>Select folder</source>
+        <translation>选择文件夹</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="540"/>
+        <location filename="../Window.cpp" line="547"/>
+        <source>Select save</source>
+        <translation>选择存档</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="459"/>
+        <source>Select patch</source>
+        <translation>选择补丁</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="459"/>
+        <source>Patches (*.ips *.ups *.bps)</source>
+        <translation>补丁 (*.ips *.ups *.bps)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="470"/>
+        <source>Select e-Reader dotcode</source>
+        <translation>选择 e-Reader 点码</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="470"/>
+        <source>e-Reader card (*.raw *.bin *.bmp)</source>
+        <translation>e-Reader 卡 (*.raw *.bin *.bmp)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="533"/>
+        <source>Select image</source>
+        <translation>选择图片</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="533"/>
+        <source>Image file (*.png *.gif *.jpg *.jpeg);;All files (*)</source>
+        <translation>图像文件 (*.png *.gif *.jpg *.jpeg);;所有文件 (*)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="547"/>
+        <source>GameShark saves (*.sps *.xps)</source>
+        <translation>GameShark 存档 (*.sps *.xps)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="588"/>
+        <source>Select video log</source>
+        <translation>选择视频日志</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="588"/>
+        <source>Video logs (*.mvl)</source>
+        <translation>视频日志文件 (*.mvl)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1016"/>
+        <source>Crash</source>
+        <translation>崩溃</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1017"/>
+        <source>The game has crashed with the following error:
+
+%1</source>
+        <translation>游戏因以下错误而崩溃:
+
+%1</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1024"/>
+        <source>Couldn&apos;t Start</source>
+        <translation>无法启动</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1025"/>
+        <source>Could not start game.</source>
+        <translation>无法启动游戏。</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1039"/>
+        <source>Unimplemented BIOS call</source>
+        <translation>未实现的 BIOS 调用</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1040"/>
+        <source>This game uses a BIOS call that is not implemented. Please use the official BIOS for best experience.</source>
+        <translation>此游戏使用尚未实现的 BIOS 调用。请使用官方 BIOS 以获得最佳体验。</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1053"/>
+        <source>Failed to create an appropriate display device, falling back to software display. Games may run slowly, especially with larger windows.</source>
+        <translation>无法创建适合的显示设备，正在回滚到软件显示。游戏的运行速度（特别在大窗口的情况下）可能会变慢。</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1134"/>
+        <source>Really make portable?</source>
+        <translation>确定进行程序便携化？</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1135"/>
+        <source>This will make the emulator load its configuration from the same directory as the executable. Do you want to continue?</source>
+        <translation>进行此操作后，模拟器将从其可执行文件所在目录中载入模拟器配置。您想继续吗？</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1147"/>
+        <source>Restart needed</source>
+        <translation>需要重新启动</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1148"/>
+        <source>Some changes will not take effect until the emulator is restarted.</source>
+        <translation>更改将在模拟器下次重新启动时生效。</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1199"/>
+        <source> -  Player %1 of %2</source>
+        <translation> -  玩家 %1 共 %2</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1210"/>
+        <source>%1 - %2</source>
+        <translation>%1 - %2</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1212"/>
+        <source>%1 - %2 - %3</source>
+        <translation>%1 - %2 - %3</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1214"/>
+        <source>%1 - %2 (%3 fps) - %4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1278"/>
+        <source>&amp;File</source>
+        <translation>文件(&amp;F)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1280"/>
+        <source>Load &amp;ROM...</source>
+        <translation>载入 ROM(&amp;R)...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1283"/>
+        <source>Load ROM in archive...</source>
+        <translation>从压缩文件中载入 ROM...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1284"/>
+        <source>Add folder to library...</source>
+        <translation>将文件夹添加到库中...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="421"/>
+        <source>Save games (%1)</source>
+        <translation>保存游戏（%1）</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="422"/>
+        <source>Select save game</source>
+        <translation>选择保存游戏</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="430"/>
+        <source>mGBA save state files (%1)</source>
+        <translation>mGBA 即时存档文件（%1）</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="432"/>
+        <location filename="../Window.cpp" line="437"/>
+        <source>Select save state</source>
+        <translation>选择即时存档</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="478"/>
+        <source>Select e-Reader card images</source>
+        <translation>选择 e-Reader 卡片图像</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="478"/>
+        <source>Image file (*.png *.jpg *.jpeg)</source>
+        <translation>图像文件（*.png *.jpg *.jpeg）</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="479"/>
+        <source>Conversion finished</source>
+        <translation>转换完成</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="520"/>
+        <source>%1 of %2 e-Reader cards converted successfully.</source>
+        <translation>成功转换了 %1 张（共 %2 张）e-Reader 卡片。</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1288"/>
+        <source>Load alternate save game...</source>
+        <translation>加载备用保存游戏...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1291"/>
+        <source>Load temporary save game...</source>
+        <translation>加载临时保存游戏...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1324"/>
+        <source>Load &amp;patch...</source>
+        <translation>载入补丁(&amp;P)...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1327"/>
+        <source>Boot BIOS</source>
+        <translation>引导 BIOS</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1421"/>
+        <source>Replace ROM...</source>
+        <translation>替换 ROM...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1331"/>
+        <source>Scan e-Reader dotcodes...</source>
+        <translation>扫描 e-Reader 点码...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1709"/>
+        <source>Convert e-Reader card image to raw...</source>
+        <translation>将 e-Reader 卡片图像转换为原始数据...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1335"/>
+        <source>ROM &amp;info...</source>
+        <translation>ROM 信息(&amp;I)...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1337"/>
+        <source>Recent</source>
+        <translation>最近打开</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1667"/>
+        <source>Make portable</source>
+        <translation>程序便携化</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1340"/>
+        <source>&amp;Load state</source>
+        <translation>载入即时存档(&amp;L)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1345"/>
+        <source>Load state file...</source>
+        <translation>载入即时存档文件...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1350"/>
+        <source>&amp;Save state</source>
+        <translation>保存即时存档(&amp;S)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1355"/>
+        <source>Save state file...</source>
+        <translation>保存即时存档文件...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1360"/>
+        <source>Quick load</source>
+        <translation>快速读档</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1361"/>
+        <source>Quick save</source>
+        <translation>快速存档</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1363"/>
+        <source>Load recent</source>
+        <translation>载入最近存档</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1368"/>
+        <source>Save recent</source>
+        <translation>保存最近存档</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1376"/>
+        <source>Undo load state</source>
+        <translation>撤消读档</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1379"/>
+        <source>Undo save state</source>
+        <translation>撤消存档</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1386"/>
+        <location filename="../Window.cpp" line="1391"/>
+        <source>State &amp;%1</source>
+        <translation>即时存档 (&amp;%1)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1498"/>
+        <source>Load camera image...</source>
+        <translation>载入相机图片...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1297"/>
+        <source>Convert save game...</source>
+        <translation>转换保存游戏...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="540"/>
+        <source>GameShark saves (*.gsv *.sps *.xps)</source>
+        <translation>GameShark 存档 (*.gsv *.sps *.xps)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1159"/>
+        <source>Reset needed</source>
+        <translation>需要重启</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1160"/>
+        <source>Some changes will not take effect until the game is reset.</source>
+        <translation>某些改动需要重新启动才会生效。</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1287"/>
+        <source>Save games</source>
+        <translation>游戏存档</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1300"/>
+        <source>Import GameShark Save...</source>
+        <translation>导入 GameShark 存档...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1303"/>
+        <source>Export GameShark Save...</source>
+        <translation>导出 GameShark 存档...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1310"/>
+        <source>Automatically determine</source>
+        <translation>自动终止</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1314"/>
+        <source>Use player %0 save game</source>
+        <translation>使用玩家 %0 存档</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1398"/>
+        <source>New multiplayer window</source>
+        <translation>新建多人游戏窗口</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1401"/>
+        <source>Connect to Dolphin...</source>
+        <translation>连接到 Dolphin...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1407"/>
+        <source>Report bug...</source>
+        <translation>报告错误...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1413"/>
+        <source>About...</source>
+        <translation>关于...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1414"/>
+        <source>E&amp;xit</source>
+        <translation>退出(&amp;X)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1416"/>
+        <source>&amp;Emulation</source>
+        <translation>模拟(&amp;E)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1417"/>
+        <source>&amp;Reset</source>
+        <translation>重置(&amp;R)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1418"/>
+        <source>Sh&amp;utdown</source>
+        <translation>关机(&amp;U)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1422"/>
+        <source>Yank game pak</source>
+        <translation>快速抽出游戏卡带</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1425"/>
+        <source>&amp;Pause</source>
+        <translation>暂停(&amp;P)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1434"/>
+        <source>&amp;Next frame</source>
+        <translation>下一帧(&amp;N)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1438"/>
+        <source>Fast forward (held)</source>
+        <translation>快进 (长按)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1444"/>
+        <source>&amp;Fast forward</source>
+        <translation>快进(&amp;F)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1448"/>
+        <source>Fast forward speed</source>
+        <translation>快进速度</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1453"/>
+        <source>Unbounded</source>
+        <translation>不限制</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1457"/>
+        <source>%0x</source>
+        <translation>%0x</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1461"/>
+        <source>Rewind (held)</source>
+        <translation>倒带 (长按)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1468"/>
+        <source>Re&amp;wind</source>
+        <translation>倒带(&amp;W)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1473"/>
+        <source>Step backwards</source>
+        <translation>步退</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1480"/>
+        <source>Solar sensor</source>
+        <translation>太阳光传感器</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1481"/>
+        <source>Increase solar level</source>
+        <translation>增加太阳光等级</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1482"/>
+        <source>Decrease solar level</source>
+        <translation>降低太阳光等级</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1483"/>
+        <source>Brightest solar level</source>
+        <translation>太阳光等级为最亮</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1486"/>
+        <source>Darkest solar level</source>
+        <translation>太阳光等级为最暗</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1492"/>
+        <source>Brightness %1</source>
+        <translation>亮度 %1</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1500"/>
+        <source>Game Boy Printer...</source>
+        <translation>Game Boy 打印机...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1509"/>
+        <source>BattleChip Gate...</source>
+        <translation>BattleChip Gate...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1513"/>
+        <source>Audio/&amp;Video</source>
+        <translation>音频/视频(&amp;V)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1514"/>
+        <source>Frame size</source>
+        <translation>画面大小</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1516"/>
+        <source>%1×</source>
+        <translation>%1×</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1541"/>
+        <source>Toggle fullscreen</source>
+        <translation>切换全屏</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1544"/>
+        <source>Lock aspect ratio</source>
+        <translation>锁定纵横比</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1556"/>
+        <source>Force integer scaling</source>
+        <translation>强制整数缩放</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1568"/>
+        <source>Interframe blending</source>
+        <translation>帧间混合</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1577"/>
+        <source>Bilinear filtering</source>
+        <translation>双线性过滤</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1585"/>
+        <source>Frame&amp;skip</source>
+        <translation>跳帧(&amp;S)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1598"/>
+        <source>Mute</source>
+        <translation>静音</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1604"/>
+        <source>FPS target</source>
+        <translation>目标 FPS</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1612"/>
+        <source>Native (59.7275)</source>
+        <translation>原生 (59.7275)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1627"/>
+        <source>Take &amp;screenshot</source>
+        <translation>截图(&amp;S)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1629"/>
+        <source>F12</source>
+        <translation>F12</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1633"/>
+        <source>Record A/V...</source>
+        <translation>录制音频/视频...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1634"/>
+        <source>Record GIF/WebP/APNG...</source>
+        <translation>录制 GIF/WebP/APNG...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1638"/>
+        <source>Video layers</source>
+        <translation>视频图层</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1639"/>
+        <source>Audio channels</source>
+        <translation>音频声道</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1641"/>
+        <source>Adjust layer placement...</source>
+        <translation>调整图层布局...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1643"/>
+        <source>&amp;Tools</source>
+        <translation>工具(&amp;T)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1644"/>
+        <source>View &amp;logs...</source>
+        <translation>查看日志(&amp;L)...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1646"/>
+        <source>Game &amp;overrides...</source>
+        <translation>覆写游戏(&amp;O)...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1658"/>
+        <source>Game Pak sensors...</source>
+        <translation>游戏卡带传感器...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1660"/>
+        <source>&amp;Cheats...</source>
+        <translation>作弊码(&amp;C)...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1666"/>
+        <source>Settings...</source>
+        <translation>设置...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1671"/>
+        <source>Open debugger console...</source>
+        <translation>打开调试器控制台...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1673"/>
+        <source>Start &amp;GDB server...</source>
+        <translation>打开 GDB 服务器(&amp;G)...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1662"/>
+        <source>Scripting...</source>
+        <translation>脚本...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1681"/>
+        <source>Game state views</source>
+        <translation>游戏状态视图</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1682"/>
+        <source>View &amp;palette...</source>
+        <translation>查看调色板(&amp;P)...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1683"/>
+        <source>View &amp;sprites...</source>
+        <translation>查看精灵图(&amp;S)...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1684"/>
+        <source>View &amp;tiles...</source>
+        <translation>查看图块(&amp;T)...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1685"/>
+        <source>View &amp;map...</source>
+        <translation>查看映射(&amp;M)...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1687"/>
+        <source>&amp;Frame inspector...</source>
+        <translation>帧检查器(&amp;F)...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1703"/>
+        <source>View memory...</source>
+        <translation>查看内存...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1704"/>
+        <source>Search memory...</source>
+        <translation>搜索内存...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1705"/>
+        <source>View &amp;I/O registers...</source>
+        <translation>查看 I/O 寄存器(&amp;I)...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1713"/>
+        <source>Record debug video log...</source>
+        <translation>记录调试视频日志...</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1714"/>
+        <source>Stop debug video log</source>
+        <translation>停止记录调试视频日志</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1718"/>
+        <source>Exit fullscreen</source>
+        <translation>退出全屏</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1720"/>
+        <source>GameShark Button (held)</source>
+        <translation>GameShark 键 (长按)</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1726"/>
+        <source>Autofire</source>
+        <translation>连发</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1727"/>
+        <source>Autofire A</source>
+        <translation>连发 A</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1732"/>
+        <source>Autofire B</source>
+        <translation>连发 B</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1737"/>
+        <source>Autofire L</source>
+        <translation>连发 L</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1742"/>
+        <source>Autofire R</source>
+        <translation>连发 R</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1747"/>
+        <source>Autofire Start</source>
+        <translation>连发 Start</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1752"/>
+        <source>Autofire Select</source>
+        <translation>连发 Select</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1757"/>
+        <source>Autofire Up</source>
+        <translation>连发 上</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1762"/>
+        <source>Autofire Right</source>
+        <translation>连发 右</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1767"/>
+        <source>Autofire Down</source>
+        <translation>连发 下</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1772"/>
+        <source>Autofire Left</source>
+        <translation>连发 左</translation>
+    </message>
+    <message>
+        <location filename="../Window.cpp" line="1948"/>
+        <source>Clear</source>
+        <translation>清除</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="../utils.cpp" line="14"/>
+        <source>%1 byte</source>
+        <translation>%1字节</translation>
+    </message>
+    <message>
+        <location filename="../utils.cpp" line="17"/>
+        <source>%1 kiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../utils.cpp" line="21"/>
+        <source>%1 MiB</source>
+        <translation>%1 兆字节</translation>
+    </message>
+    <message>
+        <location filename="../utils.cpp" line="30"/>
+        <source>GBA</source>
+        <translation>GBA</translation>
+    </message>
+    <message>
+        <location filename="../utils.cpp" line="34"/>
+        <source>GB</source>
+        <translation>GB</translation>
+    </message>
+    <message>
+        <location filename="../utils.cpp" line="37"/>
+        <source>?</source>
+        <translation>?</translation>
+    </message>
+</context>
+<context>
+    <name>QShortcut</name>
+    <message>
+        <location filename="../KeyEditor.cpp" line="40"/>
+        <source>Shift</source>
+        <translation>Shift</translation>
+    </message>
+    <message>
+        <location filename="../KeyEditor.cpp" line="43"/>
+        <source>Control</source>
+        <translation>Control</translation>
+    </message>
+    <message>
+        <location filename="../KeyEditor.cpp" line="46"/>
+        <source>Alt</source>
+        <translation>Alt</translation>
+    </message>
+    <message>
+        <location filename="../KeyEditor.cpp" line="49"/>
+        <source>Meta</source>
+        <translation>Meta</translation>
     </message>
 </context>
 </TS>

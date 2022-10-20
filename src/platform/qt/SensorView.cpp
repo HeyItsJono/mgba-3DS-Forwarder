@@ -69,6 +69,14 @@ void SensorView::setController(std::shared_ptr<CoreController> controller) {
 	connect(m_ui.timeFakeEpoch, &QRadioButton::clicked, [controller, this] () {
 		controller->setFakeEpoch(m_ui.time->dateTime().toUTC());
 	});
+	connect(m_ui.timeOffset, &QRadioButton::clicked, [controller, this] () {
+		controller->setTimeOffset(m_ui.offsetSeconds->value());
+	});
+	connect(m_ui.offsetSeconds, qOverload<int>(&QSpinBox::valueChanged), [controller, this] (int value) {
+		if (m_ui.timeOffset->isChecked()) {
+			controller->setTimeOffset(value);
+		}
+	});
 	m_ui.timeButtons->checkedButton()->clicked();
 
 	connect(controller.get(), &CoreController::stopping, [this]() {
@@ -79,14 +87,11 @@ void SensorView::setController(std::shared_ptr<CoreController> controller) {
 void SensorView::jiggerer(QAbstractButton* button, void (InputController::*setter)(int)) {
 	connect(button, &QAbstractButton::toggled, [this, button, setter](bool checked) {
 		if (!checked) {
-			m_jiggered = nullptr;
+			m_button = nullptr;
 		} else {
 			button->setFocus();
-			m_jiggered = [this, button, setter](int axis) {
-				(m_input->*setter)(axis);
-				button->setChecked(false);
-				button->clearFocus();
-			};
+			m_button = button;
+			m_setter = setter;
 		}
 	});
 	button->installEventFilter(this);
@@ -106,8 +111,12 @@ bool SensorView::eventFilter(QObject*, QEvent* event) {
 	if (event->type() == GamepadAxisEvent::Type()) {
 		GamepadAxisEvent* gae = static_cast<GamepadAxisEvent*>(event);
 		gae->accept();
-		if (m_jiggered && gae->direction() != GamepadAxisEvent::NEUTRAL && gae->isNew()) {
-			m_jiggered(gae->axis());
+		if (m_button && gae->direction() != GamepadAxisEvent::NEUTRAL && gae->isNew()) {
+			m_button->removeEventFilter(this);
+			m_button->clearFocus();
+			m_button->setChecked(false);
+			(m_input->*m_setter)(gae->axis());
+			m_button = nullptr;
 		}
 		return true;
 	}

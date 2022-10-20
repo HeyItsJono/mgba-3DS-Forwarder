@@ -741,6 +741,12 @@ void mCheatRefresh(struct mCheatDevice* device, struct mCheatSet* cheats) {
 				negativeConditionRemaining = cheat->negativeRepeat;
 				operationsRemaining = 1;
 				break;
+			case CHEAT_NEVER:
+				condition = false;
+				conditionRemaining = cheat->repeat;
+				negativeConditionRemaining = cheat->negativeRepeat;
+				operationsRemaining = 1;
+				break;
 			}
 
 			if (performAssignment) {
@@ -775,7 +781,9 @@ void mCheatDeviceInit(void* cpu, struct mCPUComponent* component) {
 	size_t i;
 	for (i = 0; i < mCheatSetsSize(&device->cheats); ++i) {
 		struct mCheatSet* cheats = *mCheatSetsGetPointer(&device->cheats, i);
-		cheats->add(cheats, device);
+		if (cheats->add) {
+			cheats->add(cheats, device);
+		}
 	}
 }
 
@@ -784,6 +792,8 @@ void mCheatDeviceDeinit(struct mCPUComponent* component) {
 	size_t i;
 	for (i = mCheatSetsSize(&device->cheats); i--;) {
 		struct mCheatSet* cheats = *mCheatSetsGetPointer(&device->cheats, i);
-		cheats->remove(cheats, device);
+		if (cheats->remove) {
+			cheats->remove(cheats, device);
+		}
 	}
 }

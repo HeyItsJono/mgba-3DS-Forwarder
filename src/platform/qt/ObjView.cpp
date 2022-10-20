@@ -116,14 +116,16 @@ void ObjView::updateTilesGBA(bool force) {
 	if (GBAObjAttributesAIs256Color(obj->a)) {
 		m_ui.palette->setText("256-color");
 		m_ui.tile->setBoundary(1024, 1, 3);
-		m_ui.tile->setPalette(0);
 		m_boundary = 1024;
 		tileBase *= 2;
+		m_ui.tile->setMaxTile(1536);
+		m_ui.tile->setPalette(0);
 	} else {
 		m_ui.palette->setText(QString::number(newInfo.paletteId));
 		m_ui.tile->setBoundary(2048, 0, 2);
-		m_ui.tile->setPalette(newInfo.paletteId);
 		m_boundary = 2048;
+		m_ui.tile->setMaxTile(3072);
+		m_ui.tile->setPalette(newInfo.paletteId);
 	}
 	if (newInfo != m_objInfo) {
 		force = true;
@@ -131,15 +133,19 @@ void ObjView::updateTilesGBA(bool force) {
 	m_objInfo = newInfo;
 	m_tileOffset = newInfo.tile;
 	mTileCache* tileCache = mTileCacheSetGetPointer(&m_cacheSet->tiles, newInfo.paletteSet);
-
+	unsigned maxTiles = mTileCacheSystemInfoGetMaxTiles(tileCache->sysConfig);
 	int i = 0;
 	for (unsigned y = 0; y < newInfo.height; ++y) {
 		for (unsigned x = 0; x < newInfo.width; ++x, ++i, ++tile, ++tileBase) {
-			const color_t* data = mTileCacheGetTileIfDirty(tileCache, &m_tileStatus[16 * tileBase], tile, newInfo.paletteId);
-			if (data) {
-				m_ui.tiles->setTile(i, data);
-			} else if (force) {
-				m_ui.tiles->setTile(i, mTileCacheGetTile(tileCache, tile, newInfo.paletteId));
+			if (tile < maxTiles) {
+				const color_t* data = mTileCacheGetTileIfDirty(tileCache, &m_tileStatus[16 * tileBase], tile, newInfo.paletteId);
+				if (data) {
+					m_ui.tiles->setTile(i, data);
+				} else if (force) {
+					m_ui.tiles->setTile(i, mTileCacheGetTile(tileCache, tile, newInfo.paletteId));
+				}
+			} else {
+				m_ui.tiles->clearTile(i);
 			}
 		}
 		tile += newInfo.stride - newInfo.width;
@@ -221,6 +227,7 @@ void ObjView::updateTilesGB(bool force) {
 	m_objInfo = newInfo;
 	m_tileOffset = tile;
 	m_boundary = 1024;
+	m_ui.tile->setMaxTile(512);
 
 	int i = 0;
 	m_ui.tile->setPalette(newInfo.paletteId);
@@ -262,6 +269,7 @@ void ObjView::updateObjList(int maxObj) {
 			item->setText(QString::number(i));
 			item->setData(Qt::UserRole, i);
 			item->setSizeHint(QSize(64, 96));
+			item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 			if (m_objId == i) {
 				item->setSelected(true);
 			}
@@ -271,7 +279,7 @@ void ObjView::updateObjList(int maxObj) {
 		QListWidgetItem* item = m_objs[i];
 		ObjInfo info;
 		lookupObj(i, &info);
-		item->setIcon(QPixmap::fromImage(std::move(compositeObj(info))));
+		item->setIcon(QPixmap::fromImage(compositeObj(info)));
 	}
 }
 

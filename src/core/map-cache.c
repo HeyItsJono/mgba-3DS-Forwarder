@@ -32,7 +32,7 @@ static void _redoCacheSize(struct mMapCache* cache) {
 		return;
 	}
 
-	size_t tiles = (1 << mMapCacheSystemInfoGetTilesWide(cache->sysConfig)) * (1 << mMapCacheSystemInfoGetTilesHigh(cache->sysConfig));
+	size_t tiles = mMapCacheTileCount(cache);
 	cache->cache = anonymousMemoryMap(8 * 8 * sizeof(color_t) * tiles);
 	cache->status = anonymousMemoryMap(tiles * sizeof(*cache->status));
 }
@@ -54,12 +54,12 @@ void mMapCacheConfigureSystem(struct mMapCache* cache, mMapCacheSystemInfo confi
 	cache->sysConfig = config;
 	_redoCacheSize(cache);
 
-	size_t mapSize = (1 << mMapCacheSystemInfoGetTilesWide(cache->sysConfig)) * (1 << mMapCacheSystemInfoGetTilesHigh(cache->sysConfig));
+	size_t mapSize = mMapCacheTileCount(cache);
 	cache->mapSize = mapSize << mMapCacheSystemInfoGetMapAlign(cache->sysConfig);
 }
 
 void mMapCacheConfigureMap(struct mMapCache* cache, uint32_t mapStart) {
-	size_t tiles = (1 << mMapCacheSystemInfoGetTilesWide(cache->sysConfig)) * (1 << mMapCacheSystemInfoGetTilesHigh(cache->sysConfig));
+	size_t tiles = mMapCacheTileCount(cache);
 	memset(cache->status, 0, tiles * sizeof(*cache->status));
 	cache->mapStart = mapStart;
 }
@@ -70,11 +70,20 @@ void mMapCacheDeinit(struct mMapCache* cache) {
 
 void mMapCacheWriteVRAM(struct mMapCache* cache, uint32_t address) {
 	if (address >= cache->mapStart && address < cache->mapStart + cache->mapSize) {
+		uint32_t align = 1 << (mMapCacheSystemInfoGetWriteAlign(cache->sysConfig) - mMapCacheSystemInfoGetMapAlign(cache->sysConfig));
 		address -= cache->mapStart;
-		struct mMapCacheEntry* status = &cache->status[address >> mMapCacheSystemInfoGetMapAlign(cache->sysConfig)];
-		++status->vramVersion;
-		status->flags = mMapCacheEntryFlagsClearVramClean(status->flags);
-		status->tileStatus[mMapCacheEntryFlagsGetPaletteId(status->flags)].vramClean = 0;
+		address >>= mMapCacheSystemInfoGetMapAlign(cache->sysConfig);
+
+		uint32_t i;
+		for (i = 0; i < align; ++i) {
+			if (address + i >= (cache->mapSize >> mMapCacheSystemInfoGetMapAlign(cache->sysConfig))) {
+				break;
+			}
+			struct mMapCacheEntry* status = &cache->status[address + i];
+			++status->vramVersion;
+			status->flags = mMapCacheEntryFlagsClearVramClean(status->flags);
+			status->tileStatus[mMapCacheEntryFlagsGetPaletteId(status->flags)].vramClean = 0;
+		}
 	}
 }
 

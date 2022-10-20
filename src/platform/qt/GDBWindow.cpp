@@ -5,6 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 #include "GDBWindow.h"
 
+#include <QButtonGroup>
 #include <QGridLayout>
 #include <QGroupBox>
 #include <QLabel>
@@ -12,9 +13,11 @@
 #include <QMessageBox>
 #include <QPushButton>
 #include <QHBoxLayout>
+#include <QRadioButton>
 #include <QVBoxLayout>
 
 #include "GDBController.h"
+#include "utils.h"
 
 using namespace QGBA;
 
@@ -45,6 +48,30 @@ GDBWindow::GDBWindow(GDBController* controller, QWidget* parent)
 	m_bindAddressEdit->setMaxLength(15);
 	connect(m_bindAddressEdit, &QLineEdit::textChanged, this, &GDBWindow::bindAddressChanged);
 	settingsGrid->addWidget(m_bindAddressEdit, 1, 1, Qt::AlignLeft);
+
+	QGroupBox* watchpointsSettings = new QGroupBox(tr("Write watchpoints behavior"));
+	mainSegment->addWidget(watchpointsSettings);
+
+	QVBoxLayout* watchpointsSettingsLayout = new QVBoxLayout;
+	watchpointsSettings->setLayout(watchpointsSettingsLayout);
+
+	QButtonGroup* watchpointsButtonGroup = new QButtonGroup(watchpointsSettings);
+	connect(watchpointsButtonGroup, qOverload<QAbstractButton*>(&QButtonGroup::buttonClicked), controller, [watchpointsButtonGroup, controller](QAbstractButton* button) {
+		controller->setWatchpointsBehavior(watchpointsButtonGroup->id(button));
+	});
+
+	m_watchpointsStandardRadio = new QRadioButton(tr("Standard GDB"), watchpointsSettings);
+	m_watchpointsStandardRadio->setChecked(true);
+	watchpointsButtonGroup->addButton(m_watchpointsStandardRadio, GDB_WATCHPOINT_STANDARD_LOGIC);
+	watchpointsSettingsLayout->addWidget(m_watchpointsStandardRadio);
+
+	m_watchpointsOverrideLogicRadio = new QRadioButton(tr("Internal change detection"), watchpointsSettings);
+	watchpointsButtonGroup->addButton(m_watchpointsOverrideLogicRadio, GDB_WATCHPOINT_OVERRIDE_LOGIC);
+	watchpointsSettingsLayout->addWidget(m_watchpointsOverrideLogicRadio);
+
+	m_watchpointsOverrideLogicAnyWriteRadio = new QRadioButton(tr("Break on all writes"), watchpointsSettings);
+	watchpointsButtonGroup->addButton(m_watchpointsOverrideLogicAnyWriteRadio, GDB_WATCHPOINT_OVERRIDE_LOGIC_ANY_WRITE);
+	watchpointsSettingsLayout->addWidget(m_watchpointsOverrideLogicAnyWriteRadio);
 
 	QHBoxLayout* buttons = new QHBoxLayout;
 
@@ -77,30 +104,23 @@ void GDBWindow::portChanged(const QString& portString) {
 }
 
 void GDBWindow::bindAddressChanged(const QString& bindAddressString) {
-	bool ok = false;
-	QStringList parts = bindAddressString.split('.');
-	if (parts.length() != 4) {
+	QHostAddress qaddress;
+	Address address;
+
+	if (!qaddress.setAddress(bindAddressString)) {
 		return;
 	}
-	int i;
-	uint32_t address = 0;
-	for (i = 0; i < 4; ++i) {
-		ushort octet = parts[i].toUShort(&ok);
-		if (!ok) {
-			return;
-		}
-		if (octet > 0xFF) {
-			return;
-		}
-		address <<= 8;
-		address += octet;
-	}
+
+	convertAddress(&qaddress, &address);
 	m_gdbController->setBindAddress(address);
 }
 
 void GDBWindow::started() {
 	m_portEdit->setEnabled(false);
 	m_bindAddressEdit->setEnabled(false);
+	m_watchpointsStandardRadio->setEnabled(false);
+	m_watchpointsOverrideLogicRadio->setEnabled(false);
+	m_watchpointsOverrideLogicAnyWriteRadio->setEnabled(false);
 	m_startStopButton->setText(tr("Stop"));
 	m_breakButton->setEnabled(true);
 	disconnect(m_startStopButton, &QAbstractButton::clicked, m_gdbController, &GDBController::listen);
@@ -111,6 +131,9 @@ void GDBWindow::started() {
 void GDBWindow::stopped() {
 	m_portEdit->setEnabled(true);
 	m_bindAddressEdit->setEnabled(true);
+	m_watchpointsStandardRadio->setEnabled(true);
+	m_watchpointsOverrideLogicRadio->setEnabled(true);
+	m_watchpointsOverrideLogicAnyWriteRadio->setEnabled(true);
 	m_startStopButton->setText(tr("Start"));
 	m_breakButton->setEnabled(false);
 	disconnect(m_startStopButton, &QAbstractButton::clicked, m_gdbController, &DebuggerController::detach);

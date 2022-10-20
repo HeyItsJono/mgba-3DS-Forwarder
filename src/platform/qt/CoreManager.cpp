@@ -62,13 +62,16 @@ CoreController* CoreManager::loadGame(const QString& path) {
 		VFile* vfOriginal = VDirFindFirst(archive, [](VFile* vf) {
 			return mCoreIsCompatible(vf) != mPLATFORM_NONE;
 		});
-		ssize_t size;
-		if (vfOriginal && (size = vfOriginal->size(vfOriginal)) > 0) {
-			void* mem = vfOriginal->map(vfOriginal, size, MAP_READ);
-			vf = VFileMemChunk(mem, size);
-			vfOriginal->unmap(vfOriginal, mem, size);
+		if (vfOriginal) {
+			ssize_t size = vfOriginal->size(vfOriginal);
+			if (size > 0) {
+				void* mem = vfOriginal->map(vfOriginal, size, MAP_READ);
+				vf = VFileMemChunk(mem, size);
+				vfOriginal->unmap(vfOriginal, mem, size);
+			}
 			vfOriginal->close(vfOriginal);
 		}
+		archive->close(archive);
 	}
 	QDir dir(info.dir());
 	if (!vf) {
@@ -112,7 +115,7 @@ CoreController* CoreManager::loadGame(VFile* vf, const QString& path, const QStr
 	bytes = info.dir().canonicalPath().toUtf8();
 	mDirectorySetAttachBase(&core->dirs, VDirOpen(bytes.constData()));
 	if (!mCoreAutoloadSave(core)) {
-		LOG(QT, ERROR) << tr("Failed to open save file. Is the save directory writable?");
+		LOG(QT, ERROR) << tr("Failed to open save file; in-game saves cannot be updated. Please ensure the save directory is writable without additional privileges (e.g. UAC on Windows).");
 	}
 	mCoreAutoloadCheats(core);
 

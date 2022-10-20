@@ -15,6 +15,7 @@ static const QList<GBModel> s_gbModelList{
 	GB_MODEL_SGB,
 	GB_MODEL_CGB,
 	GB_MODEL_AGB,
+	GB_MODEL_SCGB,
 };
 
 static const QList<GBMemoryBankControllerType> s_mbcList{
@@ -33,17 +34,22 @@ static const QList<GBMemoryBankControllerType> s_mbcList{
 	GB_HuC1,
 	GB_HuC3,
 	GB_UNL_WISDOM_TREE,
+	GB_UNL_PKJD,
+	GB_UNL_NT_OLD_1,
+	GB_UNL_NT_OLD_2,
+	GB_UNL_NT_NEW,
 	GB_UNL_BBD,
 	GB_UNL_HITEK,
-	GB_UNL_PKJD,
+	GB_UNL_GGB81,
+	GB_UNL_LI_CHENG,
+	GB_UNL_SACHEN_MMC1,
+	GB_UNL_SACHEN_MMC2,
 };
 
 static QMap<GBModel, QString> s_gbModelNames;
 static QMap<GBMemoryBankControllerType, QString> s_mbcNames;
 
-static QString tr(const char* str) {
-	return QCoreApplication::translate("Game Boy", str);
-}
+#define tr(STR) QCoreApplication::translate("QGBA::GameBoy", STR)
 
 QList<GBModel> GameBoy::modelList() {
 	return s_gbModelList;
@@ -58,6 +64,7 @@ QString GameBoy::modelName(GBModel model) {
 		s_gbModelNames[GB_MODEL_SGB2] = tr("Super Game Boy 2 (SGB)");
 		s_gbModelNames[GB_MODEL_CGB] = tr("Game Boy Color (CGB)");
 		s_gbModelNames[GB_MODEL_AGB] = tr("Game Boy Advance (AGB)");
+		s_gbModelNames[GB_MODEL_SCGB] = tr("Super Game Boy Color (SGB + CGB)");
 	}
 
 	return s_gbModelNames[model];
@@ -85,9 +92,16 @@ QString GameBoy::mbcName(GBMemoryBankControllerType mbc) {
 		s_mbcNames[GB_POCKETCAM] = tr("Pocket Cam");
 		s_mbcNames[GB_TAMA5] = tr("TAMA5");
 		s_mbcNames[GB_UNL_WISDOM_TREE] = tr("Wisdom Tree");
+		s_mbcNames[GB_UNL_NT_OLD_1] = tr("NT (old 1)");
+		s_mbcNames[GB_UNL_NT_OLD_2] = tr("NT (old 2)");
+		s_mbcNames[GB_UNL_NT_NEW] = tr("NT (new)");
 		s_mbcNames[GB_UNL_PKJD] = tr("Pokémon Jade/Diamond");
 		s_mbcNames[GB_UNL_BBD] = tr("BBD");
 		s_mbcNames[GB_UNL_HITEK] = tr("Hitek");
+		s_mbcNames[GB_UNL_GGB81] = tr("GGB-81");
+		s_mbcNames[GB_UNL_LI_CHENG] = tr("Li Cheng");
+		s_mbcNames[GB_UNL_SACHEN_MMC1] = tr("Sachen (MMC1)");
+		s_mbcNames[GB_UNL_SACHEN_MMC2] = tr("Sachen (MMC2)");
 	}
 
 	return s_mbcNames[mbc];

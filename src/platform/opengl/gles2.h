@@ -12,14 +12,14 @@ CXX_GUARD_START
 
 #ifdef USE_EPOXY
 #include <epoxy/gl.h>
-#elif defined(BUILD_GL)
-#ifdef __APPLE__
+#elif defined(__APPLE__)
 #include <OpenGL/gl3.h>
-#else
+#elif defined(BUILD_GL)
 #define GL_GLEXT_PROTOTYPES
 #include <GL/gl.h>
 #include <GL/glext.h>
-#endif
+#elif defined(BUILD_GLES3)
+#include <GLES3/gl3.h>
 #else
 #include <GLES2/gl2.h>
 #endif
@@ -90,6 +90,7 @@ struct mGLES2Context {
 };
 
 void mGLES2ContextCreate(struct mGLES2Context*);
+void mGLES2ContextUseFramebuffer(struct mGLES2Context*);
 
 void mGLES2ShaderInit(struct mGLES2Shader*, const char* vs, const char* fs, int width, int height, bool integerScaling, struct mGLES2Uniform* uniforms, size_t nUniforms);
 void mGLES2ShaderDeinit(struct mGLES2Shader*);

@@ -97,7 +97,11 @@ private:
 	int m_glowFrame;
 	QTimer m_glowTimer;
 
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
+	QRecursiveMutex m_mutex;
+#else
 	QMutex m_mutex{QMutex::Recursive};
+#endif
 	VFile* m_currentFrame = nullptr;
 	VFile* m_nextFrame = nullptr;
 	mCore* m_vl = nullptr;
@@ -108,7 +112,7 @@ private:
 	QSet<LayerId> m_disabled;
 	QPixmap m_composited;
 	QPixmap m_rendered;
-	mMapCacheEntry m_mapStatus[4][128 * 128] = {}; // TODO: Correct size
+	QVector<mMapCacheEntry> m_mapStatus[4];
 	ColorPicker m_backdropPicker;
 	QColor m_overrideBackdrop;
 

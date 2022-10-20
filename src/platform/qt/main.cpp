@@ -36,12 +36,24 @@ Q_IMPORT_PLUGIN(QCocoaIntegrationPlugin);
 Q_IMPORT_PLUGIN(CoreAudioPlugin);
 Q_IMPORT_PLUGIN(AVFServicePlugin);
 #endif
+#elif defined(Q_OS_UNIX)
+Q_IMPORT_PLUGIN(QXcbIntegrationPlugin);
 #endif
+#endif
+
+#ifdef Q_OS_WIN
+#include <process.h>
+#include <wincon.h>
+#else
+#include <unistd.h>
 #endif
 
 using namespace QGBA;
 
 int main(int argc, char* argv[]) {
+#ifdef Q_OS_WIN
+	AttachConsole(ATTACH_PARENT_PROCESS);
+#endif
 #ifdef BUILD_SDL
 #if SDL_VERSION_ATLEAST(2, 0, 0) // CPP does not shortcut function lookup
 	SDL_SetMainReady();
@@ -56,14 +68,18 @@ int main(int argc, char* argv[]) {
 		QLocale::setDefault(locale);
 	}
 
-	mArguments args;
-	mGraphicsOpts graphicsOpts;
-	mSubParser subparser;
-	initParserForGraphics(&subparser, &graphicsOpts);
-	bool loaded = configController.parseArguments(&args, argc, argv, &subparser);
-	if (loaded && args.showHelp) {
-		usage(argv[0], subparser.usage);
-		return 0;
+	if (configController.parseArguments(argc, argv)) {
+		if (configController.args()->showHelp) {
+			configController.usage(argv[0]);
+			return 0;
+		}
+		if (configController.args()->showVersion) {
+			version(argv[0]);
+			return 0;
+		}
+	} else {
+		configController.usage(argv[0]);
+		return 1;
 	}
 
 	QApplication::setApplicationName(projectName);
@@ -79,7 +95,7 @@ int main(int argc, char* argv[]) {
 	GBAApp application(argc, argv, &configController);
 
 #ifndef Q_OS_MAC
-	QApplication::setWindowIcon(QIcon(":/res/mgba-1024.png"));
+	QApplication::setWindowIcon(QIcon(":/res/mgba-256.png"));
 #endif
 
 	QTranslator qtTranslator;
@@ -97,23 +113,26 @@ int main(int argc, char* argv[]) {
 	application.installTranslator(&langTranslator);
 
 	Window* w = application.newWindow();
-	if (loaded) {
-		w->argumentsPassed(&args);
-	} else {
-		w->loadConfig();
-	}
-	freeArguments(&args);
-
-	if (graphicsOpts.multiplier) {
-		w->resizeFrame(QSize(GBA_VIDEO_HORIZONTAL_PIXELS * graphicsOpts.multiplier, GBA_VIDEO_VERTICAL_PIXELS * graphicsOpts.multiplier));
-	}
-	if (graphicsOpts.fullscreen) {
-		w->enterFullScreen();
-	}
+	w->loadConfig();
+	w->argumentsPassed();
 
 	w->show();
 
-	return application.exec();
+	int ret = application.exec();
+	if (ret != 0) {
+		return ret;
+	}
+	QString invoke = application.invokeOnExit();
+	if (!invoke.isNull()) {
+		QByteArray proc = invoke.toUtf8();
+#ifdef Q_OS_WIN
+		_execl(proc.constData(), proc.constData(), NULL);
+#else
+		execl(proc.constData(), proc.constData(), NULL);
+#endif
+	}
+
+	return ret;
 }
 
 #ifdef _WIN32
@@ -126,6 +145,7 @@ int wmain(int argc, wchar_t* argv[]) {
 	for (int i = 0; i < argc; ++i) {
 		argv8.push_back(utf16to8(reinterpret_cast<uint16_t*>(argv[i]), wcslen(argv[i]) * 2));
 	}
+	__argv = argv8.data();
 	int ret = main(argc, argv8.data());
 	for (char* ptr : argv8) {
 		free(ptr);

@@ -1,1 +1,1 @@
-/Roms/GBA/example name.gba
+/roms/

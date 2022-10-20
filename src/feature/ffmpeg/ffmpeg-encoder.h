@@ -23,7 +23,7 @@ struct FFmpegEncoder {
 	unsigned audioBitrate;
 	const char* audioCodec;
 
-	unsigned videoBitrate;
+	int videoBitrate;
 	const char* videoCodec;
 
 	const char* containerFormat;
@@ -33,8 +33,6 @@ struct FFmpegEncoder {
 	int sampleRate;
 	uint16_t* audioBuffer;
 	size_t audioBufferSize;
-	uint16_t* postaudioBuffer;
-	size_t postaudioBufferSize;
 	AVFrame* audioFrame;
 	size_t currentAudioSample;
 	int64_t currentAudioFrame;
@@ -58,6 +56,7 @@ struct FFmpegEncoder {
 	int height;
 	int iwidth;
 	int iheight;
+	int isampleRate;
 	int frameCycles;
 	int cycles;
 	int frameskip;
@@ -76,10 +75,11 @@ struct FFmpegEncoder {
 
 void FFmpegEncoderInit(struct FFmpegEncoder*);
 bool FFmpegEncoderSetAudio(struct FFmpegEncoder*, const char* acodec, unsigned abr);
-bool FFmpegEncoderSetVideo(struct FFmpegEncoder*, const char* vcodec, unsigned vbr, int frameskip);
+bool FFmpegEncoderSetVideo(struct FFmpegEncoder*, const char* vcodec, int vbr, int frameskip);
 bool FFmpegEncoderSetContainer(struct FFmpegEncoder*, const char* container);
 void FFmpegEncoderSetDimensions(struct FFmpegEncoder*, int width, int height);
 void FFmpegEncoderSetInputFrameRate(struct FFmpegEncoder*, int numerator, int denominator);
+void FFmpegEncoderSetInputSampleRate(struct FFmpegEncoder*, int sampleRate);
 void FFmpegEncoderSetLooping(struct FFmpegEncoder*, bool loop);
 bool FFmpegEncoderVerifyContainer(struct FFmpegEncoder*);
 bool FFmpegEncoderOpen(struct FFmpegEncoder*, const char* outfile);

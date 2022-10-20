@@ -10,7 +10,7 @@
 int ftostr_l(char* restrict str, size_t size, float f, locale_t locale) {
 #ifdef HAVE_SNPRINTF_L
 	return snprintf_l(str, size, locale, "%.*g", FLT_DIG, f);
-#elif defined(HAVE_LOCALE)
+#elif defined(HAVE_USELOCALE)
 	locale_t old = uselocale(locale);
 	int res = snprintf(str, size, "%.*g", FLT_DIG, f);
 	uselocale(old);
@@ -28,7 +28,7 @@ int ftostr_l(char* restrict str, size_t size, float f, locale_t locale) {
 
 #ifndef HAVE_STRTOF_L
 float strtof_l(const char* restrict str, char** restrict end, locale_t locale) {
-#ifdef HAVE_LOCALE
+#ifdef HAVE_USELOCALE
 	locale_t old = uselocale(locale);
 	float res = strtof(str, end);
 	uselocale(old);
@@ -77,6 +77,7 @@ struct tm* localtime_r(const time_t* t, struct tm* date) {
 	localtime_s(date, t);
 	return date;
 #elif defined(PSP2)
+	extern struct tm* sceKernelLibcLocaltime_r(const time_t* t, struct tm* date);
 	return sceKernelLibcLocaltime_r(t, date);
 #else
 #warning localtime_r not emulated on this platform

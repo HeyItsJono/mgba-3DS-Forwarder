@@ -7,9 +7,13 @@
 
 #include "GBAApp.h"
 #include "CoreController.h"
+#include "LogController.h"
 
+#include <QBoxLayout>
+#include <QButtonGroup>
 #include <QClipboard>
-#include <QPushButton>
+#include <QRadioButton>
+#include <QRegularExpression>
 
 #include <mgba/core/cheats.h>
 #ifdef M_CORE_GBA
@@ -30,58 +34,30 @@ CheatsView::CheatsView(std::shared_ptr<CoreController> controller, QWidget* pare
 
 	m_ui.cheatList->installEventFilter(this);
 	m_ui.cheatList->setModel(&m_model);
+	m_ui.codeEntry->setFont(GBAApp::app()->monospaceFont());
 
-	connect(m_ui.load, &QPushButton::clicked, this, &CheatsView::load);
-	connect(m_ui.save, &QPushButton::clicked, this, &CheatsView::save);
-	connect(m_ui.addSet, &QPushButton::clicked, this, &CheatsView::addSet);
-	connect(m_ui.remove, &QPushButton::clicked, this, &CheatsView::removeSet);
+	connect(m_ui.load, &QAbstractButton::clicked, this, &CheatsView::load);
+	connect(m_ui.save, &QAbstractButton::clicked, this, &CheatsView::save);
+	connect(m_ui.addSet, &QAbstractButton::clicked, this, &CheatsView::addSet);
+	connect(m_ui.remove, &QAbstractButton::clicked, this, &CheatsView::removeSet);
+	connect(m_ui.add, &QAbstractButton::clicked, this, &CheatsView::enterCheat);
 	connect(controller.get(), &CoreController::stopping, this, &CheatsView::close);
 	connect(controller.get(), &CoreController::stateLoaded, &m_model, &CheatsModel::invalidated);
 
-	QPushButton* add;
 	switch (controller->platform()) {
 #ifdef M_CORE_GBA
 	case mPLATFORM_GBA:
-		connect(m_ui.add, &QPushButton::clicked, [this]() {
-			enterCheat(GBA_CHEAT_AUTODETECT);
-		});
-
-		add = new QPushButton(tr("Add GameShark"));
-		m_ui.gridLayout->addWidget(add, m_ui.gridLayout->rowCount(), 2, 1, 2);
-		connect(add, &QPushButton::clicked, [this]() {
-			enterCheat(GBA_CHEAT_GAMESHARK);
-		});
-
-		add = new QPushButton(tr("Add Pro Action Replay"));
-		m_ui.gridLayout->addWidget(add, m_ui.gridLayout->rowCount(), 2, 1, 2);
-		connect(add, &QPushButton::clicked, [this]() {
-			enterCheat(GBA_CHEAT_PRO_ACTION_REPLAY);
-		});
-
-		add = new QPushButton(tr("Add CodeBreaker"));
-		m_ui.gridLayout->addWidget(add, m_ui.gridLayout->rowCount(), 2, 1, 2);
-		connect(add, &QPushButton::clicked, [this]() {
-			enterCheat(GBA_CHEAT_CODEBREAKER);
-		});
+		registerCodeType(tr("Autodetect (recommended)"), GBA_CHEAT_AUTODETECT);
+		registerCodeType(QLatin1String("GameShark"), GBA_CHEAT_GAMESHARK);
+		registerCodeType(QLatin1String("Action Replay MAX"), GBA_CHEAT_PRO_ACTION_REPLAY);
+		registerCodeType(QLatin1String("CodeBreaker"), GBA_CHEAT_CODEBREAKER);
 		break;
 #endif
 #ifdef M_CORE_GB
 	case mPLATFORM_GB:
-		connect(m_ui.add, &QPushButton::clicked, [this]() {
-			enterCheat(GB_CHEAT_AUTODETECT);
-		});
-
-		add = new QPushButton(tr("Add GameShark"));
-		m_ui.gridLayout->addWidget(add, m_ui.gridLayout->rowCount(), 2, 1, 2);
-		connect(add, &QPushButton::clicked, [this]() {
-			enterCheat(GB_CHEAT_GAMESHARK);
-		});
-
-		add = new QPushButton(tr("Add GameGenie"));
-		m_ui.gridLayout->addWidget(add, m_ui.gridLayout->rowCount(), 2, 1, 2);
-		connect(add, &QPushButton::clicked, [this]() {
-			enterCheat(GB_CHEAT_GAME_GENIE);
-		});
+		registerCodeType(tr("Autodetect (recommended)"), GB_CHEAT_AUTODETECT);
+		registerCodeType(QLatin1String("GameShark"), GB_CHEAT_GAMESHARK);
+		registerCodeType(QLatin1String("Game Genie"), GB_CHEAT_GAME_GENIE);
 		break;
 #endif
 	default:
@@ -126,6 +102,8 @@ void CheatsView::addSet() {
 	CoreController::Interrupter interrupter(m_controller);
 	mCheatSet* set = m_controller->cheatDevice()->createSet(m_controller->cheatDevice(), nullptr);
 	m_model.addSet(set);
+	m_ui.cheatList->selectionModel()->select(m_model.index(m_model.rowCount() - 1, 0, QModelIndex()), QItemSelectionModel::ClearAndSelect);
+	enterCheat();
 }
 
 void CheatsView::removeSet() {
@@ -134,12 +112,26 @@ void CheatsView::removeSet() {
 		return;
 	}
 	CoreController::Interrupter interrupter(m_controller);
-	for (const QModelIndex& index : selection) {
+	for (const QModelIndex& index ATTRIBUTE_UNUSED : selection) {
 		m_model.removeAt(selection[0]);
 	}
 }
 
-void CheatsView::enterCheat(int codeType) {
+void CheatsView::registerCodeType(const QString& label, int type) {
+	QRadioButton* add = new QRadioButton(label);
+	m_ui.typeLayout->addWidget(add);
+	connect(add, &QAbstractButton::clicked, [this, type]() {
+		m_codeType = type;
+	});
+	if (!m_typeGroup) {
+		m_typeGroup = new QButtonGroup(this);
+		m_codeType = type;
+		add->setChecked(true);
+	}
+	m_typeGroup->addButton(add);
+}
+
+void CheatsView::enterCheat() {
 	mCheatSet* set = nullptr;
 	QModelIndexList selection = m_ui.cheatList->selectionModel()->selectedIndexes();
 	QModelIndex index;
@@ -159,12 +151,40 @@ void CheatsView::enterCheat(int codeType) {
 		index = m_model.index(m_model.rowCount() - 1, 0, QModelIndex());
 		m_ui.cheatList->selectionModel()->select(index, QItemSelectionModel::SelectCurrent | QItemSelectionModel::Rows);
 	}
-	QStringList cheats = m_ui.codeEntry->toPlainText().split('\n', QString::SkipEmptyParts);
+	// TODO: Update API to handle this splitting in the core
+	QRegularExpression regexp("\\s");
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
+	QStringList cheats = m_ui.codeEntry->toPlainText().split(regexp, Qt::SkipEmptyParts);
+#else
+	QStringList cheats = m_ui.codeEntry->toPlainText().split(regexp, QString::SkipEmptyParts);
+#endif
+	int failure = 0;
+	QString buffer;
 	for (const QString& string : cheats) {
 		m_model.beginAppendRow(index);
-		mCheatAddLine(set, string.toUtf8().constData(), codeType);
+		if (!buffer.isEmpty()) {
+			buffer += " " + string;
+			if (mCheatAddLine(set, buffer.toUtf8().constData(), m_codeType)) {
+				buffer.clear();
+			} else if (mCheatAddLine(set, string.toUtf8().constData(), m_codeType)) {
+				buffer.clear();
+			} else {
+				buffer = string;
+				++failure;
+			}
+		} else if (!mCheatAddLine(set, string.toUtf8().constData(), m_codeType)) {
+			buffer = string;
+		}
 		m_model.endAppendRow();
 	}
-	set->refresh(set, m_controller->cheatDevice());
+	if (!buffer.isEmpty()) {
+		++failure;
+	}
+	if (set->refresh) {
+		set->refresh(set, m_controller->cheatDevice());
+	}
+	if (failure) {
+		LOG(QT, ERROR) << tr("Some cheats could not be added. Please ensure they're formatted correctly and/or try other cheat types.");
+	}
 	m_ui.codeEntry->clear();
 }

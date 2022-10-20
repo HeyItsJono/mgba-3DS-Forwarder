@@ -42,6 +42,7 @@ MapView::MapView(std::shared_ptr<CoreController> controller, QWidget* parent)
 #ifdef M_CORE_GBA
 	case mPLATFORM_GBA:
 		m_boundary = 2048;
+		m_ui.tile->setMaxTile(3096);
 		m_addressBase = BASE_VRAM;
 		m_addressWidth = 8;
 		m_ui.bgInfo->addCustomProperty("priority", tr("Priority"));
@@ -55,6 +56,7 @@ MapView::MapView(std::shared_ptr<CoreController> controller, QWidget* parent)
 #ifdef M_CORE_GB
 	case mPLATFORM_GB:
 		m_boundary = 1024;
+		m_ui.tile->setMaxTile(512);
 		m_addressBase = GB_BASE_VRAM;
 		m_addressWidth = 4;
 		m_ui.bgInfo->addCustomProperty("screenBase", tr("Map base"));
@@ -116,12 +118,18 @@ void MapView::selectMap(int map) {
 		return;
 	}
 	m_map = map;
+	m_mapStatus.fill({});
 	updateTiles(true);
 }
 
 void MapView::selectTile(int x, int y) {
 	CoreController::Interrupter interrupter(m_controller);
 	mMapCache* mapCache = mMapCacheSetGetPointer(&m_cacheSet->maps, m_map);
+	int tiles = mMapCacheTileCount(mapCache);
+	if (m_mapStatus.size() != tiles) {
+		m_mapStatus.resize(tiles);
+		m_mapStatus.fill({});
+	}
 	size_t tileCache = mTileCacheSetIndex(&m_cacheSet->tiles, mapCache->tileCache);
 	m_ui.tile->setBoundary(m_boundary, tileCache, tileCache);
 	uint32_t location = mMapCacheTileId(mapCache, x, y);
@@ -221,7 +229,7 @@ void MapView::updateTilesGBA(bool) {
 			m_rawMap = QImage(QSize(width, height), QImage::Format_ARGB32);
 			uchar* bgBits = m_rawMap.bits();
 			for (int j = 0; j < height; ++j) {
-				mBitmapCacheCleanRow(bitmapCache, m_bitmapStatus, j);
+				mBitmapCacheCleanRow(bitmapCache, m_bitmapStatus.data(), j);
 				memcpy(static_cast<void*>(&bgBits[width * j * 4]), mBitmapCacheGetRow(bitmapCache, j), width * 4);
 			}
 			m_rawMap = m_rawMap.convertToFormat(QImage::Format_RGB32).rgbSwapped();
@@ -239,7 +247,7 @@ void MapView::updateTilesGBA(bool) {
 			m_ui.bgInfo->setCustomProperty("priority", priority);
 			m_ui.bgInfo->setCustomProperty("offset", offset);
 			m_ui.bgInfo->setCustomProperty("transform", transform);
-			m_rawMap = compositeMap(m_map, m_mapStatus);
+			m_rawMap = compositeMap(m_map, &m_mapStatus);
 		}
 	}
 	QPixmap map = QPixmap::fromImage(m_rawMap.convertToFormat(QImage::Format_RGB32));

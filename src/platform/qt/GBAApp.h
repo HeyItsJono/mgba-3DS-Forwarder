@@ -18,6 +18,7 @@
 
 #include <functional>
 
+#include "ApplicationUpdater.h"
 #include "CoreManager.h"
 #include "MultiplayerController.h"
 
@@ -60,7 +61,6 @@ public:
 	QFont monospaceFont() { return m_monospace; }
 
 	QList<Window*> windows() { return m_windows; }
-	Window* newWindow();
 
 	QString getOpenFileName(QWidget* owner, const QString& title, const QString& filter = {});
 	QStringList getOpenFileNames(QWidget* owner, const QString& title, const QString& filter = {});
@@ -74,6 +74,13 @@ public:
 	qint64 submitWorkerJob(std::function<void ()> job, QObject* context, std::function<void ()> callback);
 	bool removeWorkerJob(qint64 jobId);
 	bool waitOnJob(qint64 jobId, QObject* context, std::function<void ()> callback);
+
+	ApplicationUpdater* updater() { return &m_updater; }
+	QString invokeOnExit() { return m_invokeOnExit; }
+
+public slots:
+	void restartForUpdate();
+	Window* newWindow();
 
 signals:
 	void jobFinished(qint64 jobId);
@@ -101,6 +108,8 @@ private:
 
 	Window* newWindowInternal();
 
+	void cleanupAfterUpdate();
+
 	void pauseAll(QList<Window*>* paused);
 	void continueAll(const QList<Window*>& paused);
 
@@ -108,6 +117,8 @@ private:
 	QList<Window*> m_windows;
 	MultiplayerController m_multiplayer;
 	CoreManager m_manager;
+	ApplicationUpdater m_updater;
+	QString m_invokeOnExit;
 
 	QMap<qint64, WorkerJob*> m_workerJobs;
 	QMultiMap<qint64, QMetaObject::Connection> m_workerJobCallbacks;
