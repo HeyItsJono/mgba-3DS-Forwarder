@@ -1,7 +1,7 @@
 mGBA 3DS Forwarder
 ===================
 
-This is a (currently) uptodate fork of @TobiasBielefeld's fork of mGBA, which was originally made to generate 3DS mGBA Homescreen Forwarders for individual games when the project was built as a .cia.
+This is a (currently) uptodate fork of [TobiasBielefeld](https://github.com/TobiasBielefeld)'s fork of mGBA, which was originally made to generate 3DS mGBA Homescreen Forwarders for individual games when the project was built as a .cia.
 
 
 The changes I've made to the Tobias's original fork are that I've updated the base mGBA to the current latest release (0.10.0 as of 21-10-22), and I've provided a python script to automate the process of building forwarders. The script will generate .cia Forwarder files which are essentially each a version of mGBA that, when opened from the Home Menu, automatically boot a ROM from a specified path on your 3DS's SD card. These paths must unfortunately be specified at the time the .cia is built with this script, so if you move the ROM file the forwarder will fail to boot and you'll have to make a new one. Because the script builds an mGBA cia, the version will always be that of the source code packaged with this script, which is current 0.10.0, even if you have a newer version installed on your 3DS. They will share the same settings/config files however.
