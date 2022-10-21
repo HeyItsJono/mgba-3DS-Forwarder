@@ -44,6 +44,7 @@ Then, within **each** subfolder you need to supply three files:
  
 Please ensure there are **only** the above 3 files in each of the subfolders. Do not leave any stray extra files in there or the script will not work.
 
+To generate the `icon.icn` and `banner.bnr` files I like to use [NSUI](https://3ds.eiphax.tech/nsui). You can make a New Project for each ROM and once you've put in a name and icon and banner (the latter of which you can get from [Libretro](https://github.com/libretro-thumbnails)), you can export `icon.icn` and `banner.bnr` via `Project -> Export (icon/banner) binary...`.
 
 As an example, the folder structure should look something like this:
 
